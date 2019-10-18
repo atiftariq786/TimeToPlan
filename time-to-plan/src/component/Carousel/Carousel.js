@@ -26,6 +26,21 @@ const ControlledCarousel = () => {
       </Carousel.Caption>
     </Carousel.Item>
 
+
+    <Carousel.Item>
+      <img
+        className="d-block w-100"
+        style={{height:"300px"}}
+        src="https://clipartstation.com/wp-content/uploads/2017/11/planning-clipart-11.jpg"
+        alt="Second slide"
+      />
+
+      <Carousel.Caption className={Styles.Craouseltext}>
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    
       </Carousel>
     );
   }
