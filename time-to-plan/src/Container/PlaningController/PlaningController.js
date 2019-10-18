@@ -3,6 +3,7 @@ import Aux from "../../hoc/Aux/Aux";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Carousel from "../../component/Carousel/Carousel";
 import Styles from "./PlaningController.module.css";
 
 class PaningController extends Component {
@@ -13,7 +14,7 @@ class PaningController extends Component {
             <Aux>   
                 <Container>
                 <Row>
-                    <Col sm="12"><div className={Styles.Temp}>Jumbotron</div></Col>
+                    <Col sm="12"><div><Carousel/></div></Col>
                 </Row>
                 <Row>
                     <Col sm="6"><div className={Styles.Temp}>Media Story</div></Col>
