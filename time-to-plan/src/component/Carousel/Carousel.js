@@ -40,7 +40,21 @@ const ControlledCarousel = () => {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </Carousel.Caption>
     </Carousel.Item>
-    
+    <Carousel.Item>
+      <img
+        className="d-block w-100"
+        style={{height:"300px"}}
+        src="https://d194ip2226q57d.cloudfront.net/images/businessman-climbing-stairs.original.jpg"
+        alt="Third slide"
+      />
+
+      <Carousel.Caption className={Styles.Craouseltext}>
+        <h3>Third slide label</h3>
+        <p>
+          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+        </p>
+      </Carousel.Caption>
+    </Carousel.Item>
       </Carousel>
     );
   }
