@@ -9,12 +9,7 @@ class Layout extends Component {
         return (
             <Aux>
                 <div>Tool bar</div>
-                
                 <main className={Styles.Contents}>
-                <div>
-                    <div>Media Story</div>
-                    <div>Sketch of list</div>
-                </div>
                     {this.props.children}
                 </main>
             
