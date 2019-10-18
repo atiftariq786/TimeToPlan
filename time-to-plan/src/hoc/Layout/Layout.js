@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Aux from "../Aux/Aux";
 import Styles from "./Layout.module.css";
 
 class Layout extends Component {
@@ -6,11 +7,20 @@ class Layout extends Component {
     render(){
 
         return (
-            <div>
-            Hello World
-            </div>
+            <Aux>
+                <div>Tool bar</div>
+                
+                <main className={Styles.Contents}>
+                <div>
+                    <div>Media Story</div>
+                    <div>Sketch of list</div>
+                </div>
+                    {this.props.children}
+                </main>
+            
+            </Aux>
+        
         )
     }
 }
-
 export default Layout;
