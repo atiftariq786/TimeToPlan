@@ -7,7 +7,7 @@ const media = (props) => {
         
         <div>
         <img
-        style={{width: "450px", height:"300px"}} 
+        style={{width: "448px", height:"300px"}} 
         src="https://media.coschedule.com/uploads/header-layers.gif"></img>
         </div>
         
