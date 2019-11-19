@@ -7,6 +7,7 @@ import {Input} from "../../component/Form/Form";
 import Styles from "./CreateGoals.module.css";
 
 
+
 class CreateGoals extends Component {
 
     render(){

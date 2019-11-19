@@ -2,11 +2,11 @@ import React from "react";
 import Styles from "./Form.module.css";
 
 import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from "react-bootstrap/FormControl";
+//import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export function TextArea(){
+export function TextArea(props){
 
     return (
         <div>
@@ -20,7 +20,7 @@ export function TextArea(){
                     </img>
                 </InputGroup.Text>
             </InputGroup.Prepend>            
-            <FormControl 
+            <Form.Control
             as="textarea" 
             aria-label="With textarea" 
             rows="5" 
@@ -30,10 +30,11 @@ export function TextArea(){
             Career Passion and Personal Satisfaction. ...
             Develop Empathy and Gentleness. ...
             Financial Stability. ...
-            Service and Social Responsibility." />
+            Service and Social Responsibility." value = {props.writeStory} onChange={props.writeStoryHandler} >
+            </Form.Control>
             
         </InputGroup>
-        <Button variant="success" type="submit" size="sm" className={Styles.StoryButton}>Submit</Button>
+        <Button variant="success" type= "button" onClick ={props.submitStory} size="sm" className={Styles.StoryButton}>Submit</Button>
         </div>
         
     );
