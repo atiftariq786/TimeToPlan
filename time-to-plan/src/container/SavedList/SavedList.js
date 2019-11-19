@@ -67,15 +67,37 @@ class SavedList extends Component {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
                    
                             </p>       
-                        </div>
-                        
-                        
+                        </div>                       
                     </div>
                         &nbsp;<Button variant="primary">Edit</Button>
                         &nbsp;<Button variant="danger"> Delete</Button>
                         &nbsp;<Button variant="success"> Complete</Button>
                     
-                    </Col>                    
+                    </Col>             
+                    
+                </Row>
+                <Row>                    
+                    <Col>
+                    <h3>Travel to Italy</h3>  
+                    <div className={Styles.PlansDetail}>
+                    <img
+                    style={{width: "25%", height:"195px", margin: "1px" }} 
+                    src="https://i.ytimg.com/vi/4W2c7JJdZQY/maxresdefault.jpg" alt="sketch"></img>
+               
+                        <div className={Styles.Plans}>
+                            <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+                   
+                            </p>       
+                        </div>                       
+                    </div>
+                        &nbsp;<Button variant="primary">Edit</Button>
+                        &nbsp;<Button variant="danger"> Delete</Button>
+                        &nbsp;<Button variant="success"> Complete</Button>
+                    
+                    </Col>             
                     
                 </Row>
                 

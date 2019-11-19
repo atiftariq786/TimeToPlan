@@ -1,26 +1,25 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './hoc/Layout/Layout';
 import SavedList from "./container/SavedList/SavedList";
-//import CreateStory from "./container/CreateStory/CreateStory";
-//import PlaningController from "./container/PlaningController/PlaningController";
+import CreateStory from "./container/CreateStory/CreateStory";
+import PlaningController from "./container/PlaningController/PlaningController";
 
 function App() {
   return (
-    <div>
-    <Layout>
-    {//<PlaningController/>
-      //<CreateStory/>
-    }
-    <SavedList />
-    
-
-    </Layout>
-      
-    </div>
+    <Router>
+      <Layout>
+        <Switch>
+          <Route exact path ="/" component = {PlaningController} />
+          <Route exact path ="/create-story/" component = {CreateStory} />
+          <Route exact path ="/create-goals/" component = {CreateStory} />
+          <Route exact path ="/saved-list/" component = {SavedList} />  
+        </Switch>     
+      </Layout>
+    </Router>
   );
 }
-
 export default App;
