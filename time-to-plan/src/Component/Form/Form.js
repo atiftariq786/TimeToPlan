@@ -1,4 +1,5 @@
 import React from "react";
+import Styles from "./Form.module.css";
 
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from "react-bootstrap/FormControl";
@@ -8,7 +9,7 @@ import Button from "react-bootstrap/Button";
 export function TextArea(){
 
     return (
-        
+        <div>
         <InputGroup>
             <InputGroup.Prepend>
                 <InputGroup.Text>
@@ -30,7 +31,11 @@ export function TextArea(){
             Develop Empathy and Gentleness. ...
             Financial Stability. ...
             Service and Social Responsibility." />
+            
         </InputGroup>
+        <Button variant="success" type="submit" size="sm" className={Styles.StoryButton}>Submit</Button>
+        </div>
+        
     );
 } 
 

@@ -7,6 +7,7 @@ import Layout from './hoc/Layout/Layout';
 import SavedList from "./container/SavedList/SavedList";
 import CreateStory from "./container/CreateStory/CreateStory";
 import PlaningController from "./container/PlaningController/PlaningController";
+import CreateGoals from "./container/CreateGoals/CreateGoals";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path ="/" component = {PlaningController} />
           <Route exact path ="/create-story/" component = {CreateStory} />
-          <Route exact path ="/create-goals/" component = {CreateStory} />
+          <Route exact path ="/create-goals/" component = {CreateGoals} />
           <Route exact path ="/saved-list/" component = {SavedList} />  
         </Switch>     
       </Layout>
