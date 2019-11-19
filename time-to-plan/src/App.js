@@ -3,7 +3,8 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './hoc/Layout/Layout';
-import CreateStory from "./container/CreateStory/CreateStory";
+import SavedList from "./container/SavedList/SavedList";
+//import CreateStory from "./container/CreateStory/CreateStory";
 //import PlaningController from "./container/PlaningController/PlaningController";
 
 function App() {
@@ -11,8 +12,10 @@ function App() {
     <div>
     <Layout>
     {//<PlaningController/>
+      //<CreateStory/>
     }
-    <CreateStory/>
+    <SavedList />
+    
 
     </Layout>
       

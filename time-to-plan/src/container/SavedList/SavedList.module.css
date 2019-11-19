@@ -1,0 +1,58 @@
+h1{
+    text-align: center;
+}
+.Temp{
+    display : flex;
+    margin-top: 1px;
+    width:100%;
+    height:250px;
+   
+    border: 1px solid #ccc;
+    
+}
+.Summary{
+    margin: 5px;
+    width:50%;
+    height:240px;
+    color:green;
+   
+    border: 1px solid #ccc;
+    
+}
+.Graph{
+    margin: 5px;
+    width:50%;
+    height:240px;
+    color :red;
+   
+    border: 1px solid #ccc;
+    
+}
+.Story{
+    
+    margin-top: 1px;
+    width:100%;
+    height:250px;
+    color: rgb(37, 34, 34);
+    border: 1px solid #ccc;
+    overflow:scroll;
+    
+}
+.PlansDetail{
+    display: flex;
+    margin-top: 1px;
+    width:100%;
+    height:200px;
+    color: rgb(37, 34, 34);
+    border: 1px solid #ccc;    
+}
+.Plans{
+    
+    margin-top: 1px;
+    width:100%;
+    height:auto min-content;
+    color: rgb(37, 34, 34);
+    overflow:scroll;
+    
+}
+
