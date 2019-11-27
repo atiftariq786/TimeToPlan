@@ -6,12 +6,36 @@ import Col from "react-bootstrap/Col";
 //import {TextArea, Input} from "../../component/Form/Form";
 import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
 
 
 
 class SavedList extends Component {
 
+    state = {
+        posts : []
+    }
+
+    componentDidMount(){
+        API.getStories().then(response => {
+            console.log("Get Method")
+            console.log(response.data.data);
+
+            this.setState({
+                posts : response.data.data
+            })
+            console.log(this.state.posts);
+        })
+    }
+    
     render(){
+        const posts = this.state.posts.map(post => {
+            return (
+                <div>
+                  
+                </div>
+            )
+        })
         return(
             <Container>
             <h1 className={Styles}>Your Life Goals Saved List</h1>
@@ -43,7 +67,8 @@ class SavedList extends Component {
                     <h3>Your Story</h3>  
                     <div className={Styles.Story}>
                         <div>
-                            <p>{this.props.savedStory}</p> 
+                        
+                            {posts}
                         </div>
                         
                         &nbsp;<Button variant="primary">Edit</Button>

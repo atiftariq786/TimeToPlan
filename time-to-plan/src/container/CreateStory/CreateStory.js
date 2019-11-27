@@ -13,24 +13,43 @@ class CreateStory extends Component {
 
     state = {
         title: "",
-        story : "Game of throne",
-        author : "Atif"
+        story : "",
+        author : ""
     }
-
-    eventHandler = (event) => {
+    titleEventHandler = (event) => {
+       
+        this.setState({
+            title: event.target.value
+        })
+        console.log(this.state.title);
+    }
+    storyEventHandler = (event) => {
        
         this.setState({
             story: event.target.value
         })
         console.log(this.state.story);
     }
+    authorEventHandler = (event) => {
+       
+        this.setState({
+            author: event.target.value
+        })
+        console.log(this.state.author);
+    }
     postStoryDataHandler= () =>{
         console.log("post data activate");
 
         const data ={
-            body: this.state.story,
+            title: this.state.title,
+            story: this.state.story,
+            author: this.state.author,
         }
+        console.log(data.title)
+        console.log(data.story)
+        console.log(data.author)
         API.savedStory(data).then(response =>{
+            console.log("Data Saved");
             console.log(response);
         })
     }
@@ -42,8 +61,12 @@ class CreateStory extends Component {
                 <Row>
                     <Col>                        
                         <TextArea 
+                        writeTitle = {this.state.title}
+                        writeTitleHandler = {this.titleEventHandler}
                         writeStory = {this.state.story}
-                        writeStoryHandler={this.eventHandler}
+                        writeStoryHandler={this.storyEventHandler}
+                        writeAuthor = {this.state.author}
+                        writeAuthorHandler = {this.authorEventHandler}
                         submitStory = {this.postStoryDataHandler}
                         
                         >

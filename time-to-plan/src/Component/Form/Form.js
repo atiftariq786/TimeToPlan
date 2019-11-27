@@ -10,6 +10,14 @@ export function TextArea(props){
 
     return (
         <div>
+        <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Title</Form.Label>
+                <Form.Control 
+                type="text" 
+                placeholder="Example: My Memories" 
+                value = {props.writeTitle} 
+                onChange={props.writeTitleHandler}/>
+        </Form.Group>
         <InputGroup>
             <InputGroup.Prepend>
                 <InputGroup.Text>
@@ -30,11 +38,26 @@ export function TextArea(props){
             Career Passion and Personal Satisfaction. ...
             Develop Empathy and Gentleness. ...
             Financial Stability. ...
-            Service and Social Responsibility." value = {props.writeStory} onChange={props.writeStoryHandler} >
+            Service and Social Responsibility." 
+            value = {props.writeStory} 
+            onChange={props.writeStoryHandler} >
             </Form.Control>
             
         </InputGroup>
-        <Button variant="success" type= "button" onClick ={props.submitStory} size="sm" className={Styles.StoryButton}>Submit</Button>
+        <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Author</Form.Label>
+                <Form.Control 
+                type="text" 
+                placeholder="Author Name"
+                value = {props.writeAuthor} 
+                onChange={props.writeAuthorHandler} />
+        </Form.Group>
+        <Button 
+        variant="success" 
+        type= "button" 
+        onClick ={props.submitStory} 
+        size="sm" 
+        className={Styles.StoryButton}>Submit</Button>
         </div>
         
     );
