@@ -32,7 +32,9 @@ class SavedList extends Component {
         const posts = this.state.posts.map(post => {
             return (
                 <div>
-                  
+                  <h2 key={post.id}>{post.title}</h2>
+                  <p key={post.id}> {post.story}</p>
+                  <p key={post.id}>{post.author}</p>
                 </div>
             )
         })
