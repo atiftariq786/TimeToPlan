@@ -17,8 +17,7 @@ const toolbar = (props) => {
         <NavLink to="/create-story/"><Navbar.Brand>Create Story</Navbar.Brand></NavLink>
         <NavLink to="/create-goals/"><Navbar.Brand>Create Goals</Navbar.Brand></NavLink>
         <NavLink to="/saved-list/"><Navbar.Brand>Saved List</Navbar.Brand></NavLink>
-        <NavLink to="/">Login</NavLink>
-        <NavLink to="/">Logout</NavLink>
+        
        
         
         

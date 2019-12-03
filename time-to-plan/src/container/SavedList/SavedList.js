@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
+import CreateStory from "../CreateStory/CreateStory";
 
 
 
@@ -29,30 +30,33 @@ class SavedList extends Component {
     }
     
     render(){
+       
         const posts = this.state.posts.map(post => {
             return (
                 <div>
-                  <h2 key={post.id}>{post.title}</h2>
-                  <p key={post.id}> {post.story}</p>
-                  <p key={post.id}>{post.author}</p>
+                    <h2 key={post.id}>{post.title}</h2>
+                    <p key={post.id}> {post.story}</p>
+                    <p key={post.id}>{post.author}</p>
                 </div>
             )
         })
+        if(this.state.posts.length === 0){
+            return (<CreateStory CreateStoryLength = {true} postStroy = {posts}></CreateStory> )
+        }
         return(
             <Container>
             <h1 className={Styles}>Your Life Goals Saved List</h1>
                 <Row>                
                     <Col> 
                     <h3>Goals Achievments Summary</h3>                       
-                        <div className={Styles.Temp}>
+                        <div className = {Styles.Temp}>
                         
-                            <div className={Styles.Summary}>
+                            <div className = {Styles.Summary}>
                                 <p> Goals Status</p>
                                 <ul>
-                                <li>Total Goals: <span> 5</span></li>
-                                <li>Achieved Goals:<span>  1</span></li>
-                                <li>Remaining Goals:<span>  4</span></li>
-                                
+                                    <li>Total Goals: <span> 5</span></li>
+                                    <li>Achieved Goals:<span>  1</span></li>
+                                    <li>Remaining Goals:<span>  4</span></li>
                                 </ul>
                             </div>
                             <div className={Styles.Graph}>
@@ -68,8 +72,7 @@ class SavedList extends Component {
                     <Col>
                     <h3>Your Story</h3>  
                     <div className={Styles.Story}>
-                        <div>
-                        
+                        <div>                        
                             {posts}
                         </div>
                         
