@@ -90,10 +90,14 @@ class CreateStory extends Component {
         if(this.state.savedData.length){
             showSavedData = this.state.savedData.map(arrData => {
                 return (
-                    <div>
-                        <h2 key={arrData.id}>{arrData.title}</h2>
+                    <div className = {Styles.Temp}>
+                    <img
+                    style={{width: "100%", height:"200px", margin: "1px" }} 
+                    src="https://economictimes.indiatimes.com/img/68721421/Master.jpg" alt="sketch"></img>
+               
+                        <h3 key={arrData.id}>{arrData.title}</h3>
                         <p key={arrData.id}> {arrData.story}</p>
-                        <p key={arrData.id}>{arrData.author}</p>
+                        <p key={arrData.id}>Author: {arrData.author}</p>
                     </div>
                 )
             })
