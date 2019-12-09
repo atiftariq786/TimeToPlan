@@ -16,8 +16,32 @@ class CreateStory extends Component {
         story : "",
         author : "",
         showCreateStory : true,
-        showPostStory: false
+        showPostStory: "nodata",
+        savedData : []
     }
+    componentDidMount(){
+       
+        API.getStories(function(err, res){
+            if(err){
+                console.log("Something Wrong");
+            }
+            
+        this.checkDatabaseHandler();
+            
+        }).then(response => {
+            console.log("Get Method")
+            console.log(response.data.data);
+           
+            this.setState({
+                savedData : response.data.data
+            })
+            console.log(this.state.savedData);
+        })
+
+        
+    }
+    
+    
     titleEventHandler = (event) => {
     
         this.setState({
@@ -48,19 +72,33 @@ class CreateStory extends Component {
             author: this.state.author,
         }
         //props comming from savedList.js, story length zero then its true
-        if(this.props.CreateStoryLength === true){
+        if(!this.state.savedData.length){
             API.savedStory(data).then(response =>{
                 console.log("Data Saved");
                 console.log(response);
+                this.setState({
+                    showCreateStory: false,
+                    //showPostStory: "true"
+                })
             })
         }
+
+
+       // else{
+         //   this.setState({
+           //     showCreateStory: false,
+             //   //showPostStory: "true"
+            //})
+        //}
        
     }
     render(){
-        let showCreateStory = null;
+        let showCreateStoryTemp = null;
+        console.log("Welcome Create Story")
+        //console.log(this.props.CreateStoryLength)
 
-        if(this.state.showCreateStory){
-            showCreateStory = ( <Row>
+        if(this.state.showCreateStory && !this.state.savedData.length){
+            showCreateStoryTemp = ( <Row>
                 <h1 className={Styles}>Create Your Life Story</h1>
                 <Col>                        
                 <TextArea 
@@ -77,13 +115,25 @@ class CreateStory extends Component {
             </Row>       )
            
         }
-        showCreateStory = (<div>{this.props.postStory}</div>);
+        else {
+            showCreateStoryTemp = (
+                <Row>
+                    <Col>
+                        {<div>{this.props.saveStories}</div>}
+                    </Col>
+                </Row>
+            )
+                
+
+        }
+       
+        
 
        
         return(
             <Container className = {Styles.Back}>
-            {showCreateStory}
-                                       
+           {showCreateStoryTemp}
+                   
             </Container>
              
             

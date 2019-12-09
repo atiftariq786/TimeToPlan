@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
-import CreateStory from "../CreateStory/CreateStory";
+//import CreateStory from "../CreateStory/CreateStory";
 
 
 
@@ -18,33 +18,66 @@ class SavedList extends Component {
     }
 
     componentDidMount(){
-        API.getStories().then(response => {
+       
+        API.getStories(function(err, res){
+            if(err){
+                console.log("Something Wrong");
+            }
+            
+        this.checkDatabaseHandler();
+            
+        }).then(response => {
             console.log("Get Method")
             console.log(response.data.data);
-
+           
             this.setState({
                 posts : response.data.data
             })
             console.log(this.state.posts);
         })
+
+        
     }
+    
+    
+   
     
     render(){
        
-        const posts = this.state.posts.map(post => {
-            return (
-                <div>
-                    <h2 key={post.id}>{post.title}</h2>
-                    <p key={post.id}> {post.story}</p>
-                    <p key={post.id}>{post.author}</p>
-                </div>
-            )
-        })
-        if(this.state.posts.length === 0){
-            return (<CreateStory CreateStoryLength = {true} postStroy = {posts}></CreateStory> )
+        let showPosts = "No Story Available";
+        if(this.state.posts.length){
+            showPosts = this.state.posts.map(post => {
+                return (
+                    <div>
+                        <h2 key={post.id}>{post.title}</h2>
+                        <p key={post.id}> {post.story}</p>
+                        <p key={post.id}>{post.author}</p>
+                    </div>
+                )
+            })
         }
+        /*
+        console.log("Database checking")
+        if(this.state.posts.length === undefined ||this.state.posts.length === 0 ||this.state.posts.length === null){
+            console.log(" checking")
+            return (<CreateStory CreateStoryLength = {undefined} saveStories = {showPosts}></CreateStory>) 
+            
+        }
+        else if(this.state.posts.length > 0){
+            return (<CreateStory CreateStoryLength = {true}  saveStories = {showPosts}></CreateStory>) 
+        }
+        */
+       
+        //console.log("saveList")
+        //console.log(this.state.posts)
+        
+       // else{
+         //    (<CreateStory CreateStoryLength = {true} postStroy = {"Atif"}></CreateStory>) 
+        //}
         return(
+            
             <Container>
+            
             <h1 className={Styles}>Your Life Goals Saved List</h1>
                 <Row>                
                     <Col> 
@@ -73,7 +106,7 @@ class SavedList extends Component {
                     <h3>Your Story</h3>  
                     <div className={Styles.Story}>
                         <div>                        
-                            {posts}
+                            {showPosts}
                         </div>
                         
                         &nbsp;<Button variant="primary">Edit</Button>
