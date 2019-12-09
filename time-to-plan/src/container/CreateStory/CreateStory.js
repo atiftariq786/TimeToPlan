@@ -83,16 +83,25 @@ class CreateStory extends Component {
             })
         }
 
-
-       // else{
-         //   this.setState({
-           //     showCreateStory: false,
-             //   //showPostStory: "true"
-            //})
-        //}
-       
     }
     render(){
+        let showSavedData = "No Story Available";
+        
+        if(this.state.savedData.length){
+            showSavedData = this.state.savedData.map(arrData => {
+                return (
+                    <div>
+                        <h2 key={arrData.id}>{arrData.title}</h2>
+                        <p key={arrData.id}> {arrData.story}</p>
+                        <p key={arrData.id}>{arrData.author}</p>
+                    </div>
+                )
+            })
+        }
+
+
+
+
         let showCreateStoryTemp = null;
         console.log("Welcome Create Story")
         //console.log(this.props.CreateStoryLength)
@@ -119,7 +128,7 @@ class CreateStory extends Component {
             showCreateStoryTemp = (
                 <Row>
                     <Col>
-                        {<div>{this.props.saveStories}</div>}
+                        {<div>{showSavedData}</div>}
                     </Col>
                 </Row>
             )
