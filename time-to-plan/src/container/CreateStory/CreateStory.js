@@ -12,6 +12,44 @@ import Styles from "./CreateStory.module.css";
 class CreateStory extends Component {
 
     state = {
+        createStoryData :{
+            title: {
+                elementType:"input",
+                    elementConfig:{
+                        type:"text",
+                        placeholder:"Your Story Title"
+                    },
+                    value:"",
+                    validation:{
+                        required:true
+                    },
+                    valid:false,
+            },
+            story : {
+                elementType:"input",
+                    elementConfig:{
+                        type:"text",
+                        placeholder:"Your Story Detail "
+                    },
+                    value:"",
+                    validation:{
+                        required:true
+                    },
+                    valid:false,
+            },
+            author : {
+                elementType:"input",
+                    elementConfig:{
+                        type:"text",
+                        placeholder:"Author"
+                    },
+                    value:"",
+                    validation:{
+                        required:true
+                    },
+                    valid:false,
+            },
+        },
         title: "",
         story : "",
         author : "",
@@ -20,7 +58,7 @@ class CreateStory extends Component {
         savedData : []
     }
     componentDidMount(){
-       
+    
         API.getStories(function(err, res){
             if(err){
                 console.log("Something Wrong");
@@ -31,14 +69,13 @@ class CreateStory extends Component {
         }).then(response => {
             console.log("Get Method")
             console.log(response.data.data);
-           
+        
             this.setState({
                 savedData : response.data.data
             })
             console.log(this.state.savedData);
         })
 
-        
     }
     
     
@@ -94,7 +131,7 @@ class CreateStory extends Component {
                     <img
                     style={{width: "100%", height:"200px", margin: "1px" }} 
                     src="https://economictimes.indiatimes.com/img/68721421/Master.jpg" alt="sketch"></img>
-               
+            
                         <h3 key={arrData.id}>{arrData.title}</h3>
                         <p key={arrData.id}> {arrData.story}</p>
                         <p key={arrData.id}>Author: {arrData.author}</p>

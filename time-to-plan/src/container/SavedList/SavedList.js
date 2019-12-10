@@ -16,9 +16,9 @@ class SavedList extends Component {
     state = {
         posts : []
     }
-
+    
     componentDidMount(){
-       
+    
         API.getStories(function(err, res){
             if(err){
                 console.log("Something Wrong");
@@ -29,7 +29,7 @@ class SavedList extends Component {
         }).then(response => {
             console.log("Get Method")
             console.log(response.data.data);
-           
+        
             this.setState({
                 posts : response.data.data
             })
@@ -40,10 +40,10 @@ class SavedList extends Component {
     }
     
     
-   
+
     
     render(){
-       
+    
         let showPosts = "No Story Available";
         if(this.state.posts.length){
             showPosts = this.state.posts.map(post => {
@@ -114,7 +114,7 @@ class SavedList extends Component {
                     </div>
                     
                     </Col>
-                       
+                    
                 </Row>
                 <Row>                    
                     <Col>
@@ -123,13 +123,13 @@ class SavedList extends Component {
                     <img
                     style={{width: "25%", height:"195px", margin: "1px" }} 
                     src="https://www.mercurynews.com/wp-content/uploads/2019/08/Grid-5.jpg?w=620" alt="sketch"></img>
-               
+            
                         <div className={Styles.Plans}>
                             <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                   
+                
                             </p>       
                         </div>                       
                     </div>
@@ -147,13 +147,13 @@ class SavedList extends Component {
                     <img
                     style={{width: "25%", height:"195px", margin: "1px" }} 
                     src="https://i.ytimg.com/vi/4W2c7JJdZQY/maxresdefault.jpg" alt="sketch"></img>
-               
+            
                         <div className={Styles.Plans}>
                             <p>
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                   
+                
                             </p>       
                         </div>                       
                     </div>
