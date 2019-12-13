@@ -16,7 +16,7 @@ class SavedList extends Component {
     state = {
         posts : []
     }
-    
+
     componentDidMount(){
     
         API.getStories(function(err, res){
@@ -56,17 +56,7 @@ class SavedList extends Component {
                 )
             })
         }
-        /*
-        console.log("Database checking")
-        if(this.state.posts.length === undefined ||this.state.posts.length === 0 ||this.state.posts.length === null){
-            console.log(" checking")
-            return (<CreateStory CreateStoryLength = {undefined} saveStories = {showPosts}></CreateStory>) 
-            
-        }
-        else if(this.state.posts.length > 0){
-            return (<CreateStory CreateStoryLength = {true}  saveStories = {showPosts}></CreateStory>) 
-        }
-        */
+        
        
         //console.log("saveList")
         //console.log(this.state.posts)

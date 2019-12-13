@@ -57,6 +57,36 @@ class CreateStory extends Component {
         showPostStory: "nodata",
         savedData : []
     }
+    checkValidityHandler(value, rules){
+        let isValid = true;
+
+        if(!rules){
+            return true;
+        }
+
+        if (rules.required){
+            isValid = value.trim() !== "" && isValid;
+        }
+        if (rules.minLength){
+            isValid = value.length >= rules.minLength && isValid;
+        }
+        if (rules.maxLength){
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+        return isValid;
+    }
+    inputChangedHandler = (event, inputIdentifier) => {
+    
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        };
+        const updatedFormElement = {
+            ...updatedOrderForm[inputIdentifier]
+        };
+        updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidityHandler(updatedFormElement.value, updatedFormElement.validation);
+       
+    }
     componentDidMount(){
     
         API.getStories(function(err, res){
