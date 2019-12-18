@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-//import axios from "axios";
 import API from "../../utils/API";
 
 import Container from "react-bootstrap/Container";
@@ -78,7 +77,7 @@ class CreateStory extends Component {
     inputChangedHandler = (event, inputIdentifier) => {
     
         const updatedOrderForm = {
-            ...this.state.orderForm
+            ...this.state.createStoryData
         };
         const updatedFormElement = {
             ...updatedOrderForm[inputIdentifier]

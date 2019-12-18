@@ -3,12 +3,9 @@ import React, {Component} from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-//import {TextArea, Input} from "../../component/Form/Form";
 import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
-//import CreateStory from "../CreateStory/CreateStory";
-
 
 
 class SavedList extends Component {
@@ -34,13 +31,8 @@ class SavedList extends Component {
                 posts : response.data.data
             })
             console.log(this.state.posts);
-        })
-
-        
+        })   
     }
-    
-    
-
     
     render(){
     
@@ -57,13 +49,6 @@ class SavedList extends Component {
             })
         }
         
-       
-        //console.log("saveList")
-        //console.log(this.state.posts)
-        
-       // else{
-         //    (<CreateStory CreateStoryLength = {true} postStroy = {"Atif"}></CreateStory>) 
-        //}
         return(
             
             <Container>
