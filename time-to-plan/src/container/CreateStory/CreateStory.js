@@ -7,84 +7,19 @@ import Col from "react-bootstrap/Col";
 import {TextArea} from "../../component/Form/Form";
 import Styles from "./CreateStory.module.css";
 
-
 class CreateStory extends Component {
 
     state = {
-        createStoryData :{
-            title: {
-                elementType:"input",
-                    elementConfig:{
-                        type:"text",
-                        placeholder:"Your Story Title"
-                    },
-                    value:"",
-                    validation:{
-                        required:true
-                    },
-                    valid:false,
-            },
-            story : {
-                elementType:"input",
-                    elementConfig:{
-                        type:"text",
-                        placeholder:"Your Story Detail "
-                    },
-                    value:"",
-                    validation:{
-                        required:true
-                    },
-                    valid:false,
-            },
-            author : {
-                elementType:"input",
-                    elementConfig:{
-                        type:"text",
-                        placeholder:"Author"
-                    },
-                    value:"",
-                    validation:{
-                        required:true
-                    },
-                    valid:false,
-            },
-        },
         title: "",
         story : "",
         author : "",
         showCreateStory : true,
         showPostStory: "nodata",
+        isValidTitle: true,
+        isValidStory: true,
+        isValidAuthor: true,
+        isValid: true,
         savedData : []
-    }
-    checkValidityHandler(value, rules){
-        let isValid = true;
-
-        if(!rules){
-            return true;
-        }
-
-        if (rules.required){
-            isValid = value.trim() !== "" && isValid;
-        }
-        if (rules.minLength){
-            isValid = value.length >= rules.minLength && isValid;
-        }
-        if (rules.maxLength){
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-        return isValid;
-    }
-    inputChangedHandler = (event, inputIdentifier) => {
-    
-        const updatedOrderForm = {
-            ...this.state.createStoryData
-        };
-        const updatedFormElement = {
-            ...updatedOrderForm[inputIdentifier]
-        };
-        updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidityHandler(updatedFormElement.value, updatedFormElement.validation);
-       
     }
     componentDidMount(){
     
@@ -106,32 +41,35 @@ class CreateStory extends Component {
         })
 
     }
-    
-    
     titleEventHandler = (event) => {
     
         this.setState({
-            title: event.target.value
+            title: event.target.value,
+            //isValidTitle: true
         })
-        console.log(this.state.title);
+        //console.log(this.state.title);
     }
     storyEventHandler = (event) => {
     
         this.setState({
-            story: event.target.value
+            story: event.target.value,
+           // isValidStory: true
         })
-        console.log(this.state.story);
+        //console.log(this.state.story);
     }
     authorEventHandler = (event) => {
     
         this.setState({
-            author: event.target.value
+            author: event.target.value,
+            //isValidAuthor: true
         })
-        console.log(this.state.author);
+       // console.log(this.state.author);
     }
     postStoryDataHandler= () =>{
         console.log("post data activate");
 
+        if(this.state.story && this.state.title && this.state.author){
+ 
         const data ={
             title: this.state.title,
             story: this.state.story,
@@ -148,6 +86,12 @@ class CreateStory extends Component {
                 })
             })
         }
+    }
+    else{
+        this.setState ({
+            isValid: false
+        })
+    }
 
     }
     render(){
@@ -169,9 +113,6 @@ class CreateStory extends Component {
             })
         }
 
-
-
-
         let showCreateStoryTemp = null;
         console.log("Welcome Create Story")
         //console.log(this.props.CreateStoryLength)
@@ -187,6 +128,7 @@ class CreateStory extends Component {
                 writeStoryHandler={this.storyEventHandler}
                 writeAuthor = {this.state.author}
                 writeAuthorHandler = {this.authorEventHandler}
+                isValidCheck = {this.state.isValid}
                 submitStory = {this.postStoryDataHandler}
                 >
                 </TextArea> 
@@ -204,11 +146,7 @@ class CreateStory extends Component {
             )
                 
 
-        }
-       
-        
-
-       
+        }       
         return(
             <Container className = {Styles.Back}>
            {showCreateStoryTemp}

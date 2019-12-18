@@ -8,6 +8,15 @@ import Button from "react-bootstrap/Button";
 
 export function TextArea(props){
 
+    const inputStyles = [Styles.InputElement];
+
+   if(!props.isValidCheck){
+    inputStyles.push(Styles.Invalid);
+    }
+    else{
+        inputStyles.push(Styles.InputElement);
+    }
+
     return (
         <div>
         <Form.Group controlId="exampleForm.ControlInput1">
@@ -16,7 +25,8 @@ export function TextArea(props){
                 type="text" 
                 placeholder="Example: My Memories" 
                 value = {props.writeTitle} 
-                onChange={props.writeTitleHandler}/>
+                onChange={props.writeTitleHandler}
+                className={inputStyles.join(" ")} />
         </Form.Group>
         <InputGroup>
             <InputGroup.Prepend>
@@ -40,7 +50,8 @@ export function TextArea(props){
             Financial Stability. ...
             Service and Social Responsibility." 
             value = {props.writeStory} 
-            onChange={props.writeStoryHandler} >
+            onChange={props.writeStoryHandler}
+            className={inputStyles.join(" ")} >
             </Form.Control>
             
         </InputGroup>
@@ -50,7 +61,8 @@ export function TextArea(props){
                 type="text" 
                 placeholder="Author Name"
                 value = {props.writeAuthor} 
-                onChange={props.writeAuthorHandler} />
+                onChange={props.writeAuthorHandler}
+                className={inputStyles.join(" ")}  />
         </Form.Group>
         <Button 
         variant="success" 
@@ -62,7 +74,6 @@ export function TextArea(props){
         
     );
 } 
-
 
 export function Input(){
 
