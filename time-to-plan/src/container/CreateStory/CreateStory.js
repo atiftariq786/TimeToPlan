@@ -82,9 +82,9 @@ class CreateStory extends Component {
                 console.log(response);
                 this.setState({
                     showCreateStory: false,
-                    //showPostStory: "true"
+                    
                 })
-            })
+            }
         }
     }
     else{
