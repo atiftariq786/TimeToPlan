@@ -4,7 +4,8 @@ import API from "../../utils/API";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {TextArea} from "../../component/Form/Form";
+//import {TextArea} from "../../component/Form/Form";
+import InputStory from "../../component/Form/InputStory/inputStory";
 import Styles from "./CreateStory.module.css";
 
 class CreateStory extends Component {
@@ -119,9 +120,10 @@ class CreateStory extends Component {
 
         if(this.state.showCreateStory && !this.state.savedData.length){
             showCreateStoryTemp = ( <Row>
-                <h1 className={Styles}>Create Your Life Story</h1>
-                <Col>                        
-                <TextArea 
+                
+                <Col>     
+                <h1 className={Styles}>Create Your Life Story</h1>                   
+                <InputStory 
                 writeTitle = {this.state.title}
                 writeTitleHandler = {this.titleEventHandler}
                 writeStory = {this.state.story}
@@ -131,7 +133,7 @@ class CreateStory extends Component {
                 isValidCheck = {this.state.isValid}
                 submitStory = {this.postStoryDataHandler}
                 >
-                </TextArea> 
+                </InputStory> 
                 </Col>            
             </Row>       )
            

@@ -1,10 +1,12 @@
 import React, {Component} from "react";
+import Styles from "./CreateGoals.module.css";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {Input} from "../../component/Form/Form";
-import Styles from "./CreateGoals.module.css";
+//import {Input} from "../../component/Form/Form";
+import InputGoals from "../../component/Form/InputGoals/inputGoals";
+
 
 
 
@@ -17,7 +19,7 @@ class CreateGoals extends Component {
                 
                 <Row>
                     <Col>
-                        <Input/>
+                        <InputGoals/>
                     </Col>
                     <Col>
                         <div className={Styles.Temp}>
