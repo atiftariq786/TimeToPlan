@@ -84,7 +84,7 @@ class CreateStory extends Component {
                     showCreateStory: false,
                     
                 })
-            }
+            })
         }
     }
     else{
@@ -115,7 +115,7 @@ class CreateStory extends Component {
 
         let showCreateStoryTemp = null;
         console.log("Welcome Create Story")
-        //console.log(this.props.CreateStoryLength)
+        
 
         if(this.state.showCreateStory && !this.state.savedData.length){
             showCreateStoryTemp = ( <Row>
