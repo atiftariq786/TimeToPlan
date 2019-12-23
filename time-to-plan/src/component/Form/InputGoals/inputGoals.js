@@ -1,5 +1,5 @@
 import React from "react";
-//import Styles from "./inputGoals.module.css";
+import Styles from "./inputGoals.module.css";
 
 //import InputGroup from 'react-bootstrap/InputGroup'
 //import FormControl from "react-bootstrap/FormControl";
@@ -9,37 +9,60 @@ import Button from "react-bootstrap/Button";
 
 function inputGoals(props){
 
-    return (
-        
-        <Form>
-        
-            <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Goal Title</Form.Label>
-                <Form.Control 
-                type="text" 
-                placeholder="Title" />
-            </Form.Group>
+    const inputStylesGoals = [Styles.InputElement];
 
-            <Form.Group controlId="exampleForm.ControlInput1">
-                <Form.Label>Goal Image Link</Form.Label>
-                <Form.Control 
-                type="text" 
-                placeholder="https://example.png"/>
-            </Form.Group>
+   if(!props.isValidGoals){
+    inputStylesGoals.push(Styles.Invalid);
+    }
+    else{
+        inputStylesGoals.push(Styles.InputElement);
+    }
+
+    return (
+        <div>
+            <Form>
             
-            
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Goal Description</Form.Label>
-                <Form.Control 
-                as="textarea" 
-                placeholder="Text Area" 
-                rows="3" />
-            </Form.Group>
-            
+                <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Goal Title</Form.Label>
+                    <Form.Control 
+                    type="text" 
+                    placeholder="Title"
+                    value = {props.writeGoalTitle} 
+                    onChange={props.writeGoalTitleHandler}
+                    className={inputStylesGoals.join(" ")} />
+                </Form.Group>
+
+                <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Goal Image Link</Form.Label>
+                    <Form.Control 
+                    type="text" 
+                    placeholder="https://example.png"
+                    value = {props.writeLink} 
+                    onChange={props.writeLinkHandler}
+                    className={inputStylesGoals.join(" ")}/>
+                </Form.Group>
+                
+                
+                <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Goal Description</Form.Label>
+                    <Form.Control 
+                    as="textarea" 
+                    placeholder="Text Area" 
+                    rows="3"
+                    value = {props.writeGoalDescription} 
+                    onChange={props.writeGoalHandler}
+                    className={inputStylesGoals.join(" ")} />
+                </Form.Group>                
+                
+            </Form>
             <Button 
             variant="success" 
-            type="submit">Add Goal</Button>
-        </Form>
+            type= "button" 
+            onClick ={props.submitGoal} 
+            size="sm" 
+             >Add Goal</Button>
+        </div>
+        
     );
 } 
 export default inputGoals;

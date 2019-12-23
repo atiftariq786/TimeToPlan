@@ -17,9 +17,11 @@ class CreateGoals extends Component {
         title: "",
         link : "",
         description : "",
-        tempdata: []
+        showCreateGoal : true,
+        showPostStory: "nodata",
+        isValid: true,
+        savedGoalData : []
     }
-    /*
     componentDidMount(){
     
         API.getStories(function(err, res){
@@ -40,14 +42,13 @@ class CreateGoals extends Component {
         })
 
     }
-    */
     titleEventHandler = (event) => {
     
         this.setState({
             title: event.target.value,
             //isValidTitle: true
         })
-       // console.log(this.state.title);
+        //console.log(this.state.title);
     }
     linkEventHandler = (event) => {
     
@@ -55,7 +56,7 @@ class CreateGoals extends Component {
             link: event.target.value,
            // isValidStory: true
         })
-        //console.log(this.state.link);
+        //console.log(this.state.story);
     }
     descriptionEventHandler = (event) => {
     
@@ -63,32 +64,38 @@ class CreateGoals extends Component {
             description: event.target.value,
             //isValidAuthor: true
         })
-        //console.log(this.state.description);
+       // console.log(this.state.author);
     }
-    
     postGoalDataHandler= () =>{
         console.log("post data activate");
 
-        //if(this.state.link && this.state.title && this.state.description){
+        if(this.state.link && this.state.title && this.state.description){
  
         const data ={
             title: this.state.title,
             link: this.state.link,
             description: this.state.description,
         }
-        //console.log(data)
         //props comming from savedList.js, story length zero then its true
-    
-            API.savedGoal(data).then(response =>{
+        if(!this.state.savedGoalData.length){
+            API.savedStory(data).then(response =>{
                 console.log("Data Saved");
                 console.log(response);
-
-            
+                this.setState({
+                    showCreateGoal: false,
+                    
+                })
             })
-            
-        
+        }
     }
-    
+    else{
+        this.setState ({
+            isValid: false
+        })
+    }
+}
+
+
 
     render(){
 
@@ -100,15 +107,7 @@ class CreateGoals extends Component {
                 
                 <Row>
                     <Col>
-                        <InputGoals
-                        writeGoalTitle = {this.state.title}
-                        writeGoalTitleHandler = {this.titleEventHandler}
-                        writeLink = {this.state.link}
-                        writeLinkHandler={this.linkEventHandler}
-                        writeGoalDescription = {this.state.description}
-                        writeGoalHandler = {this.descriptionEventHandler}
-                        submitGoal = {this.postGoalDataHandler}>
-                        </InputGoals>
+                        <InputGoals/>
                     </Col>
                     <Col>
                         <div className={Styles.Temp}>
