@@ -15,4 +15,7 @@ export default {
         console.log(data)
         return axios.post("http://localhost:3001/api/create-goal", data);
     },
+    getGoals : function(){
+        return axios.get("http://localhost:3001/api/goals");
+    },
 }

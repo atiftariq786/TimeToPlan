@@ -11,7 +11,8 @@ import API from "../../utils/API";
 class SavedList extends Component {
 
     state = {
-        posts : []
+        posts : [],
+        goals : []
     }
 
     componentDidMount(){
@@ -21,17 +22,36 @@ class SavedList extends Component {
                 console.log("Something Wrong");
             }
             
-        this.checkDatabaseHandler();
-            
         }).then(response => {
             console.log("Get Method")
-            console.log(response.data.data);
+           // console.log(response);
         
             this.setState({
                 posts : response.data.data
             })
             console.log(this.state.posts);
         })   
+        
+        //===================
+        
+    
+        API.getGoals(function(err, res){
+            if(err){
+                console.log("Something Wrong");
+            }
+            
+        
+            
+        }).then(response => {
+            console.log("Get Goals Method")
+           // console.log(response);
+        
+            this.setState({
+                goals : response.data.data
+            })
+            console.log("Goals data")
+            console.log(this.state.goals);
+        })  
     }
     
     render(){
@@ -44,6 +64,19 @@ class SavedList extends Component {
                         <h2 key={post.id}>{post.title}</h2>
                         <p key={post.id}> {post.story}</p>
                         <p key={post.id}>{post.author}</p>
+                    </div>
+                )
+            })
+        }
+
+        let showGoals = "No Goals Available";
+        if(this.state.goals.length){
+            showGoals = this.state.goals.map(goal => {
+                return (
+                    <div style={{border: '1px black solid', marginBottom: '5px'}}>
+                        <h2 key={goal.id}>{goal.title}</h2>
+                        <p key={goal.id}> {goal.link}</p>
+                        <p key={goal.id}>{goal.description}</p>
                     </div>
                 )
             })
@@ -93,20 +126,12 @@ class SavedList extends Component {
                 </Row>
                 <Row>                    
                     <Col>
-                    <h3>Car Racing</h3>  
-                    <div className={Styles.PlansDetail}>
-                    <img
-                    style={{width: "25%", height:"195px", margin: "1px" }} 
-                    src="https://www.mercurynews.com/wp-content/uploads/2019/08/Grid-5.jpg?w=620" alt="sketch"></img>
-            
-                        <div className={Styles.Plans}>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                
-                            </p>       
-                        </div>                       
+                    <h3>Your Goals</h3>  
+                    <div>
+                    
+                        
+                            {showGoals}  
+                                              
                     </div>
                         &nbsp;<Button variant="primary">Edit</Button>
                         &nbsp;<Button variant="danger"> Delete</Button>
