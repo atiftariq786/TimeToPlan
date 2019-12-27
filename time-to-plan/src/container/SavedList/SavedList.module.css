@@ -56,3 +56,51 @@ h1{
     
 }
 
+.Goal{
+    margin-top: 5px;
+    width:100%;
+    height:270px;
+    color: rgb(37, 34, 34);
+    border: 1px solid #ccc;
+    
+}
+.GoalImage{
+    max-width:341px;
+    margin: 1px;
+    padding: 0px;
+    
+    
+}
+.GoalDescription{
+    margin-top: 2px;
+    color: rgb(37, 34, 34);
+    width: 100%;
+    height: 220px;
+    overflow: scroll;
+}
+
+.GoalParentRow{
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 2.1px;
+    height:270px;
+    color: rgb(37, 34, 34);
+    border: 1px solid #ccc;
+}
+.GoalChildRow{
+    width: 100%;
+    margin:0px;
+}
+
+.GoalTittle{
+    color: grey;
+}
+
+.GoalButtons{
+    max-width: 235px;
+    display : flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    
+}
+

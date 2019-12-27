@@ -73,11 +73,35 @@ class SavedList extends Component {
         if(this.state.goals.length){
             showGoals = this.state.goals.map(goal => {
                 return (
-                    <div style={{border: '1px black solid', marginBottom: '5px'}}>
-                        <h2 key={goal.id}>{goal.title}</h2>
-                        <p key={goal.id}> {goal.link}</p>
-                        <p key={goal.id}>{goal.description}</p>
-                    </div>
+                    <Row className = {Styles.GoalParentRow}>
+                        <Row className = {Styles.GoalChildRow}>
+                            <Col className = {Styles.GoalImage}>
+                                <img  
+                                style={{width: "340px", height:"220px"}}  
+                                key={goal.id} 
+                                src={goal.link}>
+                                </img>   
+                            </Col>
+                            
+                            <Col className = {Styles.GoalDescription}> 
+                            <p key={goal.id} >{goal.description}</p>
+                            </Col> 
+                            
+                        </Row>
+                        <Row className = {Styles.GoalChildRow}>
+                            <Col className = {Styles.GoalTittle} >            
+                                <h4 key={goal.id}>{goal.title}</h4>
+                            </Col>
+                           
+                            <Col className = {Styles.GoalButtons}>
+                                &nbsp;<Button variant="primary" size="sm">Edit</Button>
+                                &nbsp;<Button variant="danger" size="sm"> Delete</Button>
+                                &nbsp;<Button variant="success" size="sm"> Complete</Button>
+                            </Col>
+                                
+                        </Row>
+                    </Row>
+
                 )
             })
         }
@@ -126,42 +150,15 @@ class SavedList extends Component {
                 </Row>
                 <Row>                    
                     <Col>
-                    <h3>Your Goals</h3>  
-                    <div>
+                    <h3>Your Goals List</h3>  
+                                    
+                        {showGoals} 
+                    
+                    </Col>
                     
                         
-                            {showGoals}  
-                                              
-                    </div>
-                        &nbsp;<Button variant="primary">Edit</Button>
-                        &nbsp;<Button variant="danger"> Delete</Button>
-                        &nbsp;<Button variant="success"> Complete</Button>
                     
-                    </Col>             
-                    
-                </Row>
-                <Row>                    
-                    <Col>
-                    <h3>Travel to Italy</h3>  
-                    <div className={Styles.PlansDetail}>
-                    <img
-                    style={{width: "25%", height:"195px", margin: "1px" }} 
-                    src="https://i.ytimg.com/vi/4W2c7JJdZQY/maxresdefault.jpg" alt="sketch"></img>
-            
-                        <div className={Styles.Plans}>
-                            <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-                
-                            </p>       
-                        </div>                       
-                    </div>
-                        &nbsp;<Button variant="primary">Edit</Button>
-                        &nbsp;<Button variant="danger"> Delete</Button>
-                        &nbsp;<Button variant="success"> Complete</Button>
-                    
-                    </Col>             
+                                
                     
                 </Row>
                 
