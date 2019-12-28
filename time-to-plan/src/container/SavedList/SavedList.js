@@ -53,6 +53,25 @@ class SavedList extends Component {
             console.log(this.state.goals);
         })  
     }
+
+    deleteGoal = id => {
+        console.log("deleteGoal Activate")
+        console.log({id});
+        
+        API.deleteGoal(id).then( response => {
+            const newArr = this.state.goals.filter( el => el._id !== id);
+            this.setState({goals : newArr});
+            console.log(response)
+            console.log("deleteGoal element")
+            //console.log(el._id)
+            //console.log({el})
+          }
+          
+          );
+    
+          
+      }
+    
     
     render(){
     
@@ -77,26 +96,29 @@ class SavedList extends Component {
                         <Row className = {Styles.GoalChildRow}>
                             <Col className = {Styles.GoalImage}>
                                 <img  
-                                style={{width: "340px", height:"220px"}}  
+                                style={{width: "340px", height:"220px"}} 
+                                id={goal._id} 
                                 key={goal.id} 
-                                src={goal.link}>
+                                src={goal.link}
+                                alt="Life Goals">
                                 </img>   
                             </Col>
                             
                             <Col className = {Styles.GoalDescription}> 
-                            <p key={goal.id} >{goal.description}</p>
+                            <p key={goal.id} id={goal._id}  >{goal.description}</p>
                             </Col> 
                             
                         </Row>
                         <Row className = {Styles.GoalChildRow}>
                             <Col className = {Styles.GoalTittle} >            
-                                <h4 key={goal.id}>{goal.title}</h4>
+                                <h4 key={goal.id} id={goal._id} >{goal.title}</h4>
                             </Col>
                            
                             <Col className = {Styles.GoalButtons}>
                                 &nbsp;<Button variant="primary" size="sm">Edit</Button>
-                                &nbsp;<Button variant="danger" size="sm"> Delete</Button>
+                                &nbsp;<Button variant="danger" size="sm" onClick ={() => this.deleteGoal(goal._id)}> Delete</Button>
                                 &nbsp;<Button variant="success" size="sm"> Complete</Button>
+
                             </Col>
                                 
                         </Row>

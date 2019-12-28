@@ -64,6 +64,18 @@ h1{
     border: 1px solid #ccc;
     
 }
+.GoalParentRow{
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0px;
+    height:270px;
+    color: rgb(37, 34, 34);
+    border: 1px solid #ccc;
+}
+.GoalChildRow{
+    width: 100%;
+    margin:0px;
+}
 .GoalImage{
     max-width:341px;
     margin: 1px;
@@ -77,19 +89,6 @@ h1{
     width: 100%;
     height: 220px;
     overflow: scroll;
-}
-
-.GoalParentRow{
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 2.1px;
-    height:270px;
-    color: rgb(37, 34, 34);
-    border: 1px solid #ccc;
-}
-.GoalChildRow{
-    width: 100%;
-    margin:0px;
 }
 
 .GoalTittle{

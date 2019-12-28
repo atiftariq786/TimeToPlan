@@ -18,4 +18,9 @@ export default {
     getGoals : function(){
         return axios.get("http://localhost:3001/api/goals");
     },
+    deleteGoal : function(id){
+        console.log("delete API")
+        console.log({id})
+        return axios.delete("http://localhost:3001/api/goals", + id);
+    },
 }
