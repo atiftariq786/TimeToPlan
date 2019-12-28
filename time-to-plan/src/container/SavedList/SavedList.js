@@ -41,7 +41,6 @@ class SavedList extends Component {
             }
             
         
-            
         }).then(response => {
             console.log("Get Goals Method")
            // console.log(response);
@@ -49,41 +48,62 @@ class SavedList extends Component {
             this.setState({
                 goals : response.data.data
             })
-            console.log("Goals data")
-            console.log(this.state.goals);
         })  
     }
 
     deleteGoal = id => {
-        console.log("deleteGoal Activate")
-        console.log({id});
         
         API.deleteGoal(id).then( response => {
             const newArr = this.state.goals.filter( el => el._id !== id);
             this.setState({goals : newArr});
             console.log(response)
-            console.log("deleteGoal element")
-            //console.log(el._id)
-            //console.log({el})
           }
-          
           );
-    
-          
       }
-    
-    
+      deleteStory = id => {
+        
+        API.deleteStory(id).then( response => {
+            const newArr = this.state.posts.filter( el => el._id !== id);
+            this.setState({posts : newArr});
+            console.log(response)
+          }
+          );
+      }
     render(){
     
         let showPosts = "No Story Available";
         if(this.state.posts.length){
             showPosts = this.state.posts.map(post => {
                 return (
-                    <div>
-                        <h2 key={post.id}>{post.title}</h2>
-                        <p key={post.id}> {post.story}</p>
-                        <p key={post.id}>{post.author}</p>
-                    </div>
+                    <Row>
+                        <Row>
+                            <Col>
+                                <img  
+                                style={{width: "340px", height:"220px"}} 
+                                key={post.id} 
+                                src={""}
+                                alt="Profile">
+                                </img>  
+                                <h2 key={post.id}>{post.title}</h2>
+                            </Col>
+                            <Col>
+                                
+                                <p key={post.id}> {post.story}</p>
+                                
+                            </Col>
+                            <Col>
+                                <p key={post.id}>{post.author}</p>
+                                &nbsp;<Button variant="primary">Edit</Button>
+                                &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
+                            </Col>
+                        </Row>
+                        
+
+                        <Row>
+                            
+                        
+                        </Row>    
+                   </Row>
                 )
             })
         }
@@ -91,13 +111,13 @@ class SavedList extends Component {
         let showGoals = "No Goals Available";
         if(this.state.goals.length){
             showGoals = this.state.goals.map(goal => {
+                
                 return (
                     <Row className = {Styles.GoalParentRow}>
                         <Row className = {Styles.GoalChildRow}>
                             <Col className = {Styles.GoalImage}>
                                 <img  
                                 style={{width: "340px", height:"220px"}} 
-                                id={goal._id} 
                                 key={goal.id} 
                                 src={goal.link}
                                 alt="Life Goals">
@@ -105,15 +125,15 @@ class SavedList extends Component {
                             </Col>
                             
                             <Col className = {Styles.GoalDescription}> 
-                            <p key={goal.id} id={goal._id}  >{goal.description}</p>
+                            <p key={goal.id}  >{goal.description}</p>
                             </Col> 
                             
                         </Row>
                         <Row className = {Styles.GoalChildRow}>
                             <Col className = {Styles.GoalTittle} >            
-                                <h4 key={goal.id} id={goal._id} >{goal.title}</h4>
+                                <h4 key={goal.id} >{goal.title}</h4>
                             </Col>
-                           
+                        
                             <Col className = {Styles.GoalButtons}>
                                 &nbsp;<Button variant="primary" size="sm">Edit</Button>
                                 &nbsp;<Button variant="danger" size="sm" onClick ={() => this.deleteGoal(goal._id)}> Delete</Button>
@@ -163,8 +183,7 @@ class SavedList extends Component {
                             {showPosts}
                         </div>
                         
-                        &nbsp;<Button variant="primary">Edit</Button>
-                        &nbsp;<Button variant="danger"> Delete</Button>
+                       
                     </div>
                     
                     </Col>
