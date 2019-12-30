@@ -10,6 +10,11 @@ export default {
     getStories : function(){
         return axios.get("http://localhost:3001/api/stories");
     },
+    deleteStory : function(id){
+        console.log("delete story activate")
+        console.log(id)
+        return axios.delete("http://localhost:3001/api/story/" + id);
+    },
     savedGoal : function(data){
         console.log("API Activate Goal ")
         console.log(data)
@@ -21,9 +26,10 @@ export default {
     deleteGoal : function(id){
         return axios.delete("http://localhost:3001/api/goals/" + id);
     },
-    deleteStory : function(id){
-        console.log("delete story activate")
-        console.log(id)
-        return axios.delete("http://localhost:3001/api/story/" + id);
+    updateGoal : function(id){
+        console.log("update goal activate")
+        console.log({id})
+        return axios.put("http://localhost:3001/api/goals/" + id);
     },
+    
 }

@@ -19,6 +19,7 @@ class CreateGoals extends Component {
         description : "",
         tempdata: []
     }
+
     /*
     componentDidMount(){
     
@@ -41,6 +42,7 @@ class CreateGoals extends Component {
 
     }
     */
+   
     titleEventHandler = (event) => {
     
         this.setState({
@@ -71,7 +73,7 @@ class CreateGoals extends Component {
 
         //if(this.state.link && this.state.title && this.state.description){
  
-        const data ={
+        const data = {
             title: this.state.title,
             link: this.state.link,
             description: this.state.description,

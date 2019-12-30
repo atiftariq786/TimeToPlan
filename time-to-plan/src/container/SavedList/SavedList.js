@@ -6,13 +6,19 @@ import Col from "react-bootstrap/Col";
 import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
+import InputEditGoal from "../../component/Form/InputGoals/inputEditGoal";
 
 
 class SavedList extends Component {
 
     state = {
         posts : [],
-        goals : []
+        goals : [],
+        title : "no title",
+        link  : "no link",
+        description : "no description",
+        editGoal : false
+        
     }
 
     componentDidMount(){
@@ -29,7 +35,7 @@ class SavedList extends Component {
             this.setState({
                 posts : response.data.data
             })
-            console.log(this.state.posts);
+            //console.log(this.state.posts);
         })   
         
         //===================
@@ -56,7 +62,7 @@ class SavedList extends Component {
         API.deleteGoal(id).then( response => {
             const newArr = this.state.goals.filter( el => el._id !== id);
             this.setState({goals : newArr});
-            console.log(response)
+            //console.log(response)
           }
           );
       }
@@ -65,9 +71,41 @@ class SavedList extends Component {
         API.deleteStory(id).then( response => {
             const newArr = this.state.posts.filter( el => el._id !== id);
             this.setState({posts : newArr});
-            console.log(response)
+            //console.log(response)
+            }
+          );
+      }
+
+      saveUpdateGoal = id => {
+        
+        API.updateGoal(id).then( response => {
+            const newArr = this.state.posts.filter( el => el._id !== id);
+            this.setState({posts : newArr});
+            //console.log(response)
           }
           );
+      }
+      showEditGoalHandler =(id, goal) => {
+        console.log("show edit handler")  
+        console.log({id})
+          console.log({goal})
+
+        if(id){
+            this.setState({
+                editGoal: true,
+                title: goal.title,
+                link: goal.link,
+                description: goal.description
+            })
+        }
+        
+        
+        }
+
+      cancelEditGoalHandler = () => {
+          this.setState({
+              editGoal: false
+          })
       }
     render(){
     
@@ -93,13 +131,12 @@ class SavedList extends Component {
                             </Col>
                             <Col>
                                 <p key={post.id}>{post.author}</p>
-                                &nbsp;<Button variant="primary">Edit</Button>
+                                &nbsp;<Button variant="primary" >Edit</Button>
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
                             </Col>
                         </Row>
                         
-
-                        <Row>
+                    <Row>
                             
                         
                         </Row>    
@@ -135,7 +172,7 @@ class SavedList extends Component {
                             </Col>
                         
                             <Col className = {Styles.GoalButtons}>
-                                &nbsp;<Button variant="primary" size="sm">Edit</Button>
+                                &nbsp;<Button variant="primary" size="sm" onClick ={() => this.showEditGoalHandler(goal._id, goal)}>Edit</Button>
                                 &nbsp;<Button variant="danger" size="sm" onClick ={() => this.deleteGoal(goal._id)}> Delete</Button>
                                 &nbsp;<Button variant="success" size="sm"> Complete</Button>
 
@@ -147,7 +184,31 @@ class SavedList extends Component {
                 )
             })
         }
+
+        let inputEditGoal = "";
+
+        if(this.state.editGoal){
+            inputEditGoal = (
+                    <InputEditGoal
+                        
+                        cancelEditGoal = {this.cancelEditGoalHandler}
+                        
+                
+                        writeGoalTitle = {this.state.title}>
+                
+                    </InputEditGoal>
+                )
         
+            
+           //this.state.goals.map(goal =>{
+              //  return 
+            
+            showGoals = inputEditGoal;
+            console.log("Edit show goals")
+        }
+
+
+
         return(
             
             <Container>
@@ -183,7 +244,7 @@ class SavedList extends Component {
                             {showPosts}
                         </div>
                         
-                       
+                    
                     </div>
                     
                     </Col>
@@ -191,15 +252,15 @@ class SavedList extends Component {
                 </Row>
                 <Row>                    
                     <Col>
-                    <h3>Your Goals List</h3>  
-                                    
+                        <h3>Your Goals List</h3>  
+                    
                         {showGoals} 
                     
                     </Col>
                     
-                        
                     
-                                
+                    
+                    
                     
                 </Row>
                 
