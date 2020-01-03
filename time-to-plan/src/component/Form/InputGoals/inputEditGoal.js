@@ -1,46 +1,69 @@
-import React from "react";
-//import Styles from "./inputGoals.module.css";
+import React, { useState } from 'react';
+//import React, {useEffect} from "react";
+import Styles from "./inputGoals.module.css";
 
 //import InputGroup from 'react-bootstrap/InputGroup'
 //import FormControl from "react-bootstrap/FormControl";
-import Form from "react-bootstrap/Form";
+//import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Modal from 'react-bootstrap/Modal';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Form from "react-bootstrap/Form";
 
 
-function inputEditGoals(props){
-/*
-    const inputStylesGoals = [Styles.InputElement];
 
-   if(!props.isValidGoals){
-    inputStylesGoals.push(Styles.Invalid);
+const InputEditGoalModal = props => {
+
+    
+    const [lgShow, setLgShow] = useState(props.showEditModal ? true:false);
+
+    let title = "";
+
+    const titleHandler = e => {
+        e.preventDefault();
+        console.log(e.target.value)
+        title = e.target.value
     }
-    else{
-        inputStylesGoals.push(Styles.InputElement);
-    }
-*/
-
-let title = "";
-
-
-
-
-const titleHandler = e => {
-    e.preventDefault();
-    console.log(e.target.value)
-    title = e.target.value
-}
-
     console.log(title)
 
+    //const onHide = ()=>{
+      //  setLgShow(false)
+
+    //}
+
+   //  <Button onClick={() => setLgShow(true)}>Large modal</Button>
+
     return (
-        <div>
-            <Form>
+      <ButtonToolbar>
+    
+     
+        <Modal
+          size="lg"
+          show={lgShow}
+          onHide={() => {
+              setLgShow(false)
+              props.cancelEditGoal()
+
+
+            }}
+          aria-labelledby="example-modal-sizes-title-lg"
+        >
+        
+          <Modal.Header>
+            <Modal.Title id="example-modal-sizes-title-lg">
+              Edit Goals
+            </Modal.Title>
+           
+          </Modal.Header>
+          
+          
+          <Form className = {Styles.InputElement}>
             
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Goal Title</Form.Label>
                     <Form.Control 
                     type="text"
-                    defaultValue={props.writeGoalTitle}
+                    defaultValue={props.EditWriteGoalTitle}
                     onChange={titleHandler}
                 />
                 </Form.Group>
@@ -50,7 +73,8 @@ const titleHandler = e => {
                     <Form.Control 
                     type="text" 
                     placeholder="https://example.png"
-                    value = {props.writeLink} 
+                    defaultValue={props.EditGoaLink}
+                    //value = {props.writeLink} 
                     onChange={props.writeLinkHandler}
                     />
                 </Form.Group>
@@ -61,8 +85,9 @@ const titleHandler = e => {
                     <Form.Control 
                     as="textarea" 
                     placeholder="Text Area" 
-                    rows="3"
-                    value = {props.writeGoalDescription} 
+                    rows="4"
+                    defaultValue={props.EditGoalDescription}
+                    //value = {props.writeGoalDescription} 
                     onChange={props.writeGoalHandler}
                   />
                 </Form.Group>                
@@ -80,8 +105,12 @@ const titleHandler = e => {
             onClick ={props.cancelEditGoal} 
             size="sm" 
              >Cancel</Button>
-        </div>
-        
+         
+          
+          
+        </Modal>
+      </ButtonToolbar>
     );
-} 
-export default inputEditGoals;
+  }
+  
+  export default InputEditGoalModal;

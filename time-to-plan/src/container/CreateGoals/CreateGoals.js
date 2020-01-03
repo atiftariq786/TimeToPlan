@@ -42,7 +42,7 @@ class CreateGoals extends Component {
 
     }
     */
-   
+
     titleEventHandler = (event) => {
     
         this.setState({
@@ -87,6 +87,7 @@ class CreateGoals extends Component {
 
             
             })
+            
             
         
     }

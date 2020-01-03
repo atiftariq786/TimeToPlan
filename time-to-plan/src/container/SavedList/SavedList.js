@@ -7,6 +7,8 @@ import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 import InputEditGoal from "../../component/Form/InputGoals/inputEditGoal";
+//import ModalEditGoal from "../../component/Form/InputGoals/inputEditGoalModal";
+
 
 
 class SavedList extends Component {
@@ -188,22 +190,28 @@ class SavedList extends Component {
         let inputEditGoal = "";
 
         if(this.state.editGoal){
-            inputEditGoal = (
-                    <InputEditGoal
-                        
-                        cancelEditGoal = {this.cancelEditGoalHandler}
-                        
-                
-                        writeGoalTitle = {this.state.title}>
-                
-                    </InputEditGoal>
-                )
-        
             
+            inputEditGoal = (
+                
+                    <InputEditGoal
+                            
+                            cancelEditGoal = {this.cancelEditGoalHandler}
+                            
+                    
+                            EditWriteGoalTitle = {this.state.title}
+                            EditGoaLink = {this.state.link}
+                            EditGoalDescription = {this.state.description}
+
+                            showEditModal = {this.state.editGoal}>
+                    
+                    </InputEditGoal>
+ 
+                )
+ 
            //this.state.goals.map(goal =>{
               //  return 
             
-            showGoals = inputEditGoal;
+            //showGoals = inputEditGoal;
             console.log("Edit show goals")
         }
 
@@ -255,6 +263,7 @@ class SavedList extends Component {
                         <h3>Your Goals List</h3>  
                     
                         {showGoals} 
+                        {inputEditGoal}
                     
                     </Col>
                     
