@@ -5,11 +5,7 @@ import API from "../../utils/API";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-//import {Input} from "../../component/Form/Form";
 import InputGoals from "../../component/Form/InputGoals/inputGoals";
-
-
-
 
 class CreateGoals extends Component {
 
@@ -87,7 +83,7 @@ class CreateGoals extends Component {
 
             
             })
-            
+
             
         
     }

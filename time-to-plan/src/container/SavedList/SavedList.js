@@ -7,9 +7,6 @@ import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 import InputEditGoal from "../../component/Form/InputGoals/inputEditGoal";
-//import ModalEditGoal from "../../component/Form/InputGoals/inputEditGoalModal";
-
-
 
 class SavedList extends Component {
 
@@ -48,7 +45,6 @@ class SavedList extends Component {
                 console.log("Something Wrong");
             }
             
-        
         }).then(response => {
             console.log("Get Goals Method")
            // console.log(response);
@@ -100,7 +96,6 @@ class SavedList extends Component {
                 description: goal.description
             })
         }
-        
         
         }
 
@@ -215,8 +210,6 @@ class SavedList extends Component {
             console.log("Edit show goals")
         }
 
-
-
         return(
             
             <Container>
@@ -265,17 +258,10 @@ class SavedList extends Component {
                         {showGoals} 
                         {inputEditGoal}
                     
-                    </Col>
-                    
-                    
-                    
-                    
-                    
+                    </Col>     
                 </Row>
                 
             </Container>
-            
-        
         )
     }
 }
