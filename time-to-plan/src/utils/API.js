@@ -26,10 +26,10 @@ export default {
     deleteGoal : function(id){
         return axios.delete("http://localhost:3001/api/goals/" + id);
     },
-    updateGoal : function(id){
+    updateGoal : function(data){
         console.log("update goal activate")
-        console.log({id})
-        return axios.put("http://localhost:3001/api/goals/" + id);
+        console.log({data})
+        return axios.put("http://localhost:3001/api/updateGoals/" + data);
     },
     
 }

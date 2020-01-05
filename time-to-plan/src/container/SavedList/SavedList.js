@@ -16,7 +16,9 @@ class SavedList extends Component {
         title : "no title",
         link  : "no link",
         description : "no description",
-        editGoal : false
+        editGoal : false,
+        editGoalId: "no id"
+
         
     }
 
@@ -39,7 +41,6 @@ class SavedList extends Component {
         
         //===================
         
-    
         API.getGoals(function(err, res){
             if(err){
                 console.log("Something Wrong");
@@ -74,26 +75,42 @@ class SavedList extends Component {
           );
       }
 
-      saveUpdateGoal = id => {
-        
-        API.updateGoal(id).then( response => {
-            const newArr = this.state.posts.filter( el => el._id !== id);
-            this.setState({posts : newArr});
-            //console.log(response)
+      saveUpdateGoal = (id) => {
+        console.log("save edit data will be update")
+        //console.log({id})
+        console.log(this.props.editGoalTitleValue)
+       
+        /*
+        API.updateGoal(data).then( response => {
+            //const newArr = this.state.posts.filter( el => el._id !== id);
+            this.setState({
+                //posts : newArr,
+                posts : {
+                    title: this.props.editGoalTitleValue,
+                    link: this.state.link,
+                    description: this.state.description,
+                },
+
+                editGoal: false
+            });
+           console.log({response});
           }
           );
+*/
       }
       showEditGoalHandler =(id, goal) => {
         console.log("show edit handler")  
         console.log({id})
           console.log({goal})
+          console.log(this.props.editGoalTitleValue)
 
         if(id){
             this.setState({
                 editGoal: true,
                 title: goal.title,
                 link: goal.link,
-                description: goal.description
+                description: goal.description,
+                editGoalId: id
             })
         }
         
@@ -137,7 +154,7 @@ class SavedList extends Component {
                             
                         
                         </Row>    
-                   </Row>
+                    </Row>
                 )
             })
         }
@@ -190,23 +207,16 @@ class SavedList extends Component {
                 
                     <InputEditGoal
                             
-                            cancelEditGoal = {this.cancelEditGoalHandler}
-                            
-                    
+                            cancelEditGoal = {this.cancelEditGoalHandler}                         
                             EditWriteGoalTitle = {this.state.title}
                             EditGoaLink = {this.state.link}
                             EditGoalDescription = {this.state.description}
-
-                            showEditModal = {this.state.editGoal}>
+                            showEditModal = {this.state.editGoal}
+                            saveUpdateGoal={() => this.saveUpdateGoal(this.state.editGoalId)}>
                     
                     </InputEditGoal>
- 
+
                 )
- 
-           //this.state.goals.map(goal =>{
-              //  return 
-            
-            //showGoals = inputEditGoal;
             console.log("Edit show goals")
         }
 
