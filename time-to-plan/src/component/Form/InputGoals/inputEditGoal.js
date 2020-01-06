@@ -4,19 +4,22 @@ import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Form from "react-bootstrap/Form";
-import SaveList from "../../../container/SavedList/SavedList";
+//import SaveList from "../../../container/SavedList/SavedList";
 
 const InputEditGoalModal = props => {
 
     const [lgShow, setLgShow] = useState(props.showEditModal ? true:false);
 
     let title ="";
+    /*
     const titleVal = () => (
         <SaveList
         editGoalTitleValue = {title}>
         </SaveList>
     )
     console.log(titleVal);
+
+    */
 
     let link = "";
     let description = "";
@@ -26,21 +29,21 @@ const InputEditGoalModal = props => {
         console.log(e.target.value)
         title = e.target.value
     }
-    console.log(title)
+    //console.log(title)
 
     const linkHandler = e => {
         e.preventDefault();
         console.log(e.target.value)
         link = e.target.value
     }
-    console.log(link)
+    //console.log(link)
 
     const descriptionHandler = e => {
         e.preventDefault();
         console.log(e.target.value)
         description = e.target.value
     }
-    console.log(description)
+   // console.log(description)
 
     return (
         <ButtonToolbar>
@@ -102,7 +105,7 @@ const InputEditGoalModal = props => {
                     <Button 
                     variant="success" 
                     type= "button" 
-                    onClick ={props.saveUpdateGoal} 
+                    onClick ={()=>{return props.saveUpdateGoal({title, link, description})}} 
                     size="sm" 
                     >Save</Button>
                     <Button 

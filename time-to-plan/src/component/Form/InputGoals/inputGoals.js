@@ -12,11 +12,14 @@ function inputGoals(props){
     const inputStylesGoals = [Styles.InputElement];
 
    if(!props.isValidGoals){
-    inputStylesGoals.push(Styles.Invalid);
+        inputStylesGoals.push(Styles.Invalid);
+   
     }
     else{
         inputStylesGoals.push(Styles.InputElement);
     }
+
+    
 
     return (
         <div>

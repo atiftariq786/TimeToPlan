@@ -17,8 +17,7 @@ class SavedList extends Component {
         link  : "no link",
         description : "no description",
         editGoal : false,
-        editGoalId: "no id"
-
+        editGoalId: "no id",
         
     }
 
@@ -41,6 +40,11 @@ class SavedList extends Component {
         
         //===================
         
+        this.getGoals();
+       
+    }
+
+    getGoals = () => {
         API.getGoals(function(err, res){
             if(err){
                 console.log("Something Wrong");
@@ -51,9 +55,9 @@ class SavedList extends Component {
            // console.log(response);
         
             this.setState({
-                goals : response.data.data
+                goals : response.data.data,
             })
-        })  
+        }) 
     }
 
     deleteGoal = id => {
@@ -62,48 +66,58 @@ class SavedList extends Component {
             const newArr = this.state.goals.filter( el => el._id !== id);
             this.setState({goals : newArr});
             //console.log(response)
-          }
-          );
-      }
-      deleteStory = id => {
+        }
+        );
+    }
+    deleteStory = id => {
         
         API.deleteStory(id).then( response => {
             const newArr = this.state.posts.filter( el => el._id !== id);
             this.setState({posts : newArr});
             //console.log(response)
             }
-          );
-      }
+        );
+    }
 
-      saveUpdateGoal = (id) => {
+    saveUpdateGoal = (data) => {
+        
         console.log("save edit data will be update")
-        //console.log({id})
-        console.log(this.props.editGoalTitleValue)
-       
-        /*
-        API.updateGoal(data).then( response => {
+        let id = this.state.editGoalId;
+
+        let newData = {
+            title: this.state.title,
+            link: this.state.link,
+            description: this.state.description
+        };
+
+        if(data.title){
+            newData.title = data.title
+        }
+        
+        if(data.link){
+            newData.link = data.link
+        }
+        if(data.description){
+            newData.description = data.description
+        }
+        
+        API.updateGoal(id,newData).then( response => {
             //const newArr = this.state.posts.filter( el => el._id !== id);
+            console.log({response});
+            this.getGoals()
+            
             this.setState({
-                //posts : newArr,
-                posts : {
-                    title: this.props.editGoalTitleValue,
-                    link: this.state.link,
-                    description: this.state.description,
-                },
 
-                editGoal: false
+                editGoal: false,
             });
-           console.log({response});
-          }
-          );
-*/
-      }
-      showEditGoalHandler =(id, goal) => {
-        console.log("show edit handler")  
-        console.log({id})
-          console.log({goal})
-          console.log(this.props.editGoalTitleValue)
+        
+            //window.location.reload(false);
+        });
 
+    }
+    showEditGoalHandler =(id, goal) => {
+        console.log("show edit handler")  
+        
         if(id){
             this.setState({
                 editGoal: true,
@@ -112,48 +126,59 @@ class SavedList extends Component {
                 description: goal.description,
                 editGoalId: id
             })
-        }
-        
-        }
-
-      cancelEditGoalHandler = () => {
-          this.setState({
-              editGoal: false
-          })
-      }
+        }    
+    }
+    cancelEditGoalHandler = () => {
+        this.setState({
+        editGoal: false
+        })
+    }
     render(){
     
         let showPosts = "No Story Available";
         if(this.state.posts.length){
             showPosts = this.state.posts.map(post => {
                 return (
-                    <Row>
-                        <Row>
-                            <Col>
-                                <img  
-                                style={{width: "340px", height:"220px"}} 
-                                key={post.id} 
-                                src={""}
-                                alt="Profile">
-                                </img>  
-                                <h2 key={post.id}>{post.title}</h2>
+                    <Row className ={Styles.editStoryMainDiv}>
+                        <Row className ={Styles.editStoryImageDiv}>
+                            <img  
+                            style={{width: "100%", height:"320px"}} 
+                            key={post.id} 
+                            src={"http://yesofcorsa.com/wp-content/uploads/2017/08/4K-Green-Wallpaper-For-PC.jpg"}
+                            alt="Profile">
+                            </img>  
+                            
+                            <Col className ={Styles.editStoryProfileDiv}>
+                            <img 
+                            
+                            style={{width: "150px", height:"150px"}} 
+                            key={post.id} 
+                            src={"https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/Sam-Winchester-in-Supernatural-anime.jpg?q=50&fit=crop&w=740&h=370"}
+                            alt="Profile">
+                            </img>  
+                            
+                            
                             </Col>
-                            <Col>
-                                
-                                <p key={post.id}> {post.story}</p>
-                                
+                            <Col className ={Styles.editStoryTitle} >
+                            <p key={post.id}>{post.title}</p>
                             </Col>
-                            <Col>
-                                <p key={post.id}>{post.author}</p>
+                            <Col className ={Styles.editStoryAuthor}>
+                                <p key={post.id}>Author: {post.author}</p>
+                            </Col>
+                            <Col className ={Styles.editStoryButton}>                                
                                 &nbsp;<Button variant="primary" >Edit</Button>
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
                             </Col>
+
                         </Row>
+                        <Row className ={Styles.editStoryDescriptionDiv}>
+                            <Col className ={Styles.editStoryDescription}>                                
+                                <p key={post.id}> {post.story}</p>                                
+                            </Col>                            
+                        </Row>
+                       
                         
-                    <Row>
-                            
-                        
-                        </Row>    
+                      
                     </Row>
                 )
             })
@@ -206,13 +231,13 @@ class SavedList extends Component {
             inputEditGoal = (
                 
                     <InputEditGoal
-                            
+                            id={this.state.editGoalId}
                             cancelEditGoal = {this.cancelEditGoalHandler}                         
                             EditWriteGoalTitle = {this.state.title}
                             EditGoaLink = {this.state.link}
                             EditGoalDescription = {this.state.description}
                             showEditModal = {this.state.editGoal}
-                            saveUpdateGoal={() => this.saveUpdateGoal(this.state.editGoalId)}>
+                            saveUpdateGoal={this.saveUpdateGoal}>
                     
                     </InputEditGoal>
 

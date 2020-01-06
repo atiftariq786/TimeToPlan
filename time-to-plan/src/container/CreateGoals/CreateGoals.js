@@ -13,7 +13,8 @@ class CreateGoals extends Component {
         title: "",
         link : "",
         description : "",
-        tempdata: []
+        tempdata: [],
+        isValidGoal: true
     }
 
     /*
@@ -43,7 +44,7 @@ class CreateGoals extends Component {
     
         this.setState({
             title: event.target.value,
-            //isValidTitle: true
+            isValidGoal: true
         })
        // console.log(this.state.title);
     }
@@ -51,7 +52,7 @@ class CreateGoals extends Component {
     
         this.setState({
             link: event.target.value,
-           // isValidStory: true
+            isValidGoal: true
         })
         //console.log(this.state.link);
     }
@@ -59,7 +60,7 @@ class CreateGoals extends Component {
     
         this.setState({
             description: event.target.value,
-            //isValidAuthor: true
+            isValidGoal: true
         })
         //console.log(this.state.description);
     }
@@ -74,24 +75,37 @@ class CreateGoals extends Component {
             link: this.state.link,
             description: this.state.description,
         }
-        //console.log(data)
-        //props comming from savedList.js, story length zero then its true
-    
+        
+        if(this.state.link && this.state.title && this.state.description){
+
             API.savedGoal(data).then(response =>{
                 console.log("Data Saved");
                 console.log(response);
 
-            
-            })
+                this.setState({
+                    title:"",
+                    link: "",
+                    description: "",
+                    isValidGoal: true
+                });
 
             
-        
+            }); 
+
+        }
+        else{
+            this.setState({
+                
+                isValidGoal: false
+            });
+        }
+
+            
     }
     
 
     render(){
 
-        
         
         return(
             <Container className = {Styles.Back}>
@@ -106,7 +120,8 @@ class CreateGoals extends Component {
                         writeLinkHandler={this.linkEventHandler}
                         writeGoalDescription = {this.state.description}
                         writeGoalHandler = {this.descriptionEventHandler}
-                        submitGoal = {this.postGoalDataHandler}>
+                        submitGoal = {this.postGoalDataHandler}
+                        isValidGoals = {this.state.isValidGoal}>
                         </InputGoals>
                     </Col>
                     <Col>

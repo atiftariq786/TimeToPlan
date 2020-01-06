@@ -16,9 +16,9 @@ class CreateStory extends Component {
         author : "",
         showCreateStory : true,
         showPostStory: "nodata",
-        isValidTitle: true,
-        isValidStory: true,
-        isValidAuthor: true,
+        //isValidTitle: true,
+        //isValidStory: true,
+        //isValidAuthor: true,
         isValid: true,
         savedData : []
     }
@@ -101,14 +101,38 @@ class CreateStory extends Component {
         if(this.state.savedData.length){
             showSavedData = this.state.savedData.map(arrData => {
                 return (
-                    <div className = {Styles.Temp}>
-                    <img
-                    style={{width: "100%", height:"200px", margin: "1px" }} 
-                    src="https://economictimes.indiatimes.com/img/68721421/Master.jpg" alt="sketch"></img>
-            
-                        <h3 key={arrData.id}>{arrData.title}</h3>
-                        <p key={arrData.id}> {arrData.story}</p>
-                        <p key={arrData.id}>Author: {arrData.author}</p>
+                    <div className = {Styles.createStoryMainDiv}>
+                        <div className={Styles.ImageDiv}>
+                            <img  
+                                style={{width: "100%", height:"100%"}} 
+                                key={arrData.id} 
+                                src={"https://wallpaperplay.com/walls/full/5/7/1/323706.jpg"}
+                                alt="Profile">
+                            </img> 
+                        </div>    
+                   {  /*
+                        <div >
+                            <img  
+                                    style={{width: "150px", height:"150px"}} 
+                                    key={arrData.id} 
+                                    src={"https://www.telegraph.co.uk/content/dam/men/2016/05/24/Untitled-1_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpg?imwidth=450"}
+                                    alt="Profile">
+                            </img>  
+                                
+                        </div>
+                */}
+                        <div style={{margin:"auto",  position:"relative", top: "-100vh"   }}>
+                            <div className = {Styles.createStoryTitleDiv}>
+                                <h4 key={arrData.id}>{arrData.title}</h4>
+                            
+                            </div>                     
+                                
+                            <div className = {Styles.createStoryDescriptionDiv}>
+                                <p key={arrData.id}> {arrData.story}</p>
+                                <p key={arrData.id}>Author: {arrData.author}</p>
+                            </div>
+                        </div>
+                        
                     </div>
                 )
             })
@@ -140,17 +164,18 @@ class CreateStory extends Component {
         }
         else {
             showCreateStoryTemp = (
-                <Row>
-                    <Col>
-                        {<div>{showSavedData}</div>}
-                    </Col>
-                </Row>
+                <div>
+                {showSavedData}
+                </div>
+                       
+                  
+              
             )
                 
 
         }       
         return(
-            <Container className = {Styles.Back}>
+            <Container className = {Styles.createStoryContainerDiv}>
            {showCreateStoryTemp}
                    
             </Container>
