@@ -121,7 +121,7 @@ class CreateStory extends Component {
                                 
                         </div>
                 */}
-                        <div style={{margin:"auto",  position:"relative", top: "-100vh"   }}>
+                        <div style={{margin:"auto",  position:"relative", top: "-94vh"   }}>
                             <div className = {Styles.createStoryTitleDiv}>
                                 <h4 key={arrData.id}>{arrData.title}</h4>
                             

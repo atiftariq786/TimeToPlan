@@ -33,7 +33,7 @@
 .createStoryTitleDiv{
     position: relative;
     padding-left:10px;
-    top: 200px;
+    top: 170px;
     margin:auto;
     width:300px;
     height:35px;
@@ -46,7 +46,7 @@
 .createStoryDescriptionDiv{
     position: relative;
     padding: 10px 10px 10px 10px;
-    top:240px;
+    top:200px;
     margin: auto;
     width:550px;
     height:370px;

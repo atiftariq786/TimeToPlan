@@ -48,6 +48,7 @@ const InputEditGoalModal = props => {
     return (
         <ButtonToolbar>
             <Modal
+                
                 size="lg"
                 show={lgShow}
                 onHide={() => {
