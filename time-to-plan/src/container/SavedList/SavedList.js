@@ -20,6 +20,7 @@ class SavedList extends Component {
         editGoalId: "no id",
         
     }
+    
 
     componentDidMount(){
     
@@ -134,7 +135,8 @@ class SavedList extends Component {
         })
     }
     render(){
-    
+        console.log("renders")
+        console.log(this.state.posts);
         let showPosts = "No Story Available";
         if(this.state.posts.length){
             showPosts = this.state.posts.map(post => {
@@ -144,8 +146,8 @@ class SavedList extends Component {
                             <img  
                             style={{width: "100%", height:"320px"}} 
                             key={post.id} 
-                            src={"http://yesofcorsa.com/wp-content/uploads/2017/08/4K-Green-Wallpaper-For-PC.jpg"}
-                            alt="Profile">
+                            src={post.backgroundImage}
+                            alt="Background Image">
                             </img>  
                             
                             <Col className ={Styles.editStoryProfileDiv}>
@@ -153,8 +155,8 @@ class SavedList extends Component {
                             
                             style={{width: "150px", height:"150px"}} 
                             key={post.id} 
-                            src={"https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/Sam-Winchester-in-Supernatural-anime.jpg?q=50&fit=crop&w=740&h=370"}
-                            alt="Profile">
+                            src={post.profileImage}
+                            alt="Profile Photo">
                             </img>  
                             
                             
@@ -176,9 +178,7 @@ class SavedList extends Component {
                                 <p key={post.id}> {post.story}</p>                                
                             </Col>                            
                         </Row>
-                       
-                        
-                      
+                    
                     </Row>
                 )
             })

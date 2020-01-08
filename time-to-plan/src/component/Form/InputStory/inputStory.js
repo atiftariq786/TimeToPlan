@@ -55,6 +55,26 @@ function inputStory(props){
             
         </InputGroup>
         <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Profle Image URL</Form.Label>
+                    <Form.Control 
+                    type="text" 
+                    placeholder="https://example.png"
+                    value = {props.writeProfileImage} 
+                    onChange={props.writeProfileImageHandler}
+                    className={inputStyles.join(" ")}
+                    />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Background Image URL</Form.Label>
+                    <Form.Control 
+                    type="text" 
+                    placeholder="https://example.png"
+                    value = {props.writeBackgroundImage} 
+                    onChange={props.backgroundImageHandler}
+                    className={inputStyles.join(" ")}
+                    />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Author</Form.Label>
                 <Form.Control 
                 type="text" 

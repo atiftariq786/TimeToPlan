@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
+import {Link} from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,12 +8,15 @@ import Col from "react-bootstrap/Col";
 //import {TextArea} from "../../component/Form/Form";
 import InputStory from "../../component/Form/InputStory/inputStory";
 import Styles from "./CreateStory.module.css";
+import Button from "react-bootstrap/Button";
 
 class CreateStory extends Component {
 
     state = {
         title: "",
         story : "",
+        profileImage: "",
+        backgroundImage: "",
         author : "",
         showCreateStory : true,
         showPostStory: "nodata",
@@ -58,6 +62,22 @@ class CreateStory extends Component {
         })
         //console.log(this.state.story);
     }
+    profileImageEventHandler = (event) => {
+    
+        this.setState({
+            profileImage: event.target.value,
+           // isValidStory: true
+        })
+        //console.log(this.state.story);
+    }
+    backgroundImageEventHandler = (event) => {
+    
+        this.setState({
+            backgroundImage: event.target.value,
+           // isValidStory: true
+        })
+        //console.log(this.state.story);
+    }
     authorEventHandler = (event) => {
     
         this.setState({
@@ -74,6 +94,8 @@ class CreateStory extends Component {
         const data ={
             title: this.state.title,
             story: this.state.story,
+            profileImage: this.state.profileImage,
+            backgroundImage: this.state.backgroundImage,
             author: this.state.author,
         }
         //props comming from savedList.js, story length zero then its true
@@ -106,22 +128,24 @@ class CreateStory extends Component {
                             <img  
                                 style={{width: "100%", height:"100%"}} 
                                 key={arrData.id} 
-                                src={"https://wallpaperplay.com/walls/full/5/7/1/323706.jpg"}
-                                alt="Profile">
+                                src={arrData.backgroundImage}
+                                //src={"https://wallpaperplay.com/walls/full/5/7/1/323706.jpg"}
+                                alt="Background Image">
                             </img> 
                         </div>    
-                   {  /*
-                        <div >
-                            <img  
-                                    style={{width: "150px", height:"150px"}} 
-                                    key={arrData.id} 
-                                    src={"https://www.telegraph.co.uk/content/dam/men/2016/05/24/Untitled-1_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpg?imwidth=450"}
-                                    alt="Profile">
-                            </img>  
-                                
-                        </div>
-                */}
+                   
+                        
+                
                         <div style={{margin:"auto",  position:"relative", top: "-94vh"   }}>
+                            <div className = {Styles.createStoryPhotoDiv}>
+                                <img  
+                                        style={{width: "150px", height:"150px"}} 
+                                        key={arrData.id} 
+                                        src={arrData.profileImage}
+                                        alt="Profile Photo">
+                                </img>  
+                                    
+                            </div>
                             <div className = {Styles.createStoryTitleDiv}>
                                 <h4 key={arrData.id}>{arrData.title}</h4>
                             
@@ -129,7 +153,24 @@ class CreateStory extends Component {
                                 
                             <div className = {Styles.createStoryDescriptionDiv}>
                                 <p key={arrData.id}> {arrData.story}</p>
-                                <p key={arrData.id}>Author: {arrData.author}</p>
+                                                            
+                            </div>
+                            <div className={Styles.createStoryEditButtonDiv}>
+                                <Link to="/saved-list/">
+                                    <Button 
+                                        className={Styles.createStoryEditButton}
+                                        type= "button" 
+                                        size="sm" 
+                                        >Edit Story
+                                    </Button>
+                                </Link>
+                                
+                            </div>
+                            <div className={Styles.createStoryAuthor} >
+                                <p 
+                                    key={arrData.id}
+                                    >Author: {arrData.author}
+                                </p>
                             </div>
                         </div>
                         
@@ -152,6 +193,13 @@ class CreateStory extends Component {
                 writeTitleHandler = {this.titleEventHandler}
                 writeStory = {this.state.story}
                 writeStoryHandler={this.storyEventHandler}
+
+                writeProfileImage = {this.state.profileImage}
+                writeProfileImageHandler={this.profileImageEventHandler}
+                writeBackgroundImage = {this.state.backgroundImage}
+                backgroundImageHandler={this.backgroundImageEventHandler}
+
+
                 writeAuthor = {this.state.author}
                 writeAuthorHandler = {this.authorEventHandler}
                 isValidCheck = {this.state.isValid}
