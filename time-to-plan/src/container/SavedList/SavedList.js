@@ -168,7 +168,7 @@ class SavedList extends Component {
                                 <p key={post.id}>Author: {post.author}</p>
                             </Col>
                             <Col className ={Styles.editStoryButton}>                                
-                                &nbsp;<Button variant="primary" >Edit</Button>
+                                &nbsp;<Button variant="primary"  >Edit</Button>
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
                             </Col>
 
