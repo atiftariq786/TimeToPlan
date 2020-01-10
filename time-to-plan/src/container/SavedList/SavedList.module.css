@@ -1,3 +1,7 @@
+
+.title{
+    margin-top: 60px;
+}
 h1{
     text-align: center;
 }
@@ -15,6 +19,7 @@ h1{
     width:50%;
     height:240px;
     color:green;
+    font-size: 25px;
    
     border: 1px solid #ccc;
     

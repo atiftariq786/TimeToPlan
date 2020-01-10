@@ -18,6 +18,10 @@ class SavedList extends Component {
         description : "no description",
         editGoal : false,
         editGoalId: "no id",
+        totalGoal: 0,
+        achievedGoal: 0,
+        remainingGoal: 0,
+
         
     }
     
@@ -42,6 +46,7 @@ class SavedList extends Component {
         //===================
         
         this.getGoals();
+        //this.remainingGoalHandler();
        
     }
 
@@ -53,10 +58,11 @@ class SavedList extends Component {
             
         }).then(response => {
             console.log("Get Goals Method")
-           // console.log(response);
+         console.log(response.data);
         
             this.setState({
                 goals : response.data.data,
+                
             })
         }) 
     }
@@ -134,7 +140,37 @@ class SavedList extends Component {
         editGoal: false
         })
     }
+    acheivedGoalHandler = (id,goal) => {
+
+        let updateAchievedGoal = this.state.achievedGoal;
+
+        if(updateAchievedGoal < this.state.goals.length){
+
+            this.setState({
+    
+                achievedGoal: updateAchievedGoal + 1,
+    
+            })
+
+        }
+        
+       
+
+    }
+
+    remainingGoalHandler = (id, goal) => {
+
+       
+
+        
+    }
     render(){
+        //this.goalsAcheivements();
+        //this.remainingGoalHandler();
+        let remainingGoals = this.state.goals.length - this.state.achievedGoal ;
+        console.log({remainingGoals});
+        //console.log(this.state.totalGoal)
+
         console.log("renders")
         console.log(this.state.posts);
         let showPosts = "No Story Available";
@@ -147,7 +183,7 @@ class SavedList extends Component {
                             style={{width: "100%", height:"320px"}} 
                             key={post.id} 
                             src={post.backgroundImage}
-                            alt="Background Image">
+                            alt="Background">
                             </img>  
                             
                             <Col className ={Styles.editStoryProfileDiv}>
@@ -156,7 +192,7 @@ class SavedList extends Component {
                             style={{width: "150px", height:"150px"}} 
                             key={post.id} 
                             src={post.profileImage}
-                            alt="Profile Photo">
+                            alt="Profile">
                             </img>  
                             
                             
@@ -168,7 +204,7 @@ class SavedList extends Component {
                                 <p key={post.id}>Author: {post.author}</p>
                             </Col>
                             <Col className ={Styles.editStoryButton}>                                
-                                &nbsp;<Button variant="primary"  >Edit</Button>
+                                &nbsp;<Button variant="primary" >Edit</Button>
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
                             </Col>
 
@@ -213,7 +249,7 @@ class SavedList extends Component {
                             <Col className = {Styles.GoalButtons}>
                                 &nbsp;<Button variant="primary" size="sm" onClick ={() => this.showEditGoalHandler(goal._id, goal)}>Edit</Button>
                                 &nbsp;<Button variant="danger" size="sm" onClick ={() => this.deleteGoal(goal._id)}> Delete</Button>
-                                &nbsp;<Button variant="success" size="sm"> Complete</Button>
+                                &nbsp;<Button variant="success" size="sm" onClick ={() => this.acheivedGoalHandler(goal._id)}> Complete</Button>
 
                             </Col>
                                 
@@ -242,25 +278,26 @@ class SavedList extends Component {
                     </InputEditGoal>
 
                 )
-            console.log("Edit show goals")
+        
         }
 
         return(
             
-            <Container>
+            <Container className={Styles.container}>
             
-            <h1 className={Styles}>Your Life Goals Saved List</h1>
-                <Row>                
+                <Row> 
+
                     <Col> 
+                    <h1 className={Styles.title}>Your Life Goals Saved List</h1> 
                     <h3>Goals Achievments Summary</h3>                       
                         <div className = {Styles.Temp}>
                         
                             <div className = {Styles.Summary}>
                                 <p> Goals Status</p>
                                 <ul>
-                                    <li>Total Goals: <span> 5</span></li>
-                                    <li>Achieved Goals:<span>  1</span></li>
-                                    <li>Remaining Goals:<span>  4</span></li>
+                                    <li>Total Goals: <span> {this.state.goals.length}</span></li>
+                                    <li>Achieved Goals:<span>  {this.state.achievedGoal}</span></li>
+                                    <li>Remaining Goals:<span> {remainingGoals} </span></li>
                                 </ul>
                             </div>
                             <div className={Styles.Graph}>

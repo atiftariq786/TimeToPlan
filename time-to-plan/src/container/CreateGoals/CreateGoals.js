@@ -109,10 +109,11 @@ class CreateGoals extends Component {
         
         return(
             <Container className = {Styles.Back}>
-            <h1 className={Styles}>Create Your Life Goals</h1>
                 
                 <Row>
+                
                     <Col>
+                    <h2 className={Styles.title}>Create Your Life Goals</h2>
                         <InputGoals
                         writeGoalTitle = {this.state.title}
                         writeGoalTitleHandler = {this.titleEventHandler}
@@ -125,7 +126,7 @@ class CreateGoals extends Component {
                         </InputGoals>
                     </Col>
                     <Col>
-                        <div className={Styles.Temp}>
+                        <div className={Styles.titleImage}>
                             <p>Without plan nothing to achieve (Add jumbotron with quotes)</p>
                             <img
                                 style={{width: "100%", height:"244px", margin: "1px" }} 
@@ -140,7 +141,7 @@ class CreateGoals extends Component {
                     <Col>
                     <div className={Styles.Temp}>
                         <img
-                        style={{width: "100%", height:"280px", marginTop: "40px" }} 
+                        style={{width: "100%", height:"250px", marginTop: "5px" }} 
                         src="https://quotefancy.com/media/wallpaper/3840x2160/1142003-Lee-Kuan-Yew-Quote-If-you-want-to-reach-your-goals-and-dreams-you.jpg" alt="text"></img>
                     </div>
                     </Col>

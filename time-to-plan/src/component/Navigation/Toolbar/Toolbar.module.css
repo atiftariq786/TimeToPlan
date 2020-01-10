@@ -1,4 +1,7 @@
 .Navbar{
     justify-content: space-between;
     color:white;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
 }

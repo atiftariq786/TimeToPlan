@@ -18,11 +18,11 @@
     max-width:100%;
     height: calc(100vh - 56px);
     padding:0px;
-    margin:0px;
+    margin: 0px;
 }
 .createStoryTitleDiv{
     position: relative;
-    top: 30px;
+    top: 20px;
     margin:auto;
     width:300px;
     height:35px;
@@ -35,7 +35,7 @@
 .createStoryDescriptionDiv{
     position: relative;
     padding: 10px 10px 10px 10px;
-    top:50px;
+    top:40px;
     margin: auto;
     width:700px;
     height:320px;
@@ -46,7 +46,7 @@
 }
 .createStoryEditButtonDiv{
     position: relative;
-    top:70px;
+    top:60px;
     text-align: center;
     margin:auto;
 }
@@ -60,7 +60,7 @@
 }
 .createStoryAuthor{
     position: relative;
-    top:100px;
+    top:90px;
     text-align: center;
     margin:auto;
     color:rgb(202, 199, 199);

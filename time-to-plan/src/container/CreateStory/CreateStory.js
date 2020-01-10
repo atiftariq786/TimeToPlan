@@ -94,8 +94,8 @@ class CreateStory extends Component {
         const data ={
             title: this.state.title,
             story: this.state.story,
-            profileImage: this.state.profileImage,
-            backgroundImage: this.state.backgroundImage,
+            profile: this.state.profile,
+            background: this.state.backgroun,
             author: this.state.author,
         }
         //props comming from savedList.js, story length zero then its true
@@ -130,19 +130,19 @@ class CreateStory extends Component {
                                 key={arrData.id} 
                                 src={arrData.backgroundImage}
                                 //src={"https://wallpaperplay.com/walls/full/5/7/1/323706.jpg"}
-                                alt="Background Image">
+                                alt="Background">
                             </img> 
                         </div>    
-                   
+            
                         
                 
-                        <div style={{margin:"auto",  position:"relative", top: "-94vh"   }}>
+                        <div style={{margin:"65px auto auto auto",  position:"relative", top: "-94vh"   }}>
                             <div className = {Styles.createStoryPhotoDiv}>
                                 <img  
                                         style={{width: "150px", height:"150px"}} 
                                         key={arrData.id} 
                                         src={arrData.profileImage}
-                                        alt="Profile Photo">
+                                        alt="Profile">
                                 </img>  
                                     
                             </div>
