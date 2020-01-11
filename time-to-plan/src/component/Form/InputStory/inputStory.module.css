@@ -32,7 +32,15 @@
      background-color:#ccc;
  }
  .Invalid {
-     border: 1px solid red;
+    border: 1px solid red;
     
  }
- 
+ .editStoryForm{
+    border:1px solid #ccc;
+    background: rgba(204, 204, 204, 0.103);
+    font: inherit;
+    padding: 10px 10px;
+    display:block;
+    width:100%;
+
+}

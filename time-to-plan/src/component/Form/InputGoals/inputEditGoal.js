@@ -121,3 +121,36 @@ const InputEditGoalModal = props => {
     );
 }
 export default InputEditGoalModal;
+
+/*
+
+const storyTitleHandler = e => {
+    e.preventDefault();
+    console.log(e.target.value)
+    storyTitle= e.target.value
+}
+//console.log(storyTitle)
+
+const storyDescriptionHandler = e => {
+    e.preventDefault();
+    console.log(e.target.value)
+    storyDescription = e.target.value
+}
+// console.log(storyDescription)
+const storyBackgroundHandler = e => {
+    e.preventDefault();
+    console.log(e.target.value)
+    storyBackground = e.target.value
+}
+const storyPrfileHandler = e => {
+    e.preventDefault();
+    console.log(e.target.value)
+    storyProfile = e.target.value
+}
+const storyAuthorHandler = e => {
+    e.preventDefault();
+    console.log(e.target.value)
+    storyAuthor = e.target.value
+}
+
+*/

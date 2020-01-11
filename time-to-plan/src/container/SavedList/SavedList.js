@@ -7,27 +7,44 @@ import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 import InputEditGoal from "../../component/Form/InputGoals/inputEditGoal";
+import InputEditStory from "../../component/Form/InputStory/inputEditStory";
 
 class SavedList extends Component {
 
     state = {
         posts : [],
         goals : [],
+
         title : "no title",
         link  : "no link",
         description : "no description",
+
         editGoal : false,
         editGoalId: "no id",
+
         totalGoal: 0,
         achievedGoal: 0,
         remainingGoal: 0,
+
+        storyTitle: "no title",
+        storyDescription: "no description",
+        storyBackground: "no background",
+        storyProfile: " no profile",
+        storyAuthor: "no author",
+
+        editStory: false,
+        editStoryId:"no id",
 
         
     }
     
 
     componentDidMount(){
-    
+
+        this.getStory();
+        this.getGoals();
+    }
+    getStory = () =>{
         API.getStories(function(err, res){
             if(err){
                 console.log("Something Wrong");
@@ -40,14 +57,9 @@ class SavedList extends Component {
             this.setState({
                 posts : response.data.data
             })
-            //console.log(this.state.posts);
+            
         })   
         
-        //===================
-        
-        this.getGoals();
-        //this.remainingGoalHandler();
-       
     }
 
     getGoals = () => {
@@ -67,15 +79,7 @@ class SavedList extends Component {
         }) 
     }
 
-    deleteGoal = id => {
-        
-        API.deleteGoal(id).then( response => {
-            const newArr = this.state.goals.filter( el => el._id !== id);
-            this.setState({goals : newArr});
-            //console.log(response)
-        }
-        );
-    }
+    
     deleteStory = id => {
         
         API.deleteStory(id).then( response => {
@@ -83,6 +87,87 @@ class SavedList extends Component {
             this.setState({posts : newArr});
             //console.log(response)
             }
+        );
+    }
+    showEditStoryHandler =(id, story) => {
+
+        console.log("show story edit handler")  
+        console.log({id});
+        console.log({story});
+
+        if(id){
+            this.setState({
+                editStory: true,
+                storyTitle: story.title,
+                storyDescription: story.story,
+                storyBackground: story.backgroundImage,
+                storyProfile: story.profileImage,
+                storyAuthor: story.author,
+                editStoryId: id,
+            })
+        }  
+        
+    }
+    saveUpdateStory = (data) => {
+        
+        console.log("save edit story data will be update");
+        console.log({data})
+        let id = this.state.editStoryId;
+
+        let newData = {
+            title: this.state.storyTitle,
+            story: this.state.storyDescription,
+            profileImage: this.state.storyProfile,
+            backgroundImage: this.state.storyBackground,
+            author: this.state.storyAuthor,
+        };
+
+        if(data.storyTitle){
+            newData.title = data.storyTitle;
+        }
+        
+        if(data.storyDescription){
+            newData.story = data.storyDescription;
+        }
+
+        if(data.storyProfile){
+            newData.profileImage = data.storyProfile;
+        }
+        if(data.storyBackground){
+            newData.backgroundImage = data.storyBackground;
+        }
+        if(data.storyAuthor){
+            newData.author = data.storyAuthor;
+        }
+        
+        API.updateStory(id,newData).then( response => {
+            
+            console.log({response});
+            this.getStory();
+            
+            this.setState({
+                editStory: false,
+            });
+        
+            //window.location.reload(false);
+        });
+        
+    }
+
+    cancelEditStoryHandler = () => {
+        console.log("story cancel")
+        this.setState({
+        editStory: false,
+        })
+    }
+    //===========================================================
+    deleteGoal = id => {
+        
+        API.deleteGoal(id).then( response => {
+            const newArr = this.state.goals.filter( el => el._id !== id);
+            this.setState({goals : newArr});
+            //console.log(response)
+        }
         );
     }
 
@@ -158,12 +243,7 @@ class SavedList extends Component {
 
     }
 
-    remainingGoalHandler = (id, goal) => {
-
-       
-
-        
-    }
+    
     render(){
         //this.goalsAcheivements();
         //this.remainingGoalHandler();
@@ -204,7 +284,7 @@ class SavedList extends Component {
                                 <p key={post.id}>Author: {post.author}</p>
                             </Col>
                             <Col className ={Styles.editStoryButton}>                                
-                                &nbsp;<Button variant="primary" >Edit</Button>
+                                &nbsp;<Button variant="primary" onClick = {()=> this.showEditStoryHandler(post._id, post)} >Edit</Button>
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
                             </Col>
 
@@ -281,6 +361,42 @@ class SavedList extends Component {
         
         }
 
+        let inputEditStory = "";
+        if(this.state.editStory){
+            console.log("welcome edit story new")
+            inputEditStory = (
+                
+                    <InputEditStory
+                        id={this.state.editStoryId}
+                        showEditStoryModal = {this.state.editStory}
+                        cancelEditStory = {this.cancelEditStoryHandler} 
+                        
+                        editWriteStoryTitle = {this.state.storyTitle}
+                        editStoryDescription = {this.state.storyDescription}
+                        editStoryBackground = {this.state.storyBackground}
+                        editStoryProfile = {this.state.storyProfile}
+                        editStoryAuthor = {this.state.storyAuthor}
+                        saveUpdateStory={this.saveUpdateStory}
+
+                           /* id={this.state.editGoalId}
+                            cancelEditGoal = {this.cancelEditGoalHandler}                         
+                           
+                            EditWriteGoalTitle = {this.state.title}
+                            EditGoaLink = {this.state.link}
+                            EditGoalDescription = {this.state.description}
+                           
+                            showEditModal = {this.state.editGoal}
+                            saveUpdateGoal={this.saveUpdateGoal}
+                            */ >
+                            
+                    
+                    </InputEditStory>
+
+                )
+        
+        }
+        
+
         return(
             
             <Container className={Styles.container}>
@@ -326,9 +442,10 @@ class SavedList extends Component {
                 <Row>                    
                     <Col>
                         <h3>Your Goals List</h3>  
-                    
+                        
                         {showGoals} 
                         {inputEditGoal}
+                        {inputEditStory}
                     
                     </Col>     
                 </Row>
