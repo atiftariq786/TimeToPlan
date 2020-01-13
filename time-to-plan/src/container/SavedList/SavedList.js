@@ -35,12 +35,15 @@ class SavedList extends Component {
         editStory: false,
         editStoryId:"no id",
 
+        //completeGoalStyle: false,
+        completedGoalId:"no id",
+
         
     }
     
-
+ 
     componentDidMount(){
-
+        
         this.getStory();
         this.getGoals();
     }
@@ -174,13 +177,16 @@ class SavedList extends Component {
     saveUpdateGoal = (data) => {
         
         console.log("save edit data will be update")
-        let id = this.state.editGoalId;
 
-        let newData = {
+            let id = this.state.editGoalId;
+            let newData = {
             title: this.state.title,
             link: this.state.link,
-            description: this.state.description
+            description: this.state.description,
+        
         };
+        
+        console.log({data})
 
         if(data.title){
             newData.title = data.title
@@ -193,16 +199,42 @@ class SavedList extends Component {
             newData.description = data.description
         }
         
-        API.updateGoal(id,newData).then( response => {
+
+        this.tempUpdate(id,newData);
+        
+
+    }
+    updateCompleteGoal = (id, data) =>{
+        
+        let newData = {
+            title: data.title,
+            link: data.link,
+            description: data.description,
+            completeGoal: !data.completeGoal,
+        };
+        console.log({id})
+        console.log({data})
+        //console.log(this.state.completeGoalStyle)
+
+        
+        
+        this.tempUpdate(id,newData);
+
+    }
+    tempUpdate = (id,data) =>{
+
+        API.updateGoal(id,data).then( response => {
             //const newArr = this.state.posts.filter( el => el._id !== id);
             console.log({response});
-            this.getGoals()
+           
+                this.getGoals()
             
-            this.setState({
-
-                editGoal: false,
-            });
-        
+                this.setState({
+    
+                    editGoal: false,
+                });
+            
+            
             //window.location.reload(false);
         });
 
@@ -225,34 +257,42 @@ class SavedList extends Component {
         editGoal: false
         })
     }
+    /*
     acheivedGoalHandler = (id,goal) => {
 
-        let updateAchievedGoal = this.state.achievedGoal;
+        //let updateAchievedGoal = this.state.achievedGoal;
+        
 
-        if(updateAchievedGoal < this.state.goals.length){
-
+        //if(updateAchievedGoal < this.state.goals.length){
+            console.log("increment updateAchievedGoal < this.state.goals.length")
             this.setState({
     
-                achievedGoal: updateAchievedGoal + 1,
+                //achievedGoal: updateAchievedGoal + 1,
+                //achievedGoal: update,
+                //completeGoalStyle: true,
+                //completedGoalId: id,
     
             })
-
-        }
+            //console.log(this.state.completeGoalStyle)
+            this.updateCompleteGoal(id,goal);
+       // } 
         
-       
 
     }
-
+    */
     
     render(){
-        //this.goalsAcheivements();
-        //this.remainingGoalHandler();
-        let remainingGoals = this.state.goals.length - this.state.achievedGoal ;
-        console.log({remainingGoals});
-        //console.log(this.state.totalGoal)
 
+        let achievedGoal = this.state.goals.filter(el => el.completeGoal ).length;
+       
+        console.log("increment complete")
+        console.log({Goals:this.state.goals})
+        console.log({achievedGoal})
+
+        let remainingGoals = this.state.goals.length - achievedGoal;
+        console.log({remainingGoals});
         console.log("renders")
-        console.log(this.state.posts);
+       
         let showPosts = "No Story Available";
         if(this.state.posts.length){
             showPosts = this.state.posts.map(post => {
@@ -299,26 +339,86 @@ class SavedList extends Component {
                 )
             })
         }
-
+        //==============================================
         let showGoals = "No Goals Available";
         if(this.state.goals.length){
             showGoals = this.state.goals.map(goal => {
                 
                 return (
                     <Row className = {Styles.GoalParentRow}>
+                        {
+                            goal.completeGoal ? 
+                                <Row className = {Styles.GoalChildRow}>
+                                    <Col className = {Styles.GoalImageDarkDiv}>
+                                        <img  
+                                        style={{width: "100%", height:"220px"}} 
+                                        key={goal.id} 
+                                        src={goal.link}
+                                        alt="Life Goals">
+                                        </img>   
+                                    </Col>
+                                    
+                                </Row>
+                            :
+                                <Row className = {Styles.GoalChildRow}>
+                                    <Col className = {Styles.GoalImage}>
+                                        <img  
+                                        style={{width: "340px", height:"220px"}} 
+                                        key={goal.id} 
+                                        src={goal.link}
+                                        alt="Life Goals">
+                                        </img>   
+                                    </Col>
+                                    <Col className = {Styles.GoalDescription}> 
+                                    <p key={goal.id}  >{goal.description}</p>
+                                    </Col> 
+                                </Row>
+                        }
+                            
+                        {
+                            goal.completeGoal ? 
+                                <Row className = {Styles.GoalChildRow}>
+                                    <Col className = {Styles.GoalTittle} >            
+                                        <h4 key={goal.id} >{goal.title}</h4>
+                                    </Col>
+                                    <Col className = {Styles.GoalButtons}>                               
+                                        &nbsp;<Button variant="success" size="sm" onClick ={() => this.updateCompleteGoal(goal._id, goal)}> Activate</Button>                                        </Col> 
+                                </Row>
+                                    
+                            : 
+                                <Row className = {Styles.GoalChildRow}>
+                                    <Col className = {Styles.GoalTittle} >            
+                                        <h4 key={goal.id} >{goal.title}</h4>
+                                    </Col>
+                                    <Col className = {Styles.GoalButtons}>
+                                        &nbsp;<Button variant="primary" size="sm" onClick ={() => this.showEditGoalHandler(goal._id, goal)}>Edit</Button>
+                                        &nbsp;<Button variant="danger" size="sm" onClick ={() => this.deleteGoal(goal._id)}> Delete</Button>
+                                        &nbsp;<Button variant="success" size="sm" onClick ={() => this.updateCompleteGoal(goal._id, goal)}> Complete</Button>
+                                    </Col>
+                                </Row>
+                            }
+                    </Row>
+
+                )
+            })
+        }
+        /*
+        if(this.state.goals.length && this.state.completeGoalStyle){
+            showGoals = this.state.goals.map(goal => {
+                
+                return (
+                    <Row className = {Styles.GoalParentRowDarkDiv}>
                         <Row className = {Styles.GoalChildRow}>
-                            <Col className = {Styles.GoalImage}>
+                            <Col className = {Styles.GoalImageDarkDiv}>
                                 <img  
-                                style={{width: "340px", height:"220px"}} 
+                                style={{width: "100%", height:"220px"}} 
                                 key={goal.id} 
                                 src={goal.link}
                                 alt="Life Goals">
                                 </img>   
                             </Col>
                             
-                            <Col className = {Styles.GoalDescription}> 
-                            <p key={goal.id}  >{goal.description}</p>
-                            </Col> 
+                            
                             
                         </Row>
                         <Row className = {Styles.GoalChildRow}>
@@ -327,9 +427,8 @@ class SavedList extends Component {
                             </Col>
                         
                             <Col className = {Styles.GoalButtons}>
-                                &nbsp;<Button variant="primary" size="sm" onClick ={() => this.showEditGoalHandler(goal._id, goal)}>Edit</Button>
-                                &nbsp;<Button variant="danger" size="sm" onClick ={() => this.deleteGoal(goal._id)}> Delete</Button>
-                                &nbsp;<Button variant="success" size="sm" onClick ={() => this.acheivedGoalHandler(goal._id)}> Complete</Button>
+                               
+                                &nbsp;<Button variant="success" size="sm" > Activate</Button>
 
                             </Col>
                                 
@@ -339,7 +438,10 @@ class SavedList extends Component {
                 )
             })
         }
+        */
 
+
+        //=======================================================
         let inputEditGoal = "";
 
         if(this.state.editGoal){
@@ -395,6 +497,9 @@ class SavedList extends Component {
                 )
         
         }
+
+        
+
         
 
         return(
@@ -406,14 +511,14 @@ class SavedList extends Component {
                     <Col> 
                     <h1 className={Styles.title}>Your Life Goals Saved List</h1> 
                     <h3>Goals Achievments Summary</h3>                       
-                        <div className = {Styles.Temp}>
+                        <div className = {Styles.goalAchievment}>
                         
                             <div className = {Styles.Summary}>
-                                <p> Goals Status</p>
+                                <h4> Goals Status</h4>
                                 <ul>
-                                    <li>Total Goals: <span> {this.state.goals.length}</span></li>
-                                    <li>Achieved Goals:<span>  {this.state.achievedGoal}</span></li>
-                                    <li>Remaining Goals:<span> {remainingGoals} </span></li>
+                                    <li >Total Goals: <span style={{"color": "blue", "fontSize": "25px"}}> {this.state.goals.length}</span></li>
+                                    <li>Achieved Goals:<span style={{"color": "green", "fontSize": "25px"}}>  {achievedGoal}</span></li>
+                                    <li>Remaining Goals:<span style={{"color": "red", "fontSize": "25px"}}> {remainingGoals} </span></li>
                                 </ul>
                             </div>
                             <div className={Styles.Graph}>

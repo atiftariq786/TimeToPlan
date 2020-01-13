@@ -115,12 +115,14 @@ const InputEditStoryModal = props => {
                         
                     </Form>
                     <Button 
+                    className = {Styles.modalButton}
                     variant="success" 
                     type= "button" 
                     onClick ={()=>{return props.saveUpdateStory({storyTitle, storyBackground,storyProfile, storyDescription, storyAuthor})}} 
                     size="sm" 
                     >Save</Button>
                     <Button 
+                    className = {Styles.modalButton}
                     variant="danger" 
                     type= "button" 
                     onClick ={props.cancelEditStory} 

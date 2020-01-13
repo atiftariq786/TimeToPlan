@@ -60,12 +60,14 @@
 }
 .createStoryAuthor{
     position: relative;
-    top:90px;
+    top:80px;
     text-align: center;
     margin:auto;
     color:rgb(202, 199, 199);
     background: black;
-   
+    width:100%;
+    height: 26px;
+
 }
 .createStoryPhotoDiv{
     position: relative;

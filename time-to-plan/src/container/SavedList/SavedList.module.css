@@ -5,7 +5,7 @@
 h1{
     text-align: center;
 }
-.Temp{
+.goalAchievment{
     display : flex;
     margin-top: 1px;
     width:100%;
@@ -18,8 +18,8 @@ h1{
     margin: 5px;
     width:50%;
     height:240px;
-    color:green;
-    font-size: 25px;
+    color:black;
+    font-size: 20px;
    
     border: 1px solid #ccc;
     
@@ -179,7 +179,7 @@ h1{
 }
 
 .GoalTittle{
-    color: grey;
+    color: black;
 }
 
 .GoalButtons{
@@ -187,6 +187,23 @@ h1{
     display : flex;
     justify-content: space-between;
     margin-bottom: 3px;
+    
+}
+
+
+.GoalParentRowDarkDiv{
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0px;
+    height:270px;
+    border: 1px solid #ccc;
+    background: rgba(128, 128, 128, 0.205);
+    
+}
+.GoalImageDarkDiv{
+    max-width:100%;
+    margin: 1px;
+    padding: 0px;
     
 }
 

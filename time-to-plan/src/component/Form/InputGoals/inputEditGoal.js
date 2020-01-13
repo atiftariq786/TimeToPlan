@@ -67,7 +67,7 @@ const InputEditGoalModal = props => {
                 <Form className = {Styles.InputElement}>
                     
                         <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Goal Title</Form.Label>
+                            <Form.Label>Title</Form.Label>
                             <Form.Control 
                             type="text"
                             defaultValue={
@@ -79,7 +79,7 @@ const InputEditGoalModal = props => {
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlInput2">
-                            <Form.Label>Goal Image Link</Form.Label>
+                            <Form.Label>Image Link</Form.Label>
                             <Form.Control 
                             type="text" 
                             placeholder="https://example.png"
@@ -91,7 +91,7 @@ const InputEditGoalModal = props => {
                         
                         
                         <Form.Group controlId="exampleForm.ControlTextarea3">
-                            <Form.Label>Goal Description</Form.Label>
+                            <Form.Label>Description</Form.Label>
                             <Form.Control 
                             as="textarea" 
                             placeholder="Text Area" 
@@ -104,12 +104,15 @@ const InputEditGoalModal = props => {
                         
                     </Form>
                     <Button 
+                    className = {Styles.modalButton}
                     variant="success" 
                     type= "button" 
                     onClick ={()=>{return props.saveUpdateGoal({title, link, description})}} 
                     size="sm" 
                     >Save</Button>
+
                     <Button 
+                    className = {Styles.modalButton}
                     variant="danger" 
                     type= "button" 
                     onClick ={props.cancelEditGoal} 

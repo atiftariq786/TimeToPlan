@@ -12,8 +12,6 @@ export default {
         return axios.delete("http://localhost:3001/api/story/" + id);
     },
     updateStory : function(id,data){
-        console.log("update Story activate")
-        console.log({data,id})
         return axios.put("http://localhost:3001/api/story/" + id,data);
     },
     savedGoal : function(data){
@@ -26,9 +24,6 @@ export default {
         return axios.delete("http://localhost:3001/api/goals/" + id);
     },
     updateGoal : function(id,data){
-        console.log("update goal activate")
-        console.log({data,id})
         return axios.put("http://localhost:3001/api/goals/" + id,data);
     },
-    
 }

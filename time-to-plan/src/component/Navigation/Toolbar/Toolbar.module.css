@@ -1,7 +1,32 @@
 .Navbar{
     justify-content: space-between;
-    color:white;
     position: fixed;
     z-index: 1;
     width: 100%;
+    padding:2px 15px 2px 15px;
+    background: rgb(27, 26, 26) !important;
+}
+.appContent{
+    
+    font-size: 18px;
+    
+}
+.appContent:hover{
+    
+    color:orange !important;
+    font-size: 18.5px;    
+}
+.appTitle{
+    
+    color:orange!important;
+    font-size: 19px;
+   
+    
+}
+.appTitle:hover{
+    
+    color:grey!important;
+    font-size: 19.5px;
+    
+    
 }

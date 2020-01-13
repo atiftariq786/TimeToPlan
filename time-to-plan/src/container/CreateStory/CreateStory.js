@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-//import {TextArea} from "../../component/Form/Form";
 import InputStory from "../../component/Form/InputStory/inputStory";
 import Styles from "./CreateStory.module.css";
 import Button from "react-bootstrap/Button";
@@ -126,15 +125,13 @@ class CreateStory extends Component {
                     <div className = {Styles.createStoryMainDiv}>
                         <div className={Styles.ImageDiv}>
                             <img  
-                                style={{width: "100%", height:"100%"}} 
+                                style={{width: "100%", height:"100vh"}} 
                                 key={arrData.id} 
                                 src={arrData.backgroundImage}
                                 //src={"https://wallpaperplay.com/walls/full/5/7/1/323706.jpg"}
                                 alt="Background">
                             </img> 
                         </div>    
-            
-                        
                 
                         <div style={{margin:"65px auto auto auto",  position:"relative", top: "-94vh"   }}>
                             <div className = {Styles.createStoryPhotoDiv}>
@@ -182,7 +179,6 @@ class CreateStory extends Component {
         let showCreateStoryTemp = null;
         console.log("Welcome Create Story")
         
-
         if(this.state.showCreateStory && !this.state.savedData.length){
             showCreateStoryTemp = ( <Row>
                 
@@ -208,32 +204,21 @@ class CreateStory extends Component {
                 </InputStory> 
                 </Col>            
             </Row>       )
-           
+        
         }
         else {
             showCreateStoryTemp = (
                 <div>
                 {showSavedData}
                 </div>
-                       
-                  
-              
-            )
-                
+            )   
 
         }       
         return(
             <Container className = {Styles.createStoryContainerDiv}>
-           {showCreateStoryTemp}
-                   
+                {showCreateStoryTemp}
             </Container>
-             
-            
-        
         )
     }
 }
 export default CreateStory;
-
-
-   

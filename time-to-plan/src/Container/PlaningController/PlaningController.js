@@ -16,11 +16,11 @@ class PaningController extends Component {
             <Aux>   
                 <Container>
                 <Row>
-                    <Col sm="12"><div><Carousel/></div></Col>
+                    <Col sm="12"><Carousel/></Col>
                 </Row>
                 <Row>
-                    <Col sm="6"><div className={Styles.Temp}><Media /></div></Col>
-                    <Col sm="6"> <div className={Styles.Temp}><SketchBook/></div></Col>
+                    <Col sm="6" className={Styles.Temp}> <Media /></Col>
+                    <Col sm="6" className={Styles.Temp}>  <SketchBook/></Col>
                 </Row>
                 </Container>
             
