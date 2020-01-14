@@ -1,8 +1,5 @@
 import React, {Component} from "react";
 import Aux from "../../hoc/Aux/Aux";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Carousel from "../../component/Carousel/Carousel";
 import Media from "../../component/Media/MediaStory/MediaStory";
 import SketchBook from "../../component/Sketch/SketchBook/SketchBook";
@@ -14,15 +11,15 @@ class PaningController extends Component {
 
         return (
             <Aux>   
-                <Container>
-                <Row>
-                    <Col sm="12"><Carousel/></Col>
-                </Row>
-                <Row>
-                    <Col sm="6" className={Styles.Temp}> <Media /></Col>
-                    <Col sm="6" className={Styles.Temp}>  <SketchBook/></Col>
-                </Row>
-                </Container>
+                <div className={Styles.container}>
+                    <div>
+                        <div className = {Styles.carousal} ><Carousel/></div>
+                    </div>
+                    <div>
+                        <div className = {Styles.media}> <Media /></div>
+                        <div  className={Styles.sketch}> <SketchBook/></div>
+                    </div>
+                </div>
             
             </Aux>
         

@@ -5,3 +5,13 @@
 .titleImage{
     margin-top:120px;
 }
+.quotes{
+    position: relative;
+    top:-100px;
+    background:rgba(41, 39, 39, 0.301);
+    width: 300px;
+    color: white;
+    font-size: 16px;
+    margin:auto;
+   
+}

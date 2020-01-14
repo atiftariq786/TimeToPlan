@@ -127,10 +127,14 @@ class CreateGoals extends Component {
                     </Col>
                     <Col>
                         <div className={Styles.titleImage}>
-                            <p>Without plan nothing to achieve (Add jumbotron with quotes)</p>
-                            <img
-                                style={{width: "100%", height:"244px", margin: "1px" }} 
+                        <img
+                                style={{width: "100%", height:"270px", margin: "1px" }} 
                                 src="https://www.setaswall.com/wp-content/uploads/2017/03/Artistic-Landscape-4K-Wallpaper-3840x2160.jpg" alt="sketch"></img>
+                            
+                            <div className={Styles.quotes}>
+                            <p >Without plan nothing to achieve.......!</p>
+                            </div>
+                            
                         </div>
                         
                     </Col>     

@@ -478,29 +478,13 @@ class SavedList extends Component {
                         editStoryBackground = {this.state.storyBackground}
                         editStoryProfile = {this.state.storyProfile}
                         editStoryAuthor = {this.state.storyAuthor}
-                        saveUpdateStory={this.saveUpdateStory}
-
-                           /* id={this.state.editGoalId}
-                            cancelEditGoal = {this.cancelEditGoalHandler}                         
-                           
-                            EditWriteGoalTitle = {this.state.title}
-                            EditGoaLink = {this.state.link}
-                            EditGoalDescription = {this.state.description}
-                           
-                            showEditModal = {this.state.editGoal}
-                            saveUpdateGoal={this.saveUpdateGoal}
-                            */ >
-                            
+                        saveUpdateStory={this.saveUpdateStory}>
                     
                     </InputEditStory>
 
                 )
         
         }
-
-        
-
-        
 
         return(
             

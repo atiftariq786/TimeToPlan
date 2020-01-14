@@ -136,7 +136,7 @@ class CreateStory extends Component {
                         <div style={{margin:"65px auto auto auto",  position:"relative", top: "-94vh"   }}>
                             <div className = {Styles.createStoryPhotoDiv}>
                                 <img  
-                                        style={{width: "150px", height:"150px"}} 
+                                        className = {Styles.createStoryPhoto}
                                         key={arrData.id} 
                                         src={arrData.profileImage}
                                         alt="Profile">
@@ -144,7 +144,7 @@ class CreateStory extends Component {
                                     
                             </div>
                             <div className = {Styles.createStoryTitleDiv}>
-                                <h4 key={arrData.id}>{arrData.title}</h4>
+                                <p key={arrData.id}>{arrData.title}</p>
                             
                             </div>                     
                                 
