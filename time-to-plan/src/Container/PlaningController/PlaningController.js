@@ -20,7 +20,7 @@ class PaningController extends Component {
                         <div  className={Styles.sketch}> <SketchBook/></div>
                     </div>
                 </div>
-            
+                
             </Aux>
         
         )
