@@ -1,0 +1,13 @@
+
+.sketchDiv{
+    width:100%;
+    display: flex;
+    background: green;
+}
+.sketchDivOne{
+    width:50%;
+}
+.sketchDivTwo{
+    width:50%;
+   
+}

@@ -17,8 +17,9 @@ function inputStory(props){
     }
 
     return (
-        <div>
-        <Form.Group controlId="exampleForm.ControlInput1">
+        <div className={Styles.inputStoryForm}>
+        <h1 >Create Your Life Story</h1> 
+        <Form.Group controlId="exampleForm.ControlInput1" className={Styles.formTitle}>
                 <Form.Label>Title</Form.Label>
                 <Form.Control 
                 type="text" 
@@ -30,9 +31,9 @@ function inputStory(props){
         <InputGroup>
             <InputGroup.Prepend>
                 <InputGroup.Text>
-                    User Life Story :
+                    User Life Story 
                     <img
-                    style={{width: "428px", height:"200px"}} 
+                    style={{width: "40vh", height:"20vh", margin:"0px 0px 0px 10px"}} 
                     src="http://daystarbooks.org/wp-content/uploads/2016/05/life_story.png" alt="media">
                     </img>
                 </InputGroup.Text>

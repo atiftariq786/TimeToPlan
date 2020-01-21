@@ -2,23 +2,49 @@ import React, {Component} from "react";
 import Aux from "../../hoc/Aux/Aux";
 import Carousel from "../../component/Carousel/Carousel";
 import Media from "../../component/Media/MediaStory/MediaStory";
+import Footer from "../../component/Footer/footer";
 import SketchBook from "../../component/Sketch/SketchBook/SketchBook";
 import Styles from "./PlaningController.module.css";
+import Button from "react-bootstrap/Button";
 
-class PaningController extends Component {
+class PlaningController extends Component {
 
     render(){
 
         return (
             <Aux>   
                 <div className={Styles.container}>
-                    <div>
-                        <div className = {Styles.carousal} ><Carousel/></div>
+                    
+                    <div className = {Styles.carousal} ><Carousel/></div>
+                    
+                    <div className={Styles.sectionTwo}>
+                        <h3>Now, its Time TO Plan</h3>
+                        <p>Future plans are something everyone should have.</p>   
+                        <Button
+                            className = {Styles.loginButton}
+                            variant="success" 
+                            type= "button" 
+                            
+                           >Login
+                        </Button>
+                        <Button
+                            className = {Styles.signUpButton}
+                            variant="primary" 
+                            type= "button" 
+                            
+                           >Sign Up
+                        </Button>
                     </div>
+                <div>
+                    <Media />
+                </div>
+                  
+
+                    <div  className={Styles.sketch}> <SketchBook/></div>
                     <div>
-                        <div className = {Styles.media}> <Media /></div>
-                        <div  className={Styles.sketch}> <SketchBook/></div>
+                        <Footer></Footer>
                     </div>
+                    
                 </div>
                 
             </Aux>
@@ -26,4 +52,4 @@ class PaningController extends Component {
         )
     }
 }
-export default PaningController;
+export default PlaningController;

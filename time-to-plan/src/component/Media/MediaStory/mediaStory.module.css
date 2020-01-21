@@ -1,0 +1,12 @@
+.mediaDiv{
+    width:100%;
+    display: flex;
+    background: green;
+}
+.mediaDivOne{
+    width:50%;
+}
+.mediaDivTwo{
+    width:50%;
+   
+}

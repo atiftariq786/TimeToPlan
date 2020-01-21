@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+//import  React,{useState} from "react";
 import Carousel from "react-bootstrap/Carousel"
 import Styles from "./Carousel.module.css";
 
@@ -39,7 +40,7 @@ const ControlledCarousel = () => {
       />
 
       <Carousel.Caption className={Styles.Craouseltext}>
-        <h2>TOP PLACES TO SKYDIVE AROUND THE WORLDl</h2>
+        <h2>TOP PLACES TO SKYDIVE AROUND THE WORLD</h2>
         <p>Outerspace.
         Mount Everest, Nepal. ...
         Victoria Falls, South Africa. ...
@@ -83,7 +84,7 @@ const ControlledCarousel = () => {
       />
 
       <Carousel.Caption className={Styles.Craouseltext}>
-        <h2>Hiking</h2>
+        <h2>Coming Soon</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </Carousel.Caption>
     </Carousel.Item>

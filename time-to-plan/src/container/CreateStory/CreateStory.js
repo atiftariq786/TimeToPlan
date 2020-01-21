@@ -3,8 +3,8 @@ import API from "../../utils/API";
 import {Link} from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+//import Row from "react-bootstrap/Row";
+//import Col from "react-bootstrap/Col";
 import InputStory from "../../component/Form/InputStory/inputStory";
 import Styles from "./CreateStory.module.css";
 import Button from "react-bootstrap/Button";
@@ -180,10 +180,10 @@ class CreateStory extends Component {
         console.log("Welcome Create Story")
         
         if(this.state.showCreateStory && !this.state.savedData.length){
-            showCreateStoryTemp = ( <Row>
+            showCreateStoryTemp = ( <div className={Styles.createStoryInputForm}>
                 
-                <Col>     
-                <h1 className={Styles}>Create Your Life Story</h1>                   
+                <div className={Styles.createStoryFormTitle}>     
+                                
                 <InputStory 
                 writeTitle = {this.state.title}
                 writeTitleHandler = {this.titleEventHandler}
@@ -202,8 +202,8 @@ class CreateStory extends Component {
                 submitStory = {this.postStoryDataHandler}
                 >
                 </InputStory> 
-                </Col>            
-            </Row>       )
+                </div>            
+            </div>       )
         
         }
         else {
