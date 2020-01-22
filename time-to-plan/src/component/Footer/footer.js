@@ -10,14 +10,14 @@ const footer = (props) => {
         <div className={Styles.footerDiv}>
             <div className={Styles.footerSec1}>
                 <div className={Styles.footerAbout}>
-                    <a src=""><p>About</p></a>
-                    <a src="">Demo</a>
+                    <a href="test"><p>About</p></a>
+                    <a href="test">Demo</a>
                     
                 
                 </div>
                 <div className={Styles.footerInfo}>
-                    <a src=""><p>Future Development</p></a>
-                    <a src="">App Version</a>
+                    <a href="test"><p>Future Development</p></a>
+                    <a href="test">App Version</a>
                 
                 </div>
                 

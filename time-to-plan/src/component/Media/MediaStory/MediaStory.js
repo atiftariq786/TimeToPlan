@@ -17,7 +17,7 @@ const media = (props) => {
             <div className={Styles.mediaDivTwo}>
             <img
             style={{width: "100%", height:"300px"}} 
-            src="https://media3.giphy.com/media/114QbccJsc5cis/source.gif"></img>
+            src="https://media3.giphy.com/media/114QbccJsc5cis/source.gif" alt="media"></img>
             </div>
         
         </div>
