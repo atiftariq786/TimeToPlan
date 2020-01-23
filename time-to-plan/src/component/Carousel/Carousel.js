@@ -79,30 +79,23 @@ const ControlledCarousel = () => {
       <img
         className="d-block w-100"
         style={{height:"500px"}}
-        src="https://i.pinimg.com/originals/0e/7c/f3/0e7cf39cadcb057e397ddcd710895129.jpg"
+        src="https://seerevelstoke.com/wp-content/uploads/2017/01/chris-rubens-5-1024x683.jpg"
         alt="Second slide"
       />
 
       <Carousel.Caption className={Styles.Craouseltext}>
-        <h2>Coming Soon</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2>The Top Ski Resorts in the World</h2>
+        <p>Revelstoke, BC. We still love Reve! ...
+        Zinal/Grimentz, Switzerland. Swiss charm with serious kick ass terrain! ...
+        Whistler, BC. ...
+        Cortina d'Ampezzo, Italy. ...
+        La Clusaz, France. ...
+        Castle Mountain, Alberta. ...
+        Niseko, Japan. ...
+        Telluride, Colorado.</p>
       </Carousel.Caption>
     </Carousel.Item>
-    <Carousel.Item>
-      <img
-        className="d-block w-100"
-        style={{height:"500px"}}
-        src="https://wallpaper.wiki/wp-content/uploads/2017/05/wallpaper.wiki-Free-Snowy-Mountains-Background-Download-PIC-WPE001060.jpg"
-        alt="Third slide"
-      />
-
-      <Carousel.Caption className={Styles.Craouseltext}>
-        <h2>Third slide label</h2>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
-      </Carousel.Caption>
-    </Carousel.Item>
+    
     <Carousel.Item>
       <img
         className="d-block w-100"
@@ -112,9 +105,14 @@ const ControlledCarousel = () => {
       />
 
       <Carousel.Caption className={Styles.Craouseltext}>
-        <h2>Third slide label</h2>
+        <h2>The Most Famous Car Races in the World</h2>
         <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+        Monaco Grand Prix. The Formula One Monaco Grand Prix is held annually on the Circuit de Monaco since 1929. ...
+        Indianapolis 500. ...
+        24 Hours of Le Mans. ...
+        Daytona 500. ...
+        Bathurst 1000. ...
+        Rally Finland
         </p>
       </Carousel.Caption>
     </Carousel.Item>

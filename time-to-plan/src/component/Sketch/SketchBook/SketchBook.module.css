@@ -2,12 +2,66 @@
 .sketchDiv{
     width:100%;
     display: flex;
-    background: green;
+    background: black;
 }
+
 .sketchDivOne{
+    position: relative;
     width:50%;
 }
+.image{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+.sketchOneHover{
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    
+}
+
+.sketchDivOne:hover .image{
+    opacity: 0.4;
+
+}
+.sketchDivOne:hover .sketchOneHover{
+    opacity: 1;
+    
+}
+.titleText{
+    width:400px;
+    height: 240px;
+    color: orange;
+    font-size: 16px;
+    text-align: center;
+    margin:auto; 
+    padding: 10px 5px 5px 5px;
+    background:rgba(0, 0, 0, 0.507);
+    overflow: scroll;
+}
+.textList{
+    width:100%;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+
+}
+
+
+
+
+
+
 .sketchDivTwo{
     width:50%;
-   
+
 }
