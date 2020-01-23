@@ -14,10 +14,10 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <Route path ="/" component = {PlaningController} />
-          <Route exact path ="/create-story/" component = {CreateStory} />
-          <Route exact path ="/create-goals/" component = {CreateGoals} />
-          <Route exact path ="/saved-list/" component = {SavedList} />  
+          <Route exact path ="/" component = {PlaningController} />
+          <Route path ="/create-story/" component = {CreateStory} />
+          <Route path ="/create-goals/" component = {CreateGoals} />
+          <Route path ="/saved-list/" component = {SavedList} />  
         </Switch>     
       </Layout>
     </Router>
