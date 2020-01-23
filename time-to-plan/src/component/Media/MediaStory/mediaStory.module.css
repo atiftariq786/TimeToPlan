@@ -3,7 +3,6 @@
     display: flex;
     background: black;
 }
-
 .mediaDivOne{
     position: relative;
     width:50%;
@@ -27,14 +26,11 @@
     text-align: center;
     
 }
-
 .mediaDivOne:hover .image{
     opacity: 0.4;
-
 }
 .mediaDivOne:hover .mediaOneHover{
     opacity: 1;
-    
 }
 .titleText{
     width:400px;

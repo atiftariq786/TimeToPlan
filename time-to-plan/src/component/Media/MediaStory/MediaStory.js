@@ -1,8 +1,6 @@
 import React from "react";
 import Styles from "../MediaStory/mediaStory.module.css";
 
-
-
 const media = (props) => {
 
     return (
@@ -48,9 +46,6 @@ const media = (props) => {
             </div>
         
         </div>
-        
-       
-        
     );
 };
 export default media;

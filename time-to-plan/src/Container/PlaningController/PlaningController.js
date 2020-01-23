@@ -9,8 +9,18 @@ import Button from "react-bootstrap/Button";
 
 class PlaningController extends Component {
 
+    loginHandler = () => {
+        
+        alert("Login work in progress.....!")
+    }
+    signUpHandler = () => {
+        
+        alert("Sign up work in progress.....!")
+    }
+
     render(){
 
+    
         return (
             <Aux>   
                 <div className={Styles.container}>
@@ -24,13 +34,14 @@ class PlaningController extends Component {
                             className = {Styles.loginButton}
                             variant="success" 
                             type= "button" 
-                            
+                            onClick={this.loginHandler }
                            >Login
                         </Button>
                         <Button
                             className = {Styles.signUpButton}
                             variant="primary" 
                             type= "button" 
+                            onClick={this.signUpHandler }
                             
                            >Sign Up
                         </Button>
