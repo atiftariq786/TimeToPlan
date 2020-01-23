@@ -35,22 +35,20 @@ class PlaningController extends Component {
                             variant="success" 
                             type= "button" 
                             onClick={this.loginHandler }
-                           >Login
+                            >Login
                         </Button>
                         <Button
                             className = {Styles.signUpButton}
                             variant="primary" 
                             type= "button" 
                             onClick={this.signUpHandler }
-                            
-                           >Sign Up
+                            >Sign Up
                         </Button>
                     </div>
-                <div>
-                    <Media />
-                </div>
-                  
-
+                    <div>
+                        <Media />
+                    </div>
+                
                     <div  className={Styles.sketch}> <SketchBook/></div>
                     <div>
                         <Footer></Footer>
