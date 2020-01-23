@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <Route exact path ="/" component = {PlaningController} />
+          <Route path ="/" component = {PlaningController} />
           <Route path ="/create-story/" component = {CreateStory} />
           <Route path ="/create-goals/" component = {CreateGoals} />
           <Route path ="/saved-list/" component = {SavedList} />  
