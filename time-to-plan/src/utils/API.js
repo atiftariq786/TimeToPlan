@@ -6,7 +6,7 @@ export default {
         return axios.post("https://safe-anchorage-29156.herokuapp.com/api/create-story", data);
     },
     getStories : function(){
-        return axios.get(" https://safe-anchorage-29156.herokuapp.com/api/stories");
+        return axios.get("https://safe-anchorage-29156.herokuapp.com/api/stories");
     },
     deleteStory : function(id){
         return axios.delete("https://safe-anchorage-29156.herokuapp.com/api/story/" + id);
@@ -15,15 +15,17 @@ export default {
         return axios.put("https://safe-anchorage-29156.herokuapp.com/api/story/" + id,data);
     },
     savedGoal : function(data){
-        return axios.post("http://safe-anchorage-29156.herokuapp.com/api/create-goal", data);
+        return axios.post("https://safe-anchorage-29156.herokuapp.com/api/create-goal", data);
     },
     getGoals : function(){
-        return axios.get("http://safe-anchorage-29156.herokuapp.com/api/goals");
+        return axios.get("https://safe-anchorage-29156.herokuapp.com/api/goals");
     },
     deleteGoal : function(id){
-        return axios.delete("http://safe-anchorage-29156.herokuapp.com/api/goals/" + id);
+        return axios.delete("https://safe-anchorage-29156.herokuapp.com/api/goals/" + id);
     },
     updateGoal : function(id,data){
-        return axios.put("http://safe-anchorage-29156.herokuapp.com/api/goals/" + id,data);
+        return axios.put("https://safe-anchorage-29156.herokuapp.com/api/goals/" + id,data);
     },
+    
 }
+//http://localhost:3001/api/goals/
