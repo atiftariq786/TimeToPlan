@@ -12,18 +12,18 @@ export default {
         return axios.delete("https://safe-anchorage-29156.herokuapp.com/api/story/" + id);
     },
     updateStory : function(id,data){
-        return axios.put("http://localhost:3001/api/story/" + id,data);
+        return axios.put("https://safe-anchorage-29156.herokuapp.com/api/story/" + id,data);
     },
     savedGoal : function(data){
-        return axios.post("http://localhost:3001/api/create-goal", data);
+        return axios.post("http://safe-anchorage-29156.herokuapp.com/api/create-goal", data);
     },
     getGoals : function(){
-        return axios.get("http://localhost:3001/api/goals");
+        return axios.get("http://safe-anchorage-29156.herokuapp.com/api/goals");
     },
     deleteGoal : function(id){
-        return axios.delete("http://localhost:3001/api/goals/" + id);
+        return axios.delete("http://safe-anchorage-29156.herokuapp.com/api/goals/" + id);
     },
     updateGoal : function(id,data){
-        return axios.put("http://localhost:3001/api/goals/" + id,data);
+        return axios.put("http://safe-anchorage-29156.herokuapp.com/api/goals/" + id,data);
     },
 }
