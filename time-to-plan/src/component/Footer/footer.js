@@ -3,21 +3,31 @@ import Styles from "../Footer/footer.module.css";
 
 
 
+
 const footer = (props) => {
 
+   
+    const appVersionHandler = () => {
+        
+        alert("App version v1.0 .\nNew Version coming soon....!  ")
+    }
+    const footerHandler = () => {
+        
+        alert("Sorry workng in progress....!  ")
+    }
     return (
         
         <div className={Styles.footerDiv}>
             <div className={Styles.footerSec1}>
                 <div className={Styles.footerAbout}>
-                    <a href="test"><p>About</p></a>
-                    <a href="test">Demo</a>
+                <button className={Styles.footerButton} onClick = {footerHandler}  >About</button>
+                <button className={Styles.footerButton} onClick = {footerHandler}   >Demo</button>
                     
                 
                 </div>
                 <div className={Styles.footerInfo}>
-                    <a href="test"><p>Future Development</p></a>
-                    <a href="test">App Version</a>
+                <button className={Styles.footerButton} onClick = {footerHandler} >Future Development</button>
+                <button className={Styles.footerButton}  onClick = {appVersionHandler}>App Version</button>
                 
                 </div>
                 

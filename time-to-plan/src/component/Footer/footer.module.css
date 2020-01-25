@@ -23,11 +23,28 @@
 
 .footerSec2{
     width: 100%;
-    height: 24px;
+    height: 30px;
     display: block;
     background: rgb(43, 40, 40);
-    margin: auto;
+    
     color: grey;
     font-size: 14px;
     text-align: center;
+    padding-bottom: 5px;
+}
+.footerButton{
+    
+    background: none;
+    border: none;
+    color: whitesmoke;
+    font-size: 16px;
+    text-align: center;
+    margin: 0px 40px 0px 40px;
+    
+}
+.footerButton:hover{
+    background: none;
+    border: none;
+    color: rgb(76, 146, 226);
+    font-size: 16px;
 }
