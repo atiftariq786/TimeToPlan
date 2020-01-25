@@ -38,10 +38,7 @@ class SavedList extends Component {
         //completeGoalStyle: false,
         completedGoalId:"no id",
 
-        
     }
-    
- 
     componentDidMount(){
         
         this.getStory();
@@ -95,7 +92,7 @@ class SavedList extends Component {
     showEditStoryHandler =(id, story) => {
 
         console.log("show story edit handler")  
-        console.log({id});
+        //console.log({id});
         console.log({story});
 
         if(id){
@@ -257,41 +254,12 @@ class SavedList extends Component {
         editGoal: false
         })
     }
-    /*
-    acheivedGoalHandler = (id,goal) => {
-
-        //let updateAchievedGoal = this.state.achievedGoal;
-        
-
-        //if(updateAchievedGoal < this.state.goals.length){
-            console.log("increment updateAchievedGoal < this.state.goals.length")
-            this.setState({
-    
-                //achievedGoal: updateAchievedGoal + 1,
-                //achievedGoal: update,
-                //completeGoalStyle: true,
-                //completedGoalId: id,
-    
-            })
-            //console.log(this.state.completeGoalStyle)
-            this.updateCompleteGoal(id,goal);
-       // } 
-        
-
-    }
-    */
     
     render(){
 
         let achievedGoal = this.state.goals.filter(el => el.completeGoal ).length;
-       
-        console.log("increment complete")
-        console.log({Goals:this.state.goals})
-        console.log({achievedGoal})
 
         let remainingGoals = this.state.goals.length - achievedGoal;
-        console.log({remainingGoals});
-        console.log("renders")
        
         let showPosts = "No Story Available";
         if(this.state.posts.length){
@@ -309,7 +277,7 @@ class SavedList extends Component {
                             <Col className ={Styles.editStoryProfileDiv}>
                             <img 
                             
-                            style={{width: "150px", height:"150px"}} 
+                            style={{width: "116px", height:"116px"}} 
                             key={post.id} 
                             src={post.profileImage}
                             alt="Profile">
@@ -318,15 +286,17 @@ class SavedList extends Component {
                             
                             </Col>
                             <Col className ={Styles.editStoryTitle} >
-                            <p key={post.id}>{post.title}</p>
-                            </Col>
-                            <Col className ={Styles.editStoryAuthor}>
-                                <p key={post.id}>Author: {post.author}</p>
-                            </Col>
-                            <Col className ={Styles.editStoryButton}>                                
+                                <p key={post.id}>{post.title}</p>
+                                <Col className ={Styles.editStoryAuthor}>
+                                    <p key={post.id}>Author: {post.author}</p>
+                                </Col>
+                                <Col className ={Styles.editStoryButton}>                                
                                 &nbsp;<Button variant="primary" onClick = {()=> this.showEditStoryHandler(post._id, post)} >Edit</Button>
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
+                                </Col>
                             </Col>
+                            
+                           
 
                         </Row>
                         <Row className ={Styles.editStoryDescriptionDiv}>

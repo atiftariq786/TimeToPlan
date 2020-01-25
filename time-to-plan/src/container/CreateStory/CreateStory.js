@@ -26,7 +26,10 @@ class CreateStory extends Component {
         savedData : []
     }
     componentDidMount(){
+        this.getStory();
     
+    }
+    getStory = () =>{
         API.getStories(function(err, res){
             if(err){
                 console.log("Something Wrong");
@@ -86,17 +89,17 @@ class CreateStory extends Component {
        // console.log(this.state.author);
     }
     postStoryDataHandler= () =>{
-        console.log("post data activate");
 
         if(this.state.story && this.state.title && this.state.author){
  
         const data ={
             title: this.state.title,
             story: this.state.story,
-            profile: this.state.profile,
-            background: this.state.backgroun,
+            profileImage: this.state.profileImage,
+            backgroundImage: this.state.backgroundImage,
             author: this.state.author,
         }
+
         //props comming from savedList.js, story length zero then its true
         if(!this.state.savedData.length){
             API.savedStory(data).then(response =>{
@@ -106,6 +109,7 @@ class CreateStory extends Component {
                     showCreateStory: false,
                     
                 })
+                this.getStory();
             })
         }
     }
