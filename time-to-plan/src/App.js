@@ -8,6 +8,9 @@ import SavedList from "./container/SavedList/SavedList";
 import CreateStory from "./container/CreateStory/CreateStory";
 import PlaningController from "./container/PlaningController/PlaningController";
 import CreateGoals from "./container/CreateGoals/CreateGoals";
+import Login from "./component/Form/Login/login";
+import SignUp from "./component/Form/SignUp/signUp";
+
 
 function App() {
   return (
@@ -15,6 +18,10 @@ function App() {
       <Layout>
         <Switch>
           <Route exact path ="/" component = {PlaningController} />
+
+          <Route exact path ="/login/" component = {Login} />
+          <Route exact path ="/signUp/" component = {SignUp} />
+
           <Route exact path ="/TimeToPlan/" component = {PlaningController} />
           <Route exact path ="/create-story/" component = {CreateStory} />
           <Route exact path ="/create-goals/" component = {CreateGoals} />
