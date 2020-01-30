@@ -26,10 +26,20 @@ export default {
     updateGoal : function(id,data){
         return axios.put("https://safe-anchorage-29156.herokuapp.com/api/goals/" + id,data);
     },
+    
+    
     savedUserSignUp : function(data){
         console.log("client side signup register data")
         console.log({data})
         return axios.post("http://localhost:3001/api/register/", data);
+    },
+
+    savedUseLogin : function(data){
+        return axios.post("http://localhost:3001/api/login/", data);
+    },
+
+    getLogout : function(){
+        return axios.get("http://localhost:3001/api/logout/");
     },
     
 }

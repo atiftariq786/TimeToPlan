@@ -30,3 +30,12 @@
     font-size: 19px;
     font-weight: normal;
 }
+.logout{
+    font-size: 17px;
+}
+.logout:hover{
+    color:red !important;
+    font-size: 17px; 
+    font-weight: bold;  
+    cursor: pointer;
+}

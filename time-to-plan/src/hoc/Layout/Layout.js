@@ -5,11 +5,22 @@ import Toolbar from "../../component/Navigation/Toolbar/Toolbar";
 
 class Layout extends Component {
 
+
     render(){
 
+        let signedIn = localStorage.getItem('signedin');
+        let toolbar = "";
+
+        if(signedIn === "true"){
+            toolbar = (
+                <Toolbar
+                signedIn = {this.props.updateSignedInState}>
+                </Toolbar>);
+        }
+        
         return (
             <Aux>
-                <Toolbar/>
+                {toolbar}
                 <main >
                     {this.props.children}
                 </main>

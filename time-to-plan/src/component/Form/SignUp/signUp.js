@@ -1,13 +1,17 @@
 import React, {Component} from "react";
-import API from "../../utils/API";
+import API from "../../../utils/API";
 import Styles from "./signUp.module.css";
 import Button from "react-bootstrap/Button";
+//import {Link} from "react-router-dom";
+//import Toolbar from "../../Navigation/Toolbar/Toolbar";
 
 class SignUp extends Component {
     
     state = {
         username : "",
-        password : ""
+        password : "",
+        signUpRes: [],
+        currentUsername:"no user",
     }
 
     usernameHandler =(event) =>{
@@ -24,42 +28,48 @@ class SignUp extends Component {
     postSignUpHandler= () =>{
         console.log("post data activate");
 
-        //if(this.state.link && this.state.title && this.state.description){
- 
         const data = {
             username: this.state.username,
             password: this.state.password,
             
         }
-        console.log({data});
         
         if(this.state.username && this.state.password){
 
             API.savedUserSignUp(data).then(response =>{
                 console.log("User SignUp Data Saved");
                 console.log(response);
+                console.log(response.data.success)
+                console.log(response.data.message)
+                if(response.data.success){
+                    
+                    this.props.updateSignedInState(true);
+                    // localStorage.setItem('signedin', true);
+                
+                    this.props.history.push("/create-story/");
 
-                this.setState({
-                    username:"",
-                    password: "",
-                    isValidGoal: true
-                });
-
-            
+                    this.setState({
+                        signUpRes: response.data,
+                        currentUsername:response.data.message,
+                    });
+                }
             }); 
-
+            this.setState({
+                username:"",
+                password: "",
+            
+            });
         }
         else{
             alert("Please fill this form....!")
-        }
-        
-
-            
+        }    
     }
     
     render(){
-        console.log(this.state.username);
-        console.log(this.state.password);
+        
+        console.log("signup testing")
+       // console.log(this.state.signUpRes);
+        //console.log(this.state.currentUsername);
 
         return(
             <div className={Styles.mainDiv}>
@@ -91,6 +101,7 @@ class SignUp extends Component {
                 
                     >SignUp</Button>
                 </form>
+                
                 
                 
 
