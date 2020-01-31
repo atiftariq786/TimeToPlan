@@ -41,13 +41,15 @@ class SignUp extends Component {
                 console.log(response);
                 console.log(response.data.success)
                 console.log(response.data.message)
-                if(response.data.success){
-                    
-                    this.props.updateSignedInState(true);
-                    // localStorage.setItem('signedin', true);
-                
-                    this.props.history.push("/create-story/");
 
+                let username = response.data.message;
+                if(response.data.success){
+                    localStorage.removeItem('username');
+                    
+                    this.props.updateSignedInState("true", username);
+
+                    this.props.history.push("/create-story/");
+                    
                     this.setState({
                         signUpRes: response.data,
                         currentUsername:response.data.message,

@@ -41,7 +41,7 @@ class PlaningController extends Component {
         if(signedIn === "true"){
             login = "";
             signUp = "";
-            welcome = (<p className={Styles.welcome}>Welcome in TimeToPlan</p>);
+            welcome = (<p className={Styles.welcome}>Welcome to {this.props.username}</p>);
         }
     
         return (

@@ -11,26 +11,27 @@ import PlaningController from "./container/PlaningController/PlaningController";
 import CreateGoals from "./container/CreateGoals/CreateGoals";
 import Login from "./component/Form/Login/login";
 import SignUp from "./component/Form/SignUp/signUp";
-//history={browserHistory}
+import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
 
 class App extends Component {
 
   state ={
     signedIn : localStorage.getItem('signedin'),
+    userName : localStorage.getItem('username'),
 }
 
-updateSignedInState =(val) =>{
+updateSignedInState =(val, user) =>{
 
     this.setState({
         signedIn: val,
+        userName: user,
         
     })
     localStorage.setItem('signedin', val);
+    localStorage.setItem('username', user);
     this.forceUpdate();
 }
 
-
-  
   render(){
     
 
@@ -38,15 +39,15 @@ updateSignedInState =(val) =>{
       <Router> 
         <Layout updateSignedInState = {this.updateSignedInState}>
           <Switch>
-            <Route exact path ="/" component = {PlaningController} />
+            <Route exact path ="/" component = {(props)=>{return <PlaningController  {...props} username={this.state.userName} ></PlaningController>}}/>
 
-            <Route exact path ="/login/" component = {(props)=>{return <Login {...props} updateSignedInState={this.updateSignedInState}></Login>}} />
-            <Route exact path ="/signUp/" component = {(props)=>{return <SignUp {...props} updateSignedInState={this.updateSignedInState}></SignUp>}} />
-
-            <Route exact path ="/TimeToPlan/" component = {PlaningController} />
-            <Route exact path ="/create-story/" component = {CreateStory} />
-            <Route exact path ="/create-goals/" component = {CreateGoals} />
-            <Route exact path ="/saved-list/" component = {SavedList} />  
+            <Route path ="/login/" component = {(props)=>{return <Login {...props} updateSignedInState={this.updateSignedInState}></Login>}} />
+            <Route path ="/signUp/" component = {(props)=>{return <SignUp {...props} updateSignedInState={this.updateSignedInState}></SignUp>}} />
+            <Route path ="/TimeToPlan/" component = {PlaningController} />
+            
+            <PrivateRoute exact path = "/create-story/" isLogin={this.state.signedIn} component = {CreateStory}/>
+            <PrivateRoute exact path = "/create-goals/" isLogin={this.state.signedIn} component = {CreateGoals}/>
+            <PrivateRoute exact path = "/saved-list/" isLogin={this.state.signedIn} component = {SavedList}/>
           </Switch>     
         </Layout>
       </Router>

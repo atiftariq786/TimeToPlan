@@ -23,6 +23,7 @@ class Layout extends Component {
                 {toolbar}
                 <main >
                     {this.props.children}
+                    
                 </main>
             
             </Aux>

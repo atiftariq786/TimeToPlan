@@ -39,3 +39,11 @@
     font-weight: bold;  
     cursor: pointer;
 }
+.username{
+    color:grey;
+    text-align: center;
+    font-size: 15px;
+    margin:auto 0px auto 0px;
+    padding: 5px;
+
+}

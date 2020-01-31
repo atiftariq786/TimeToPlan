@@ -38,16 +38,18 @@ class Login extends Component {
                 console.log("User login Data Saved");
                 console.log(response);
                 
-
+            let username = response.data.message;
                 if(response.data.success){
+
+                    localStorage.removeItem('username');
                     
-                    this.props.updateSignedInState(true);
-                    
+                    this.props.updateSignedInState("true", username );
+
+                    //localStorage.setItem('username', username);
                     //localStorage.setItem('signedin', true);
             
                     this.props.history.push("/create-story/");
-
-                    //this.forceUpdate()
+                    
                 }
             
             }); 
