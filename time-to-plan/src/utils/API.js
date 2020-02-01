@@ -1,16 +1,20 @@
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 export default {
 
     savedStory : function(data){
-        return axios.post("https://safe-anchorage-29156.herokuapp.com/api/create-story", data);
+        return axios.post("http://localhost:3001/api/create-story", data);
     },
     getStories : function(){
-        return axios.get("https://safe-anchorage-29156.herokuapp.com/api/stories");
+        return axios.get("http://localhost:3001/api/stories");
     },
     deleteStory : function(id){
-        return axios.delete("https://safe-anchorage-29156.herokuapp.com/api/story/" + id);
+        return axios.delete("http://localhost:3001/api/story/" + id);
     },
+
+
     updateStory : function(id,data){
         return axios.put("https://safe-anchorage-29156.herokuapp.com/api/story/" + id,data);
     },
@@ -31,15 +35,15 @@ export default {
     savedUserSignUp : function(data){
         console.log("client side signup register data")
         console.log({data})
-        return axios.post("http://localhost:3001/api/register/", data);
+        return axios.post("http://localhost:3001/auth/register/", data);
     },
 
     savedUseLogin : function(data){
-        return axios.post("http://localhost:3001/api/login/", data);
+        return axios.post("http://localhost:3001/auth/login/", data);
     },
 
     getLogout : function(){
-        return axios.get("http://localhost:3001/api/logout/");
+        return axios.get("http://localhost:3001/auth/logout/");
     },
     
 }
