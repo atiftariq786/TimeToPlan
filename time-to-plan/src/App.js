@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {HashRouter, Route, Switch } from "react-router-dom";
 
 import './App.css';
 import Layout from './hoc/Layout/Layout';
@@ -35,7 +35,7 @@ updateSignedInState =(val, user) =>{
     
 
     return(
-      <Router basename = "/"> 
+      <HashRouter basename = "/"> 
         <Layout updateSignedInState = {this.updateSignedInState}>
           <Switch>
             <Route exact path ="/" component = {(props)=>{return <PlaningController  {...props} username={this.state.userName} ></PlaningController>}}/>
@@ -49,7 +49,7 @@ updateSignedInState =(val, user) =>{
             <PrivateRoute exact path = "/saved-list/" isLogin={this.state.signedIn} component = {SavedList}/>
           </Switch>     
         </Layout>
-      </Router>
+      </HashRouter>
     )
   }
   
