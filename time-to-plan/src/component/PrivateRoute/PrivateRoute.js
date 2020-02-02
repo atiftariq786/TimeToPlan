@@ -7,8 +7,6 @@ const privateRoute = ({component: Component, ...rest}) => {
         <Route
         {...rest}
         render = {(props) => {
-                console.log("inside private route");
-                console.log(rest.isLogin)
             return rest.isLogin === "true" ? <Component {...props}/> : <Redirect to ="/login/" />}
         }>
         
