@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
 import Styles from "./Toolbar.module.css";
 import API from "../../../utils/API";
 
-
 class Toolbar extends Component {
 
     state={
@@ -12,36 +11,27 @@ class Toolbar extends Component {
         userLogout:true,
         navigateLogout:false,
     }
-  
+
     logoutHandler = () => {
-
         API.getLogout().then(response => {
-            
-            console.log("Get logout Method")
+            console.log("User logout")
             console.log(response);
-
             this.props.signedIn("false")
-            //this.forceUpdate()
-        
         })
-        
     }
 
 render(){
 
     let signedIn = localStorage.getItem('signedin');
     let username = localStorage.getItem('username');
-    console.log({username})
-    
     let temp ="";
     if(signedIn === "true"){
         temp =(
-            <NavLink to="/"><Navbar.Brand className = {Styles.logout} onClick={this.logoutHandler}>Logout</Navbar.Brand></NavLink>
-        
+            <NavLink to="/">
+                <Navbar.Brand className = {Styles.logout} onClick={this.logoutHandler}>Logout</Navbar.Brand>
+            </NavLink>
         );
-    }
-
-    
+    }    
     return(
         
         <Navbar className={Styles.Navbar} collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -51,9 +41,7 @@ render(){
             <NavLink to="/saved-list/"><Navbar.Brand className = {Styles.appContent}>Your Plans</Navbar.Brand></NavLink>
             {temp}{<p className={Styles.username}>Signed in:  {username}</p>}
         </Navbar>
-        
         )
     }
-
 }
 export default Toolbar;

@@ -50,10 +50,6 @@
     padding: 10px 10px 10px 10px;
 
 }
-
-
-
-
 .mediaDivTwo{
     position: relative;
     width:50%;
@@ -67,14 +63,10 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-    
 }
-
 .mediaDivTwo:hover .image{
     opacity: 0.4;
-
 }
 .mediaDivTwo:hover .mediaTwoHover{
     opacity: 1;
-    
 }

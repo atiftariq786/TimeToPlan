@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Form from "react-bootstrap/Form";
-//import SaveList from "../../../container/SavedList/SavedList";
 
 const InputEditStoryModal = props => {
 
@@ -18,49 +17,41 @@ const InputEditStoryModal = props => {
 
     const storyTitleHandler = e => {
         e.preventDefault();
-        console.log(e.target.value)
         storyTitle= e.target.value
     }
 
     const storyDescriptionHandler = e => {
         e.preventDefault();
-        console.log(e.target.value)
         storyDescription = e.target.value
     }
     
     const storyBackgroundHandler = e => {
         e.preventDefault();
-        console.log(e.target.value)
         storyBackground = e.target.value
     }
     const storyProfileHandler = e => {
         e.preventDefault();
-        console.log(e.target.value)
         storyProfile = e.target.value
     }
     const storyAuthorHandler = e => {
         e.preventDefault();
-        console.log(e.target.value)
         storyAuthor = e.target.value
     }
 
     return (
         <ButtonToolbar>
             <Modal
-                
                 size="lg"
                 show={lgShow}
                 onHide={() => {
                     setLgShow(false)
-                    //props.cancelEditGoal()
-                    }}
+                }}
                 aria-labelledby="example-modal-sizes-title-lg">
-                
+
                 <Modal.Header>
                     <Modal.Title id="example-modal-sizes-title-lg">
                     Edit Story
                     </Modal.Title>
-                
                 </Modal.Header>
                 
                 <Form className = {Styles.editStoryForm}>

@@ -9,10 +9,8 @@ class Login extends Component {
     state = {
         username : "",
         password : "",
-        
     }
     
-
     usernameHandler =(event) =>{
         this.setState({
             username: event.target.value
@@ -29,7 +27,6 @@ class Login extends Component {
         const data = {
             username: this.state.username,
             password: this.state.password,
-            
         }
         
         if(this.state.username && this.state.password){
@@ -44,12 +41,8 @@ class Login extends Component {
                     localStorage.removeItem('username');
                     
                     this.props.updateSignedInState("true", username );
-
-                    //localStorage.setItem('username', username);
-                    //localStorage.setItem('signedin', true);
             
                     this.props.history.push("/create-story/");
-                    
                 }
             
             }); 
@@ -63,10 +56,7 @@ class Login extends Component {
         else{
             alert("Please fill this form....!")
         }
-    
     }
-    
-    
     render(){
 
         return(
@@ -76,7 +66,6 @@ class Login extends Component {
                     <input 
                     className={Styles.inputDiv} 
                     type="text" 
-                    //name="username"
                     placeholder="username"
                     value = {this.state.username} 
                     onChange={this.usernameHandler}>
@@ -84,7 +73,6 @@ class Login extends Component {
 
                     <input 
                     className={Styles.inputDiv} 
-                    //name="password"
                     type="text" 
                     placeholder="password"
                     value = {this.state.password} 
@@ -96,24 +84,16 @@ class Login extends Component {
                     type= "button" 
                     onClick ={this.loginHandler} 
                     size="sm" 
-                
                     >Login</Button>
                     <Link to="/signUp/">
                         <Button
-                            //className = {Styles.signUpButton}
                             variant="primary" 
                             type= "button" 
                             size="sm" 
-                            //onClick={this.signUpHandler }
                             >Sign Up
                         </Button>
                     </Link>
-                
                 </form>
-                
-                
-
-        
         </div>
         )
     }

@@ -2,8 +2,7 @@ import React from "react";
 import {Route, Redirect} from "react-router-dom";
 
 const privateRoute = ({component: Component, ...rest}) => {
-    console.log("Private route")
-    console.log(rest.isLogin, typeof rest.isLogin)
+
     return(
         <Route
         {...rest}
@@ -15,7 +14,5 @@ const privateRoute = ({component: Component, ...rest}) => {
         
         </Route>
     )
-
 }
-
 export default privateRoute;

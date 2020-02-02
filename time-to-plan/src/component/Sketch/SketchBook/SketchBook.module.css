@@ -4,7 +4,6 @@
     display: flex;
     background: black;
 }
-
 .sketchDivOne{
     position: relative;
     width:50%;
@@ -25,10 +24,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    
+    text-align: center;   
 }
-
 .sketchDivOne:hover .image{
     opacity: 0.4;
 
@@ -53,14 +50,7 @@
     color: white;
     font-size: 14px;
     text-align: left;
-
 }
-
-
-
-
-
-
 .sketchDivTwo{
     width:50%;
 
