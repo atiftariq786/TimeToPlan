@@ -35,7 +35,7 @@ updateSignedInState =(val, user) =>{
     
 
     return(
-      <Router> 
+      <Router basename = "/"> 
         <Layout updateSignedInState = {this.updateSignedInState}>
           <Switch>
             <Route exact path ="/" component = {(props)=>{return <PlaningController  {...props} username={this.state.userName} ></PlaningController>}}/>
