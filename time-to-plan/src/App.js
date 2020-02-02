@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {HashRouter, Route, Switch } from "react-router-dom";
 
 import './App.css';
 import Layout from './hoc/Layout/Layout';
@@ -35,23 +35,21 @@ updateSignedInState =(val, user) =>{
     
 
     return(
-      <Router basename = "/TimeToPlan/"> 
+      <HashRouter basename = "/TimeToPlan/"> 
         <Layout updateSignedInState = {this.updateSignedInState}>
           <Switch>
             <Route exact path ="/" component = {(props)=>{return <PlaningController  {...props} username={this.state.userName} ></PlaningController>}}/>
 
             <Route path ="/login/" component = {(props)=>{return <Login {...props} updateSignedInState={this.updateSignedInState}></Login>}} />
             <Route path ="/signUp/" component = {(props)=>{return <SignUp {...props} updateSignedInState={this.updateSignedInState}></SignUp>}} />
-            <Route path ="/TimeToPlan/" component = {(props)=>{return <PlaningController  {...props} username={this.state.userName} ></PlaningController>}} />
             
             <PrivateRoute exact path = "/create-story/" isLogin={this.state.signedIn} component = {CreateStory}/>
             <PrivateRoute exact path = "/create-goals/" isLogin={this.state.signedIn} component = {CreateGoals}/>
             <PrivateRoute exact path = "/saved-list/" isLogin={this.state.signedIn} component = {SavedList}/>
           </Switch>     
         </Layout>
-      </Router>
+      </HashRouter>
     )
   }
-  
 }
 export default App;
