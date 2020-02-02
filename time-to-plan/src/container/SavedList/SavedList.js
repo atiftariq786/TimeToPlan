@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Styles from "./SavedList.module.css";
 import Button from "react-bootstrap/Button";
+
 import API from "../../utils/API";
 import InputEditGoal from "../../component/Form/InputGoals/inputEditGoal";
 import InputEditStory from "../../component/Form/InputStory/inputEditStory";
@@ -35,7 +35,6 @@ class SavedList extends Component {
         editStory: false,
         editStoryId:"no id",
 
-        //completeGoalStyle: false,
         completedGoalId:"no id",
 
     }
@@ -51,8 +50,8 @@ class SavedList extends Component {
             }
             
         }).then(response => {
-            console.log("Get Method")
-           // console.log(response);
+            console.log("Get user story")
+            console.log(response);
         
             this.setState({
                 posts : response.data.data
@@ -69,8 +68,8 @@ class SavedList extends Component {
             }
             
         }).then(response => {
-            console.log("Get Goals Method")
-         console.log(response.data);
+            console.log("Get user goals")
+            console.log(response.data);
         
             this.setState({
                 goals : response.data.data,
@@ -79,21 +78,15 @@ class SavedList extends Component {
         }) 
     }
 
-    
     deleteStory = id => {
         
         API.deleteStory(id).then( response => {
             const newArr = this.state.posts.filter( el => el._id !== id);
             this.setState({posts : newArr});
-            //console.log(response)
-            }
-        );
+        });
     }
-    showEditStoryHandler =(id, story) => {
 
-        console.log("show story edit handler")  
-        //console.log({id});
-        console.log({story});
+    showEditStoryHandler =(id, story) => {
 
         if(id){
             this.setState({
@@ -106,14 +99,11 @@ class SavedList extends Component {
                 editStoryId: id,
             })
         }  
-        
     }
+
     saveUpdateStory = (data) => {
         
-        console.log("save edit story data will be update");
-        console.log({data})
         let id = this.state.editStoryId;
-
         let newData = {
             title: this.state.storyTitle,
             story: this.state.storyDescription,
@@ -142,48 +132,36 @@ class SavedList extends Component {
         
         API.updateStory(id,newData).then( response => {
             
-            console.log({response});
             this.getStory();
             
             this.setState({
                 editStory: false,
             });
-        
-            //window.location.reload(false);
         });
         
     }
 
     cancelEditStoryHandler = () => {
-        console.log("story cancel")
         this.setState({
         editStory: false,
         })
     }
     //===========================================================
     deleteGoal = id => {
-        
         API.deleteGoal(id).then( response => {
             const newArr = this.state.goals.filter( el => el._id !== id);
             this.setState({goals : newArr});
-            //console.log(response)
-        }
-        );
+        });
     }
 
     saveUpdateGoal = (data) => {
-        
-        console.log("save edit data will be update")
 
-            let id = this.state.editGoalId;
-            let newData = {
+        let id = this.state.editGoalId;
+        let newData = {
             title: this.state.title,
             link: this.state.link,
             description: this.state.description,
-        
         };
-        
-        console.log({data})
 
         if(data.title){
             newData.title = data.title
@@ -195,11 +173,8 @@ class SavedList extends Component {
         if(data.description){
             newData.description = data.description
         }
-        
-
+    
         this.tempUpdate(id,newData);
-        
-
     }
     updateCompleteGoal = (id, data) =>{
         
@@ -209,35 +184,23 @@ class SavedList extends Component {
             description: data.description,
             completeGoal: !data.completeGoal,
         };
-        console.log({id})
-        console.log({data})
-        //console.log(this.state.completeGoalStyle)
-
-        
-        
         this.tempUpdate(id,newData);
-
     }
+
     tempUpdate = (id,data) =>{
 
         API.updateGoal(id,data).then( response => {
-            //const newArr = this.state.posts.filter( el => el._id !== id);
-            console.log({response});
-           
-                this.getGoals()
-            
-                this.setState({
     
-                    editGoal: false,
-                });
+            this.getGoals()
             
-            
-            //window.location.reload(false);
+            this.setState({
+    
+                editGoal: false,
+            });
         });
-
     }
-    showEditGoalHandler =(id, goal) => {
-        console.log("show edit handler")  
+
+    showEditGoalHandler =(id, goal) => { 
         
         if(id){
             this.setState({
@@ -260,7 +223,7 @@ class SavedList extends Component {
         let achievedGoal = this.state.goals.filter(el => el.completeGoal ).length;
 
         let remainingGoals = this.state.goals.length - achievedGoal;
-       
+    
         let showPosts = "No Story Available";
         if(this.state.posts.length){
             showPosts = this.state.posts.map(post => {
@@ -283,7 +246,6 @@ class SavedList extends Component {
                             alt="Profile">
                             </img>  
                             
-                            
                             </Col>
                             <Col className ={Styles.editStoryTitle} >
                                 <p key={post.id}>{post.title}</p>
@@ -295,22 +257,18 @@ class SavedList extends Component {
                                 &nbsp;<Button variant="danger" onClick = {()=> this.deleteStory(post._id)}> Delete</Button>
                                 </Col>
                             </Col>
-                            
-                           
-
                         </Row>
                         <Row className ={Styles.editStoryDescriptionDiv}>
                             <Col className ={Styles.editStoryDescription}>                                
                                 <p key={post.id}> {post.story}</p>                                
                             </Col>                            
                         </Row>
-                    
                     </Row>
                 )
             })
         }
         //==============================================
-        let showGoals = "No Goals Available";
+        let showGoals = "Goals not available";
         if(this.state.goals.length){
             showGoals = this.state.goals.map(goal => {
                 
@@ -372,45 +330,6 @@ class SavedList extends Component {
                 )
             })
         }
-        /*
-        if(this.state.goals.length && this.state.completeGoalStyle){
-            showGoals = this.state.goals.map(goal => {
-                
-                return (
-                    <Row className = {Styles.GoalParentRowDarkDiv}>
-                        <Row className = {Styles.GoalChildRow}>
-                            <Col className = {Styles.GoalImageDarkDiv}>
-                                <img  
-                                style={{width: "100%", height:"220px"}} 
-                                key={goal.id} 
-                                src={goal.link}
-                                alt="Life Goals">
-                                </img>   
-                            </Col>
-                            
-                            
-                            
-                        </Row>
-                        <Row className = {Styles.GoalChildRow}>
-                            <Col className = {Styles.GoalTittle} >            
-                                <h4 key={goal.id} >{goal.title}</h4>
-                            </Col>
-                        
-                            <Col className = {Styles.GoalButtons}>
-                               
-                                &nbsp;<Button variant="success" size="sm" > Activate</Button>
-
-                            </Col>
-                                
-                        </Row>
-                    </Row>
-
-                )
-            })
-        }
-        */
-
-
         //=======================================================
         let inputEditGoal = "";
 
@@ -435,9 +354,8 @@ class SavedList extends Component {
 
         let inputEditStory = "";
         if(this.state.editStory){
-            console.log("welcome edit story new")
+            
             inputEditStory = (
-                
                     <InputEditStory
                         id={this.state.editStoryId}
                         showEditStoryModal = {this.state.editStory}
@@ -451,17 +369,13 @@ class SavedList extends Component {
                         saveUpdateStory={this.saveUpdateStory}>
                     
                     </InputEditStory>
-
-                )
-        
+            );
         }
 
         return(
             
             <Container className={Styles.container}>
-            
-                <Row> 
-
+                <Row>
                     <Col> 
                     <h1 className={Styles.title}>Your Life Goals Saved List</h1> 
                     <h3>Goals Achievments Summary</h3>                       
@@ -486,29 +400,22 @@ class SavedList extends Component {
                 </Row>
                 <Row>
                     <Col>
-                    <h3>Your Story</h3>  
-                    <div className={Styles.Story}>
-                        <div>                        
-                            {showPosts}
+                        <h3>Your Story</h3>  
+                        <div className={Styles.Story}>
+                            <div>                        
+                                {showPosts}
+                            </div>
                         </div>
-                        
-                    
-                    </div>
-                    
                     </Col>
-                    
                 </Row>
                 <Row>                    
                     <Col>
                         <h3>Your Goals List</h3>  
-                        
                         {showGoals} 
                         {inputEditGoal}
                         {inputEditStory}
-                    
                     </Col>     
                 </Row>
-                
             </Container>
         )
     }

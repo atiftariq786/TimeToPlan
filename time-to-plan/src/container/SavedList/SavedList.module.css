@@ -10,9 +10,7 @@ h1{
     margin-top: 1px;
     width:100%;
     height:250px;
-   
     border: 1px solid #ccc;
-    
 }
 .Summary{
     margin: 5px;
@@ -20,21 +18,16 @@ h1{
     height:240px;
     color:black;
     font-size: 20px;
-   
     border: 1px solid #ccc;
-    
 }
 .Graph{
     margin: 5px;
     width:50%;
     height:240px;
     color :red;
-   
     border: 1px solid #ccc;
-    
 }
 .editStoryMainDiv{
-    
     margin-top: 1px;
     margin-left: 0px;
     margin-bottom: 15px;
@@ -42,25 +35,20 @@ h1{
     height:500px;
     color: rgb(37, 34, 34);
     border: 1px solid #ccc;
-    
 }
 .editStoryImageDiv{
-    
     margin-top: 0px;
     margin-left: 0px;
     width:100%;
     height:300px;
     color: rgb(37, 34, 34);
-    
 }
 .editStoryDescriptionDiv{
-
     margin-top: 0px;
     margin-left: 0px;
     width:100%;
     height:177px;
     color: rgb(37, 34, 34);
-    
 }
 .editStoryProfileDiv{
     position: relative;
@@ -72,7 +60,6 @@ h1{
     position: absolute;
     top: 80px;
     left:50px;
-
 }
 .editStoryTitle{
     color:white;
@@ -84,7 +71,6 @@ h1{
     text-align: center;
     font-size: 22px;
     padding-left: 30px;
-
 }
 .editStoryAuthor{
     color:white;
@@ -96,30 +82,21 @@ h1{
     text-align: center;
     font-size: 14px;
     margin: auto;
-    
 }
 .editStoryButton{
-    
     position: relative;
     top: -30px;
     text-align: center;
     margin: auto;
-    
 }
 .editStoryDescription{
-
     background: rgba(128, 128, 128, 0.281);
     width: 100%;
     height: 187px;
     text-align: left;
     font-size: 16px;
-    
     padding: 25px 10px 10px 10px;
-    overflow: scroll;
-    
-   
-   
-    
+    overflow: scroll; 
 }
 .PlansDetail{
     display: flex;
@@ -130,22 +107,18 @@ h1{
     border: 1px solid #ccc;    
 }
 .Plans{
-    
     margin-top: 1px;
     width:100%;
     height:auto min-content;
     color: rgb(37, 34, 34);
     overflow:scroll;
-    
 }
-
 .Goal{
     margin-top: 5px;
     width:100%;
     height:270px;
     color: rgb(37, 34, 34);
     border: 1px solid #ccc;
-    
 }
 .GoalParentRow{
     width: 100%;
@@ -163,8 +136,6 @@ h1{
     max-width:341px;
     margin: 1px;
     padding: 0px;
-    
-    
 }
 .GoalDescription{
     margin-top: 2px;
@@ -173,33 +144,26 @@ h1{
     height: 220px;
     overflow: scroll;
 }
-
 .GoalTittle{
     color: black;
 }
-
 .GoalButtons{
     max-width: 235px;
     display : flex;
     justify-content: space-between;
-    margin-bottom: 3px;
-    
+    margin-bottom: 3px;    
 }
-
-
 .GoalParentRowDarkDiv{
     width: 100%;
     margin-top: 20px;
     margin-left: 0px;
     height:270px;
     border: 1px solid #ccc;
-    background: rgba(128, 128, 128, 0.205);
-    
+    background: rgba(128, 128, 128, 0.205);   
 }
 .GoalImageDarkDiv{
     max-width:100%;
     margin: 1px;
     padding: 0px;
-    
 }
 

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//import { BrowserHistory } from 'react-router';
 
 import './App.css';
 import Layout from './hoc/Layout/Layout';

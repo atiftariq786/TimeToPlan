@@ -1,10 +1,8 @@
 import React, {Component} from "react";
-import API from "../../utils/API";
 import {Link} from "react-router-dom";
 
+import API from "../../utils/API";
 import Container from "react-bootstrap/Container";
-//import Row from "react-bootstrap/Row";
-//import Col from "react-bootstrap/Col";
 import InputStory from "../../component/Form/InputStory/inputStory";
 import Styles from "./CreateStory.module.css";
 import Button from "react-bootstrap/Button";
@@ -19,32 +17,25 @@ class CreateStory extends Component {
         author : "",
         showCreateStory : true,
         showPostStory: "nodata",
-        //isValidTitle: true,
-        //isValidStory: true,
-        //isValidAuthor: true,
         isValid: true,
         savedData : []
     }
     componentDidMount(){
+
         this.getStory();
-    
     }
     getStory = () =>{
         API.getStories(function(err, res){
             if(err){
                 console.log("Something Wrong");
             }
-            
-        this.checkDatabaseHandler();
-            
         }).then(response => {
-            console.log("Get Method")
+            console.log("Get User Story")
             console.log(response.data.data);
         
             this.setState({
                 savedData : response.data.data
             })
-            console.log(this.state.savedData);
         })
 
     }
@@ -52,76 +43,63 @@ class CreateStory extends Component {
     
         this.setState({
             title: event.target.value,
-            //isValidTitle: true
         })
-        //console.log(this.state.title);
     }
     storyEventHandler = (event) => {
     
         this.setState({
             story: event.target.value,
-           // isValidStory: true
         })
-        //console.log(this.state.story);
     }
     profileImageEventHandler = (event) => {
     
         this.setState({
             profileImage: event.target.value,
-           // isValidStory: true
         })
-        //console.log(this.state.story);
     }
     backgroundImageEventHandler = (event) => {
     
         this.setState({
             backgroundImage: event.target.value,
-           // isValidStory: true
         })
-        //console.log(this.state.story);
     }
     authorEventHandler = (event) => {
     
         this.setState({
             author: event.target.value,
-            //isValidAuthor: true
         })
-       // console.log(this.state.author);
     }
     postStoryDataHandler= () =>{
 
         if(this.state.story && this.state.title && this.state.author){
  
-        const data ={
-            title: this.state.title,
-            story: this.state.story,
-            profileImage: this.state.profileImage,
-            backgroundImage: this.state.backgroundImage,
-            author: this.state.author,
-        }
+            const data ={
+                title: this.state.title,
+                story: this.state.story,
+                profileImage: this.state.profileImage,
+                backgroundImage: this.state.backgroundImage,
+                author: this.state.author,
+            }
 
-        //props comming from savedList.js, story length zero then its true
-        if(!this.state.savedData.length){
-            API.savedStory(data).then(response =>{
-                console.log("Data Saved");
-                console.log(response);
-                this.setState({
-                    showCreateStory: false,
-                    
+            if(!this.state.savedData.length){
+                API.savedStory(data).then(response =>{
+                    console.log("Post Story Data Saved");
+                    console.log(response);
+                    this.setState({
+                        showCreateStory: false,
+                    })
+                    this.getStory();
                 })
-                this.getStory();
+            }
+        }
+        else{
+            this.setState ({
+                isValid: false
             })
         }
     }
-    else{
-        this.setState ({
-            isValid: false
-        })
-    }
-
-    }
     render(){
-        let showSavedData = "No Story Available";
+        let showSavedData = "Story not available";
         
         if(this.state.savedData.length){
             showSavedData = this.state.savedData.map(arrData => {
@@ -132,7 +110,6 @@ class CreateStory extends Component {
                                 style={{width: "100%", height:"100vh"}} 
                                 key={arrData.id} 
                                 src={arrData.backgroundImage}
-                                //src={"https://wallpaperplay.com/walls/full/5/7/1/323706.jpg"}
                                 alt="Background">
                             </img> 
                         </div>    
@@ -181,42 +158,41 @@ class CreateStory extends Component {
         }
 
         let showCreateStoryTemp = null;
-        console.log("Welcome Create Story")
         
         if(this.state.showCreateStory && !this.state.savedData.length){
-            showCreateStoryTemp = ( <div className={Styles.createStoryInputForm}>
+            showCreateStoryTemp = (
                 
-                <div className={Styles.createStoryFormTitle}>     
-                                
-                <InputStory 
-                writeTitle = {this.state.title}
-                writeTitleHandler = {this.titleEventHandler}
-                writeStory = {this.state.story}
-                writeStoryHandler={this.storyEventHandler}
+                <div className={Styles.createStoryInputForm}>
+                    <div className={Styles.createStoryFormTitle}>                  
+                        <InputStory 
+                        writeTitle = {this.state.title}
+                        writeTitleHandler = {this.titleEventHandler}
+                        writeStory = {this.state.story}
+                        writeStoryHandler={this.storyEventHandler}
 
-                writeProfileImage = {this.state.profileImage}
-                writeProfileImageHandler={this.profileImageEventHandler}
-                writeBackgroundImage = {this.state.backgroundImage}
-                backgroundImageHandler={this.backgroundImageEventHandler}
+                        writeProfileImage = {this.state.profileImage}
+                        writeProfileImageHandler={this.profileImageEventHandler}
+                        writeBackgroundImage = {this.state.backgroundImage}
+                        backgroundImageHandler={this.backgroundImageEventHandler}
 
 
-                writeAuthor = {this.state.author}
-                writeAuthorHandler = {this.authorEventHandler}
-                isValidCheck = {this.state.isValid}
-                submitStory = {this.postStoryDataHandler}
-                >
-                </InputStory> 
-                </div>            
-            </div>       )
+                        writeAuthor = {this.state.author}
+                        writeAuthorHandler = {this.authorEventHandler}
+                        isValidCheck = {this.state.isValid}
+                        submitStory = {this.postStoryDataHandler}
+                        >
+                        </InputStory> 
+                    </div>            
+                </div>
+            )
         
         }
         else {
             showCreateStoryTemp = (
                 <div>
-                {showSavedData}
+                    {showSavedData}
                 </div>
             )   
-
         }       
         return(
             <Container className = {Styles.createStoryContainerDiv}>

@@ -1,18 +1,17 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 import Aux from "../../hoc/Aux/Aux";
 import Carousel from "../../component/Carousel/Carousel";
 import Media from "../../component/Media/MediaStory/MediaStory";
 import Footer from "../../component/Footer/footer";
 import SketchBook from "../../component/Sketch/SketchBook/SketchBook";
 import Styles from "./PlaningController.module.css";
-import Button from "react-bootstrap/Button";
-import {Link} from "react-router-dom";
-//import SignUp from "../../component/Form/SignUp/signUp";
 
 class PlaningController extends Component {
 
     
-
     render(){
         let signedIn = localStorage.getItem("signedin");
 
@@ -57,11 +56,13 @@ class PlaningController extends Component {
                         {signUp}
                         {welcome}
                     </div>
+
                     <div>
                         <Media />
                     </div>
                 
                     <div  className={Styles.sketch}> <SketchBook/></div>
+                    
                     <div>
                         <Footer></Footer>
                     </div>

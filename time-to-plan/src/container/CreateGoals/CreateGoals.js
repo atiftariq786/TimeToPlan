@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Styles from "./CreateGoals.module.css";
-import API from "../../utils/API";
 
+import API from "../../utils/API";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,36 +17,12 @@ class CreateGoals extends Component {
         isValidGoal: true
     }
 
-    /*
-    componentDidMount(){
-    
-        API.getStories(function(err, res){
-            if(err){
-                console.log("Something Wrong");
-            }
-            
-        this.checkDatabaseHandler();
-            
-        }).then(response => {
-            console.log("Get Method")
-            console.log(response.data.data);
-        
-            this.setState({
-                savedGoalData : response.data.data
-            })
-            console.log(this.state.savedGoalData);
-        })
-
-    }
-    */
-
     titleEventHandler = (event) => {
     
         this.setState({
             title: event.target.value,
             isValidGoal: true
         })
-       // console.log(this.state.title);
     }
     linkEventHandler = (event) => {
     
@@ -54,7 +30,6 @@ class CreateGoals extends Component {
             link: event.target.value,
             isValidGoal: true
         })
-        //console.log(this.state.link);
     }
     descriptionEventHandler = (event) => {
     
@@ -62,13 +37,9 @@ class CreateGoals extends Component {
             description: event.target.value,
             isValidGoal: true
         })
-        //console.log(this.state.description);
     }
     
     postGoalDataHandler= () =>{
-        console.log("post data activate");
-
-        //if(this.state.link && this.state.title && this.state.description){
  
         const data = {
             title: this.state.title,
@@ -79,7 +50,7 @@ class CreateGoals extends Component {
         if(this.state.link && this.state.title && this.state.description){
 
             API.savedGoal(data).then(response =>{
-                console.log("Data Saved");
+                console.log("Post Goal Data Saved");
                 console.log(response);
 
                 this.setState({
@@ -88,22 +59,14 @@ class CreateGoals extends Component {
                     description: "",
                     isValidGoal: true
                 });
-
-            
             }); 
-
         }
         else{
-            this.setState({
-                
+            this.setState({  
                 isValidGoal: false
             });
-        }
-
-            
+        }  
     }
-    
-
     render(){
 
         
@@ -140,7 +103,6 @@ class CreateGoals extends Component {
                     </Col>     
                 </Row>
                 
-
                 <Row>
                     <Col>
                     <div className={Styles.Temp}>
@@ -148,15 +110,11 @@ class CreateGoals extends Component {
                         style={{width: "100%", height:"250px", marginTop: "5px" }} 
                         src="https://quotefancy.com/media/wallpaper/3840x2160/1142003-Lee-Kuan-Yew-Quote-If-you-want-to-reach-your-goals-and-dreams-you.jpg" alt="text"></img>
                     </div>
-                    </Col>
-                    
+                    </Col> 
                 </Row>
                 
             </Container>
-            
-        
         )
     }
-
 }
 export default CreateGoals;

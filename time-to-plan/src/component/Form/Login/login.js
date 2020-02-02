@@ -34,7 +34,7 @@ class Login extends Component {
         
         if(this.state.username && this.state.password){
 
-            API.savedUseLogin(data).then(response =>{
+            API.savedUserLogin(data).then(response =>{
                 console.log("User login Data Saved");
                 console.log(response);
                 
