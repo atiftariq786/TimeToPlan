@@ -61,39 +61,49 @@ class Login extends Component {
 
         return(
             <div className={Styles.mainDiv}>
-            <h2>Login Form</h2>
-                <form className={Styles.formDiv}>
-                    <input 
-                    className={Styles.inputDiv} 
-                    type="text" 
-                    placeholder="username"
-                    value = {this.state.username} 
-                    onChange={this.usernameHandler}>
-                    </input>
+                <div className={Styles.loginImage}>
+                    <img
+                    style={{width: "100%", height:"100vh" }} 
+                    src={require("../../../images/loginPage.jpg")} alt="Login Page"></img>
 
-                    <input 
-                    className={Styles.inputDiv} 
-                    type="text" 
-                    placeholder="password"
-                    value = {this.state.password} 
-                    onChange={this.passwordHandler}>
-                    </input>
-                    
-                    <Button
-                    variant="success" 
-                    type= "button" 
-                    onClick ={this.loginHandler} 
-                    size="sm" 
-                    >Login</Button>
-                    <Link to="/signUp/">
+                </div>
+
+                <div className={Styles.loginForm}>
+                    <h2 className={Styles.loginTitle}>Login</h2>
+                    <form className={Styles.formDiv}>
+                        <input 
+                        className={Styles.inputDiv} 
+                        type="text" 
+                        placeholder="Username"
+                        value = {this.state.username} 
+                        onChange={this.usernameHandler}>
+                        </input>
+
+                        <input 
+                        className={Styles.inputDiv} 
+                        type="text" 
+                        placeholder="Password"
+                        value = {this.state.password} 
+                        onChange={this.passwordHandler}>
+                        </input>
+                        
                         <Button
-                            variant="primary" 
-                            type= "button" 
-                            size="sm" 
-                            >Sign Up
-                        </Button>
-                    </Link>
-                </form>
+                        className={Styles.loginButton}
+                        variant="success" 
+                        type= "button" 
+                        onClick ={this.loginHandler} 
+                        size="sm" 
+                        >Login</Button>
+                        <p 
+                            className={Styles.signupText}>
+                            Don't have an account? {<Link to="/signUp/" className={Styles.signupButton}>Sign Up</Link>}
+                        </p>
+                        
+                        <Link to="/" className={Styles.backButton}>
+                            back
+                        </Link>
+                    </form>
+                </div>
         </div>
         )
     }

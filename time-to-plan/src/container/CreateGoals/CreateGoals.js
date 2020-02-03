@@ -92,7 +92,7 @@ class CreateGoals extends Component {
                         <div className={Styles.titleImage}>
                         <img
                                 style={{width: "100%", height:"270px", margin: "1px" }} 
-                                src="https://www.setaswall.com/wp-content/uploads/2017/03/Artistic-Landscape-4K-Wallpaper-3840x2160.jpg" alt="sketch"></img>
+                                src={require("../../images/createGoal1.jpg")} alt="Create Goal"></img>
                             
                             <div className={Styles.quotes}>
                             <p >Without plan nothing to achieve.......!</p>
@@ -108,7 +108,7 @@ class CreateGoals extends Component {
                     <div className={Styles.Temp}>
                         <img
                         style={{width: "100%", height:"250px", marginTop: "5px" }} 
-                        src="https://quotefancy.com/media/wallpaper/3840x2160/1142003-Lee-Kuan-Yew-Quote-If-you-want-to-reach-your-goals-and-dreams-you.jpg" alt="text"></img>
+                        src={require("../../images/createGoal2.jpg")} alt="Create Goal"></img>
                     </div>
                     </Col> 
                 </Row>

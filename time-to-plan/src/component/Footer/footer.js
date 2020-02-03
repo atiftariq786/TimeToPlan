@@ -25,7 +25,7 @@ const footer = (props) => {
             </div>
             
             <div className={Styles.footerSec2}>
-                <p>@Copyrite 2019 By Atif Tariq</p>
+                <p>@Copyrite 2020 By Atif Tariq</p>
             </div>
         </div> 
     );

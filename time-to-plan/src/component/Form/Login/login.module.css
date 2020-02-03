@@ -1,14 +1,34 @@
 .mainDiv{
     width:100%;
-    height: 500px;
+    height:100vh;
     position: relative;
-    top: 80px;
     text-align: center;
+    display: block;
+    
+}
+.loginImage{
+    width:100%;
+    height: 100vh;
+}
+.loginForm{
+    width:35%;
+    height: 280px;
+    position: relative;
+    margin: auto;
+    top: -71vh;
+    background: rgba(180, 206, 193, 0.774);
+    
+}
+.loginTitle{
+    color:black;
+    padding-top:20px;
+    font-size: 24px;
+    
 }
 .formDiv{
-    width:50%;
-    height: 300px;
-    margin: 50px auto auto auto;
+    width:60%;
+    height: 280px;
+    margin: 15px auto auto auto;
 }
 .inputDiv{
     width:100%;
@@ -16,6 +36,30 @@
     margin: 10px auto 10px auto;
     text-align: left;
 }
-button{
-    margin-left: 10px;
+.loginButton{
+    width:100px;
+    margin: 10px;
+}
+.signupText{
+    margin:0px;
+    text-align: center;
+}
+.signupButton{
+    width:80px;
+    font-size: 16px;
+    margin:auto;
+    padding: 2px;
+}
+.signupButton:hover{
+    color:blue;    
+}
+.backButton{
+    width:80px;
+    font-size: 17px;
+    margin:auto;
+    padding: 2px;
+    justify-content: center;
+}
+.backButton:hover{
+    color:blue;
 }

@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import API from "../../../utils/API";
 import Styles from "./signUp.module.css";
 import Button from "react-bootstrap/Button";
@@ -63,33 +64,69 @@ class SignUp extends Component {
     render(){
         
         return(
-            <div className={Styles.mainDiv}>
-            <h2>Registeration Form</h2>
-                <form className={Styles.formDiv}>
-                    <input 
-                    className={Styles.inputDiv} 
-                    type="text" 
-                    placeholder="username"
-                    value = {this.state.username} 
-                    onChange={this.usernameHandler}>
-                    </input>
+                <div className={Styles.mainDiv}>
+                    <div className={Styles.signUpImage}>
+                    <img
+                        style={{width: "100%", height:"100vh" }} 
+                        src={require("../../../images/signUp-Page.jpg")} alt="SignUp Page"></img>
+                    </div>
 
-                    <input 
-                    className={Styles.inputDiv} 
-                    type="text" 
-                    placeholder="password"
-                    value = {this.state.password} 
-                    onChange={this.passwordHandler}>
-                    </input>
+                    <div className={Styles.signUpForm}>
+                    <h2 className = {Styles.signupTitle}> Create a New Account</h2>
+                    <form className={Styles.formDiv}>
+                        <input 
+                        className={Styles.inputDiv} 
+                        type="name" 
+                        placeholder="Username"
+                        value = {this.state.username} 
+                        onChange={this.usernameHandler}>
+                        </input>
+
+                        <input 
+                        className={Styles.inputDiv} 
+                        type="email" 
+                        placeholder="Email"
+                        value = {""} 
+                        onChange={""}>
+                        </input>
+
+                        <input 
+                        className={Styles.inputDiv} 
+                        type="password" 
+                        placeholder="Password"
+                        value = {this.state.password} 
+                        onChange={this.passwordHandler}>
+                        </input>
+
+                        <input 
+                        className={Styles.inputDiv} 
+                        type="password" 
+                        placeholder="Confirm Password"
+                        value = {""} 
+                        onChange={""}>
+                        </input>
+                        
+                        <Button
+                        className = {Styles.signupButton}
+                        variant="success" 
+                        type= "button" 
+                        onClick ={this.postSignUpHandler} 
+                        size="sm" 
+                        >Join</Button>
+                        <p 
+                            className={Styles.signinText}>
+                            Already have an account? {<Link to="/login/" className={Styles.signinButton}>Sign In</Link>}
+                        </p>
+                        
+                        <Link to="/" className={Styles.backButton}>
+                            back
+                        </Link>
+                    </form>
                     
-                    <Button
-                    variant="success" 
-                    type= "button" 
-                    onClick ={this.postSignUpHandler} 
-                    size="sm" 
-                    >SignUp</Button>
-                </form>
-        </div>
+                    </div>
+                    
+            </div>
+
         )
     }
 }

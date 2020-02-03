@@ -25,7 +25,7 @@ const ControlledCarousel = () => {
             alt="First slide"
           />
           <Carousel.Caption className={Styles.Craouseltext}>
-            <h2>Make a Plan for World Famous Desert Safari</h2>
+            <h2 className = {Styles.carouselTitle}>Make a Plan for World Famous Desert Safari</h2>
             <p>Dubai, UAE–The Arabian Desert. Nevada, USA – The Black Rock Desert.</p>
             <p>Namibia, South Africa – The Namib Desert. Erg Chebbi, Morocco – The Sahara Desert.</p>
             <p>Outback, Australia – The Great Victoria Desert.</p>
@@ -40,7 +40,7 @@ const ControlledCarousel = () => {
           alt="Second slide"
         />
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2>TOP PLACES TO SKYDIVE AROUND THE WORLD</h2>
+          <h2 className = {Styles.carouselTitle}>TOP PLACES TO SKYDIVE AROUND THE WORLD</h2>
           <p>Outerspace.
           Mount Everest, Nepal. ...
           Victoria Falls, South Africa. ...
@@ -62,7 +62,7 @@ const ControlledCarousel = () => {
         />
 
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2>BE READY FOR HIKING</h2>
+          <h2 className = {Styles.carouselTitle}>BE READY FOR HIKING</h2>
           <h3>Best Places in North America</h3>
           <p>Grand Teton National Park.
           Arches National Park.
@@ -84,7 +84,7 @@ const ControlledCarousel = () => {
         />
 
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2>The Top Ski Resorts in the World</h2>
+          <h2 className = {Styles.carouselTitle}>The Top Ski Resorts in the World</h2>
           <p>Revelstoke, BC. We still love Reve! ...
           Zinal/Grimentz, Switzerland. Swiss charm with serious kick ass terrain! ...
           Whistler, BC. ...
@@ -105,7 +105,7 @@ const ControlledCarousel = () => {
         />
 
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2>The Most Famous Car Races in the World</h2>
+          <h2 className = {Styles.carouselTitle}>The Most Famous Car Races in the World</h2>
           <p>
           Monaco Grand Prix. The Formula One Monaco Grand Prix is held annually on the Circuit de Monaco since 1929. ...
           Indianapolis 500. ...

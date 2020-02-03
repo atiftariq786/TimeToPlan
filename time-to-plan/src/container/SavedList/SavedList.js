@@ -390,7 +390,7 @@ class SavedList extends Component {
                                 </ul>
                             </div>
                             <div className={Styles.Graph}>
-                                <p> Graph</p>
+                                <p> </p>
                                 <img
                                 style={{width: "100%", height:"195px", margin: "1px" }} 
                                 src="https://cdn4.iconfinder.com/data/icons/business-and-office-7-1/64/400-512.png" alt="sketch"></img>
