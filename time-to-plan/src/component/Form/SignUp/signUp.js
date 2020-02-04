@@ -92,7 +92,7 @@ class SignUp extends Component {
 
                         <input 
                         className={Styles.inputDiv} 
-                        type="text" 
+                        type="password" 
                         placeholder="Password"
                         value = {this.state.password} 
                         onChange={this.passwordHandler}>
