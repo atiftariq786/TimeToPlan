@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "63b28eb0b682e35e239bb5435b43c483",
+    "revision": "70069e82f32ec76a3f682022673bfa81",
     "url": "/TimeToPlan/./index.html"
   },
   {
-    "revision": "f28b983538499b83d77a",
+    "revision": "7a126cd789145cdcae7f",
     "url": "/TimeToPlan/./static/css/2.0624914a.chunk.css"
   },
   {
-    "revision": "761a372f1fc08b072151",
-    "url": "/TimeToPlan/./static/css/main.11cb6653.chunk.css"
+    "revision": "b39f3b6439465f221234",
+    "url": "/TimeToPlan/./static/css/main.cbfd1d75.chunk.css"
   },
   {
-    "revision": "f28b983538499b83d77a",
-    "url": "/TimeToPlan/./static/js/2.0df5940d.chunk.js"
+    "revision": "7a126cd789145cdcae7f",
+    "url": "/TimeToPlan/./static/js/2.bf80b346.chunk.js"
   },
   {
-    "revision": "761a372f1fc08b072151",
-    "url": "/TimeToPlan/./static/js/main.c54c3620.chunk.js"
+    "revision": "b39f3b6439465f221234",
+    "url": "/TimeToPlan/./static/js/main.a86f6ca3.chunk.js"
   },
   {
     "revision": "ea83f674f3a0e53ea5b7",
@@ -36,6 +36,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TimeToPlan/./static/media/MI-Theory.bac4fd05.jpg"
   },
   {
+    "revision": "78f7dcd5cb6862404494d80f7d7c89cc",
+    "url": "/TimeToPlan/./static/media/createGoal1.78f7dcd5.jpg"
+  },
+  {
+    "revision": "8c5dbaf933796b634282bb06237ef078",
+    "url": "/TimeToPlan/./static/media/createGoal2.8c5dbaf9.jpg"
+  },
+  {
     "revision": "07d8c356149863b3ace0779211ecb25e",
     "url": "/TimeToPlan/./static/media/giphy1.07d8c356.gif"
   },
@@ -50,6 +58,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "bf09ed8c44daf6c1fd47109c02f7c392",
     "url": "/TimeToPlan/./static/media/incredible-car-wallpaper-lamborghini-terzo-millennio-digital-art-hd-cars-4k-wallpapers.bf09ed8c.jpg"
+  },
+  {
+    "revision": "d7463a0f79b0211cb7fe45d748a1d3ff",
+    "url": "/TimeToPlan/./static/media/loginPage.d7463a0f.jpg"
+  },
+  {
+    "revision": "970dc2e7257e0a797e67aacf3c1db8e4",
+    "url": "/TimeToPlan/./static/media/signUp-Page.970dc2e7.jpg"
   },
   {
     "revision": "a4da97ff52b20eb471818a13ffed9a0e",
