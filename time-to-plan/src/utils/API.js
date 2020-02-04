@@ -7,8 +7,7 @@ export default {
     savedStory : function(data){
         return axios.post("https://safe-anchorage-29156.herokuapp.com/api/create-story", data);
         //https://safe-anchorage-29156.herokuapp.com
-        //https://safe-anchorage-29156.herokuapp.com
-        //
+
     },
     getStories : function(){
         return axios.get("https://safe-anchorage-29156.herokuapp.com/api/stories");

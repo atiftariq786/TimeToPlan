@@ -76,7 +76,7 @@ class SignUp extends Component {
                     <form className={Styles.formDiv}>
                         <input 
                         className={Styles.inputDiv} 
-                        type="name" 
+                        type="text" 
                         placeholder="Username"
                         value = {this.state.username} 
                         onChange={this.usernameHandler}>
@@ -92,7 +92,7 @@ class SignUp extends Component {
 
                         <input 
                         className={Styles.inputDiv} 
-                        type="password" 
+                        type="text" 
                         placeholder="Password"
                         value = {this.state.password} 
                         onChange={this.passwordHandler}>
