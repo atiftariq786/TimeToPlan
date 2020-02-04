@@ -62,3 +62,9 @@
 .backButton:hover{
     color:blue;
 }
+.validInput{
+    border: 1px solid green;
+}
+.invalidInput{
+    border: 1px solid red;
+}

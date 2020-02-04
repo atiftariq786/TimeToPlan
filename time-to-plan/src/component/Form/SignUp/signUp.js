@@ -8,7 +8,9 @@ class SignUp extends Component {
     
     state = {
         username : "",
+        email : "",
         password : "",
+        confirmPassword : "",
         signUpRes: [],
         currentUsername:"no user",
     }
@@ -18,50 +20,76 @@ class SignUp extends Component {
             username: event.target.value
         })
     }
+    
+    emailHandler =(event) =>{
+        this.setState({
+            email: event.target.value
+        })
+    }
     passwordHandler =(event) =>{
         this.setState({
             password: event.target.value
         })
     }
+    confirmPasswordHandler =(event) =>{
+        this.setState({
+            confirmPassword: event.target.value
+        })
+    }
 
     postSignUpHandler= () =>{
 
-        const data = {
-            username: this.state.username,
-            password: this.state.password,
-        }
         
-        if(this.state.username && this.state.password){
+        if(this.state.username && this.state.password && this.state.email){
 
-            API.savedUserSignUp(data).then(response =>{
-                console.log("User SignUp Data Saved");
-                console.log(response);
-
-                let username = response.data.message;
-                if(response.data.success){
-                    localStorage.removeItem('username');
-                    
-                    this.props.updateSignedInState("true", username);
-
-                    this.props.history.push("/create-story/");
-                    
-                    this.setState({
-                        signUpRes: response.data,
-                        currentUsername:response.data.message,
-                    });
+            if(this.state.password === this.state.confirmPassword){
+                const data = {
+                    username: this.state.username,
+                    email: this.state.email,
+                    password: this.state.password,
+                
                 }
-            }); 
-            this.setState({
-                username:"",
-                password: "",
-            });
+    
+                API.savedUserSignUp(data).then(response =>{
+                    console.log("User SignUp Data Saved");
+                    console.log(response);
+    
+                    let username = response.data.message;
+                    if(response.data.success){
+                        localStorage.removeItem('username');
+                        
+                        this.props.updateSignedInState("true", username);
+    
+                        this.props.history.push("/create-story/");
+                        
+                        this.setState({
+                            signUpRes: response.data,
+                            currentUsername:response.data.message,
+                        });
+                    }
+                }); 
+                
+                this.setState({
+                    username:"",
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                });
+                
+            } else {
+                console.log("Make sure your password match");
+            }
+
+            
         }
         else{
+            console.log("Please fill all the field");
             alert("Please fill this form....!")
         }    
     }
     
     render(){
+
         
         return(
                 <div className={Styles.mainDiv}>
@@ -86,8 +114,8 @@ class SignUp extends Component {
                         className={Styles.inputDiv} 
                         type="email" 
                         placeholder="Email"
-                        value = {""} 
-                        onChange={""}>
+                        value = {this.state.email} 
+                        onChange={this.emailHandler}>
                         </input>
 
                         <input 
@@ -102,8 +130,8 @@ class SignUp extends Component {
                         className={Styles.inputDiv} 
                         type="password" 
                         placeholder="Confirm Password"
-                        value = {""} 
-                        onChange={""}>
+                        value = {this.state.confirmPassword} 
+                        onChange={this.confirmPasswordHandler}>
                         </input>
                         
                         <Button

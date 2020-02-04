@@ -11,7 +11,7 @@ class CreateGoals extends Component {
 
     state = {
         title: "",
-        link : "",
+        link : "https://previews.123rf.com/images/dogfella/dogfella1512/dogfella151200088/48938356-dream-big-set-goal-take-action-handwriting-on-notebook-with-light-bulbs.jpg",
         description : "",
         tempdata: [],
         isValidGoal: true

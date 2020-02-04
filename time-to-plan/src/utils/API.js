@@ -6,8 +6,6 @@ export default {
 
     savedStory : function(data){
         return axios.post("https://safe-anchorage-29156.herokuapp.com/api/create-story", data);
-        
-
     },
     getStories : function(){
         return axios.get("https://safe-anchorage-29156.herokuapp.com/api/stories");
@@ -33,6 +31,7 @@ export default {
     },
     
     savedUserSignUp : function(data){
+        console.log({data})
         return axios.post("https://safe-anchorage-29156.herokuapp.com/auth/register/", data);
     },
     savedUserLogin : function(data){
