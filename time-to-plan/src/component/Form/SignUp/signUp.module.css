@@ -22,7 +22,7 @@
     font-size: 26px;
 }
 .formDiv{
-    width:60%;
+    width:80%;
     height: 30vh;
     margin: auto;
 }
@@ -62,9 +62,16 @@
 .backButton:hover{
     color:blue;
 }
-.validInput{
-    border: 1px solid green;
-}
 .invalidInput{
-    border: 1px solid red;
+    border: 1px solid #C41337;
+}
+.validInput{
+    border: 1px solid #00873F;
+}
+.usernameEror{
+color: red;
+text-align: left;
+font-size: 10px;
+padding: 0px;
+margin: 0px;
 }
