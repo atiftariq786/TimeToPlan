@@ -126,6 +126,7 @@ class SignUp extends Component {
         let userErr = "";
         let emailErr = "";
         let passwordErr = "";
+        let confirmPasswordErr = "";
         
         const formValidation = () =>{
 
@@ -136,7 +137,6 @@ class SignUp extends Component {
                 userErr = (
                     <p className ={Styles.usernameEror}>Please write username at least 3 characters</p>
                 )
-
                 isValidUsername.push(Styles.invalidInput);
                 
             }
@@ -144,7 +144,6 @@ class SignUp extends Component {
                 emailErr = (
                     <p className ={Styles.usernameEror}>Please write corrrect email address</p>
                 )
-
                 isValidEmail.push(Styles.invalidInput);
                 
             }
@@ -152,12 +151,13 @@ class SignUp extends Component {
                 passwordErr = (
                     <p className ={Styles.usernameEror}>Please write password minimum eight characters, at least one letter and one number</p>
                 )
-
                 isValidPassword.push(Styles.invalidInput);
                 
             }
             if(this.state.confirmPassword === ""){
-
+                confirmPasswordErr = (
+                    <p className ={Styles.usernameEror}>Please match correct password </p>
+                )
                 isValidConfirmPassword.push(Styles.invalidInput);
                 
             }
@@ -177,6 +177,9 @@ class SignUp extends Component {
             
         }
         if(!usernamePattern && this.state.username !== ""){
+            userErr = (
+                <p className ={Styles.usernameEror}>Please write username at least 3 characters</p>
+            )
             isValidUsername.push(Styles.invalidInput);
         }
 
@@ -190,6 +193,9 @@ class SignUp extends Component {
             isValidEmail.push(Styles.validInput);
         }
         if(!emailPattern && this.state.email !== ""){
+            emailErr = (
+                <p className ={Styles.usernameEror}>Please write corrrect email address</p>
+            )
             isValidEmail.push(Styles.invalidInput);
         }
 
@@ -202,6 +208,9 @@ class SignUp extends Component {
             isValidPassword.push(Styles.validInput);
         }
         if(!passwordPattern && this.state.password !== ""){
+            passwordErr = (
+                <p className ={Styles.usernameEror}>Please write password minimum eight characters, at least one letter and one number</p>
+            )
             isValidPassword.push(Styles.invalidInput);
         }
 
@@ -213,6 +222,9 @@ class SignUp extends Component {
             isValidConfirmPassword.push(Styles.validInput);
         }
         if(!confirmPasswordPattern && this.state.confirmPassword !== ""){
+            confirmPasswordErr = (
+                <p className ={Styles.usernameEror}>Please match correct password </p>
+            )
             isValidConfirmPassword.push(Styles.invalidInput);
         }
         
@@ -222,11 +234,6 @@ class SignUp extends Component {
             console.log(" formvalidation function call")
             formValidation();
         }
-
-        
-            
-        
-
 
         return(
                 <div className={Styles.mainDiv}>
@@ -274,6 +281,7 @@ class SignUp extends Component {
                         value = {this.state.confirmPassword} 
                         onChange={this.confirmPasswordHandler}>
                         </input>
+                        {confirmPasswordErr}
                         
                         <Button
                         className = {Styles.signupButton}
