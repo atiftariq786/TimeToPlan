@@ -6,31 +6,108 @@ import Button from "react-bootstrap/Button";
 
 function inputStory(props){
 
-    const inputStyles = [Styles.InputElement];
+    let title = props.writeTitle;
+    let story = props.writeStory;
+    let profileImage = props.writeProfileImage;
+    let backgroundImage = props.writeBackgroundImage;
+    let author = props.writeAuthor;
+    let isValidCheck = props.isValidCheck;
 
-    if(!props.isValidCheck){
-        inputStyles.push(Styles.Invalid);
+    let isValidTitle = [[Styles.inputElement]];
+    let isValidStory =[[Styles.inputDescription]];
+    let isValidProfile = [[Styles.inputElement]];
+    let isValidBackground = [[Styles.inputElement]];
+    let isValidAuthor = [[Styles.inputElement]];
+
+    
+    const storyFormValidation=()=>{
+
+        if(title === ""){
+            isValidTitle.push(Styles.invalidInput);
+        }
+        else{
+            isValidTitle.push(Styles.validInput);
+        }
+        if(story === ""){
+            isValidStory.push(Styles.invalidInput);
+        }
+        else{
+            isValidStory.push(Styles.validInput);
+        }
+        if(profileImage === ""){
+            isValidProfile.push(Styles.invalidInput);
+        }
+        else{
+            isValidProfile.push(Styles.validInput);
+        }
+        if(backgroundImage === ""){
+            isValidBackground.push(Styles.invalidInput);
+        }
+        else{
+            isValidBackground.push(Styles.validInput);
+        }
+        if(author === ""){
+            isValidAuthor.push(Styles.invalidInput);
+        }
+        else{
+            isValidAuthor.push(Styles.validInput);
+        }
     }
-    else{
-        inputStyles.push(Styles.InputElement);
+
+    if(!isValidCheck){
+        storyFormValidation();
     }
+
+    let titlePattern = /^[A-Za-z0-9_-]{3,30}$/.test(title);
+    if(titlePattern){
+        isValidTitle.push(Styles.validInput);  
+    }
+    if(!titlePattern && title !== ""){
+        isValidTitle.push(Styles.invalidInput);
+    }
+    if(story){
+        isValidStory.push(Styles.validInput);  
+    }
+    if(story !== ""){
+        isValidStory.push(Styles.invalidInput);
+    }
+    if(profileImage){
+        isValidProfile.push(Styles.validInput);  
+    }
+    if(profileImage !== ""){
+        isValidProfile.push(Styles.invalidInput);
+    }
+    if(backgroundImage){
+        isValidBackground.push(Styles.validInput);  
+    }
+    if(backgroundImage !== ""){
+        isValidBackground.push(Styles.invalidInput);
+    }
+    if(author){
+        isValidAuthor.push(Styles.validInput);  
+    }
+    if(author !== ""){
+        isValidAuthor.push(Styles.invalidInput);
+    }
+
+
 
     return (
         <div className={Styles.inputStoryForm}>
             <h1 >Create Your Life Story</h1> 
-            <Form.Group controlId="exampleForm.ControlInput1" className={Styles.formTitle}>
-                    <Form.Label>Title</Form.Label>
+            <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label className={Styles.inputTitle}>Story Title</Form.Label>
                     <Form.Control 
                     type="text" 
                     placeholder="Example: My Memories" 
                     value = {props.writeTitle} 
                     onChange={props.writeTitleHandler}
-                    className={inputStyles.join(" ")} />
+                    className={isValidTitle.join(" ")} />
             </Form.Group>
             <InputGroup>
                 <InputGroup.Prepend>
-                    <InputGroup.Text>
-                        User Life Story 
+                    <InputGroup.Text className={Styles.inputTitle}>
+                        Story Description 
                         <img
                         style={{width: "40vh", height:"20vh", margin:"0px 0px 0px 10px"}} 
                         src="http://daystarbooks.org/wp-content/uploads/2016/05/life_story.png" alt="media">
@@ -41,47 +118,41 @@ function inputStory(props){
                 as="textarea" 
                 aria-label="With textarea" 
                 rows="5" 
-                placeholder="Example: Marriage and Family Harmony. ...
-                Proper Mindset and Balance. ...
-                Commitment to Improved Physical Health. ...
-                Career Passion and Personal Satisfaction. ...
-                Develop Empathy and Gentleness. ...
-                Financial Stability. ...
-                Service and Social Responsibility." 
+                placeholder="Write your story here...!" 
                 value = {props.writeStory} 
                 onChange={props.writeStoryHandler}
-                className={inputStyles.join(" ")} >
+                className={isValidStory.join(" ")} >
                 </Form.Control>
                 
             </InputGroup>
             <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Profle Image URL</Form.Label>
+                        <Form.Label className={Styles.inputTitle}>Story Profle Image URL</Form.Label>
                         <Form.Control 
                         type="text" 
                         placeholder="https://example.png"
                         value = {props.writeProfileImage} 
                         onChange={props.writeProfileImageHandler}
-                        className={inputStyles.join(" ")}
+                        className={isValidProfile.join(" ")}
                         />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Label>Background Image URL</Form.Label>
+                        <Form.Label className={Styles.inputTitle}>Story Background Image URL</Form.Label>
                         <Form.Control 
                         type="text" 
                         placeholder="https://example.png"
                         value = {props.writeBackgroundImage} 
                         onChange={props.backgroundImageHandler}
-                        className={inputStyles.join(" ")}
+                        className={isValidBackground.join(" ")}
                         />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Author</Form.Label>
+                    <Form.Label className={Styles.inputTitle}>Author</Form.Label>
                     <Form.Control 
                     type="text" 
                     placeholder="Author Name"
                     value = {props.writeAuthor} 
                     onChange={props.writeAuthorHandler}
-                    className={inputStyles.join(" ")}  />
+                    className={isValidAuthor.join(" ")}  />
             </Form.Group>
             <Button 
             variant="success" 

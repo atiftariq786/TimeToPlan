@@ -5,14 +5,65 @@ import Button from "react-bootstrap/Button";
 
 function inputGoals(props){
 
-    const inputStylesGoals = [Styles.InputElement];
+    let goalTitle = props.writeGoalTitle;
+    let goalImageUrl = props.writeLink;
+    let goalDescription = props.writeGoalDescription;
+    let isValidGoal = props.isValidGoals;
 
-    if(!props.isValidGoals){
-        inputStylesGoals.push(Styles.Invalid);
+    let isValidGoalTitle = [Styles.InputElement];
+    let isValidGoalImageUrl = [Styles.InputElement];
+    let isValidGoalDescription = [Styles.InputElement];
+
+    const goalFormValidation = () =>{
+        if(goalTitle === ""){
+            isValidGoalTitle.push(Styles.invalidInput);
+        }
+        else{
+            isValidGoalTitle.push(Styles.validInput);
+        }
+        if(goalImageUrl === ""){
+            isValidGoalImageUrl.push(Styles.invalidInput);
+        }
+        else{
+            isValidGoalImageUrl.push(Styles.validInput);
+        }
+        if(goalDescription === ""){
+            isValidGoalDescription.push(Styles.invalidInput);
+        }
+        else{
+            isValidGoalDescription.push(Styles.validInput);
+        }
     }
-    else{
-        inputStylesGoals.push(Styles.InputElement);
+
+    if(!isValidGoal){
+        goalFormValidation();
     }
+
+    let titlePattern = /^[A-Za-z0-9_-]{3,30}$/.test(goalTitle);
+    if(titlePattern){
+        isValidGoalTitle.push(Styles.validInput);  
+    }
+    if(!titlePattern && goalTitle !== ""){
+        isValidGoalTitle.push(Styles.invalidInput);
+    }
+
+    if(goalImageUrl){
+        isValidGoalImageUrl.push(Styles.validInput);  
+    }
+    if(goalImageUrl !== ""){
+        isValidGoalImageUrl.push(Styles.invalidInput);
+    }
+    if(goalDescription){
+        isValidGoalDescription.push(Styles.validInput);  
+    }
+    if(goalDescription !== ""){
+        isValidGoalDescription.push(Styles.invalidInput);
+    }
+
+    
+
+
+    
 
     return (
         <div>
@@ -25,17 +76,17 @@ function inputGoals(props){
                     placeholder="Title"
                     value = {props.writeGoalTitle} 
                     onChange={props.writeGoalTitleHandler}
-                    className={inputStylesGoals.join(" ")} />
+                    className={isValidGoalTitle.join(" ")} />
                 </Form.Group>
 
                 <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Goal Image Link</Form.Label>
+                    <Form.Label>Goal Image URL</Form.Label>
                     <Form.Control 
                     type="text" 
                     placeholder="https://example.png"
                     value = {props.writeLink} 
                     onChange={props.writeLinkHandler}
-                    className={inputStylesGoals.join(" ")}/>
+                    className={isValidGoalImageUrl.join(" ")}/>
                 </Form.Group>
                 
                 
@@ -47,7 +98,7 @@ function inputGoals(props){
                     rows="3"
                     value = {props.writeGoalDescription} 
                     onChange={props.writeGoalHandler}
-                    className={inputStylesGoals.join(" ")} />
+                    className={isValidGoalDescription.join(" ")} />
                 </Form.Group>                
                 
             </Form>

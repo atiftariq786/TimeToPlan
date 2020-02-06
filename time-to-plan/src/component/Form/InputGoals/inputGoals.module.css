@@ -1,20 +1,21 @@
 .InputElement{
-    outline:none;
-    border:1px solid #ccc;
-    background-color: white;
+    background: #f3f3f5;
     font: inherit;
     padding: 6px 10px;
-    display:block;
     width:100%;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 .InputElement:focus{
-    outline:none;
-    background-color:#ccc;
+    background-color:#FFFFFF;
 }
-.Invalid {
-    border: 1px solid red;    
-}
+
 .modalButton{
     margin:0px 10px 5px 10px;
+}
+.invalidInput{
+    border: 1px solid #C41337;
+    
+}
+.validInput{
+    border: 1px solid #00873F;
 }
