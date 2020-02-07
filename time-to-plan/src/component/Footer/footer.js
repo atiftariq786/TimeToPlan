@@ -1,4 +1,7 @@
 import React from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import Styles from "../Footer/footer.module.css";
 
 const footer = (props) => {
@@ -25,6 +28,13 @@ const footer = (props) => {
             </div>
             
             <div className={Styles.footerSec2}>
+            <a href = "https://github.com/atiftariq786">
+                <FontAwesomeIcon className={Styles.github} icon={faGithub} size="2x" />
+            </a>
+            <a href = "https://www.linkedin.com/in/atif-tariq-5b00b089/">
+                <FontAwesomeIcon className={Styles.linkedin} icon={faLinkedin} size="2x" /> 
+            </a>
+
                 <p>@Copyright 2020 By Atif Tariq</p>
             </div>
         </div> 
