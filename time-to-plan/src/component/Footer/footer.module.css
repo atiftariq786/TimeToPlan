@@ -12,9 +12,11 @@
     padding: 20px 0px 0px 0px;
 }
 .footerAbout{
+    outline: none;
     width: 50%;
 }
 .footerInfo{
+    outline: none;
     width: 50%;
 }
 .footerSec2{
@@ -22,7 +24,6 @@
     height: 60px;
     display: block;
     background: rgb(43, 40, 40);
-    
     color: grey;
     font-size: 14px;
     text-align: center;
@@ -31,6 +32,7 @@
 .footerButton{
     background: none;
     border: none;
+    outline: none;
     color: whitesmoke;
     font-size: 16px;
     text-align: center;
@@ -43,7 +45,7 @@
     font-size: 16px;
 }
 .github{
-    margin-left: 20px;
+    margin-left: 15px;
     color:white;
 }
 .github:hover{
@@ -51,8 +53,10 @@
 }
 .linkedin{
     color:white;
-    margin-left: 20px;
+    margin-left: 15px;
+    
 }
 .linkedin:hover{
     color:orange;
+    
 }

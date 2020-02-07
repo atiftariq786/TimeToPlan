@@ -39,11 +39,10 @@ function inputGoals(props){
         goalFormValidation();
     }
 
-    let titlePattern = /^[A-Za-z0-9_-]{3,30}$/.test(goalTitle);
-    if(titlePattern){
+    if(goalTitle){
         isValidGoalTitle.push(Styles.validInput);  
     }
-    if(!titlePattern && goalTitle !== ""){
+    if(goalTitle !== ""){
         isValidGoalTitle.push(Styles.invalidInput);
     }
 

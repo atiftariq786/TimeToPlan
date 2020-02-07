@@ -58,11 +58,11 @@ function inputStory(props){
         storyFormValidation();
     }
 
-    let titlePattern = /^[A-Za-z0-9_-]{3,30}$/.test(title);
-    if(titlePattern){
+    //let titlePattern = /^[A-Za-z0-9_-]{3,30}$/.test(title);
+    if(title){
         isValidTitle.push(Styles.validInput);  
     }
-    if(!titlePattern && title !== ""){
+    if(title !== ""){
         isValidTitle.push(Styles.invalidInput);
     }
     if(story){

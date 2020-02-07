@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
@@ -19,9 +20,10 @@ const footer = (props) => {
             <div className={Styles.footerSec1}>
                 <div className={Styles.footerAbout}>
                     <button className={Styles.footerButton} onClick = {footerHandler}  >About</button>
-                    <button className={Styles.footerButton} onClick = {footerHandler}   >Demo</button>
+                    <Link to="/appDemo/"><button className={Styles.footerButton}>Demo</button></Link>
                 </div>
                 <div className={Styles.footerInfo}>
+
                     <button className={Styles.footerButton} onClick = {footerHandler} >Future Development</button>
                     <button className={Styles.footerButton}  onClick = {appVersionHandler}>App Version</button>
                 </div>

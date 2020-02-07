@@ -17,7 +17,7 @@ export default {
         return axios.put("http://localhost:3001/api/story/" + id,data);
     },
     savedGoal : function(data){
-        return axios.post("//http://localhost:3001/api/create-goal", data);
+        return axios.post("http://localhost:3001/api/create-goal", data);
     },
     getGoals : function(){
         return axios.get("http://localhost:3001/api/goals");
