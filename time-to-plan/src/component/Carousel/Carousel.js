@@ -1,10 +1,10 @@
-import React from "react";
-//import  React,{useState} from "react";
+//import React from "react";
+import  React,{useState} from "react";
 import Carousel from "react-bootstrap/Carousel"
 import Styles from "./Carousel.module.css";
 
 const ControlledCarousel = () => {
-  /*
+  
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState(null);
   
@@ -14,9 +14,9 @@ const ControlledCarousel = () => {
 
     };
     //activeIndex={index} direction={direction} onSelect={handleSelect}
-    */
+    
     return (
-      <Carousel className={Styles.carouselMain} >
+      <Carousel className={Styles.carouselMain} activeIndex={index} direction={direction} onSelect={handleSelect} interval = {"2000"}>
         <Carousel.Item>
           <img 
             className="d-block w-100 "

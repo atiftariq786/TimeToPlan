@@ -268,10 +268,8 @@ class SignUp extends Component {
             formValidation();
         }
 
-
-
-        return(
-                <div className={Styles.mainDiv}>
+    return(
+        <div className={Styles.mainDiv}>
                     <div className={Styles.signUpImage}>
                     <img
                         style={{width: "100%", height:"100vh" }} 
@@ -292,7 +290,6 @@ class SignUp extends Component {
                         {userErrorIcon}
                         {userErr}
                         
-
                         <input 
                         className={isValidEmail.join(" ")} 
                         type="email" 
@@ -341,10 +338,8 @@ class SignUp extends Component {
                         </Link>
                     </form>
                     
-                    </div>
-                    
+                </div>
             </div>
-
         )
     }
 }

@@ -11,7 +11,8 @@ const media = (props) => {
                 <img
                 style={{width: "100%", height:"300px"}} 
                 className={Styles.image}
-                src={require("../../../images/giphy1.gif")} alt="media"></img>
+                src={require("../../../images/giphy1.gif")} alt="media">
+                </img>
                 <div className={Styles.mediaOneHover}>
                     <p className={Styles.titleText}>
                     What is a goal? 
