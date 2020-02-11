@@ -19,7 +19,7 @@ const Demo = (props) => {
             <div className={Styles.demoCarouselContainer}>
                 <img 
                 className={Styles.demoBackgroundImage}
-                src={require("../../../src/images/demo-tv-4.jpg")}
+                src={require("../../../../src/images/demo-tv-4.jpg")}
                 alt="Demo Slides"/>
 
                 <div className={Styles.demoCarousel}>
@@ -28,7 +28,7 @@ const Demo = (props) => {
                             <img 
                                 className="d-block w-100 "
                                 style={{height:"250px"}}
-                                src={require("../../../src/images/Time-to-Plan-demo.jpg")}
+                                src={require("../../../images/Time-to-Plan-demo.jpg")}
                                 alt="First slide"
                                 />
                         </Carousel.Item>    
@@ -36,7 +36,7 @@ const Demo = (props) => {
                             <img 
                             className="d-block w-100 "
                             style={{height:"250px"}}
-                            src={require("../../../src/images/Demo-story-form.png")}
+                            src={require("../../../../src/images/Demo-story-form.png")}
                             alt="First slide"
                             />
                         </Carousel.Item>
@@ -45,7 +45,7 @@ const Demo = (props) => {
                         <img
                             className="d-block w-100"
                             style={{height:"250px"}}
-                            src= {require("../../../src/images/Demo-story-created.png")}
+                            src= {require("../../../../src/images/Demo-story-created.png")}
                             alt="Second slide"/>
                         </Carousel.Item>
 
@@ -53,7 +53,7 @@ const Demo = (props) => {
                         <img
                             className="d-block w-100"
                             style={{height:"250px"}}
-                            src={require("../../../src/images/Demo-story-edit.png")}
+                            src={require("../../../../src/images/Demo-story-edit.png")}
                             alt="Second slide"/>
                         </Carousel.Item>
                         
@@ -61,7 +61,7 @@ const Demo = (props) => {
                         <img
                             className="d-block w-100"
                             style={{height:"250px"}}
-                            src= {require("../../../src/images/demo-story-edit-form.png")}
+                            src= {require("../../../../src/images/demo-story-edit-form.png")}
                             alt="Second slide"/>
                         </Carousel.Item>
             
@@ -96,7 +96,7 @@ const Demo = (props) => {
                 <div className={Styles.groupOne}>
                     <img 
                     className = {Styles.groupOneImage}
-                    src={require("../../images/Demo-story-form.png")}
+                    src={require("../../../images/Demo-story-form.png")}
                     alt="Demo Slides"
                     />    
                     <div className = {Styles.groupOneText}>
@@ -112,7 +112,7 @@ const Demo = (props) => {
                 <div className={Styles.groupOne}>
                     <img 
                     className = {Styles.groupFullImage}
-                    src={require("../../images/Demo-story-created.png")}
+                    src={require("../../../images/Demo-story-created.png")}
                     alt="Demo Slides"
                     />
 
@@ -124,14 +124,14 @@ const Demo = (props) => {
                     </div>    
                     <img 
                     className = {Styles.groupOneImage}
-                    src={require("../../images/demo-story-edit-form.png")}
+                    src={require("../../../images/demo-story-edit-form.png")}
                     alt="Demo Slides"
                     />
                 </div>
                 <div className={Styles.groupOne}>
                     <img 
                     className = {Styles.groupOneImage}
-                    src={require("../../images/Demo-story-edit.png")}
+                    src={require("../../../images/Demo-story-edit.png")}
                     alt="Demo Slides"
                     />
                     <div className = {Styles.groupOneText}>
@@ -144,7 +144,7 @@ const Demo = (props) => {
                 <div className={Styles.groupOne}>
                     <img 
                     className = {Styles.groupFullImage}
-                    src={require("../../images/demo-goal-create.png")}
+                    src={require("../../../images/demo-goal-create.png")}
                     alt="Demo Slides"
                     />
 
@@ -152,7 +152,7 @@ const Demo = (props) => {
                 <div className={Styles.groupOne}>
                     <img 
                     className = {Styles.groupOneImage}
-                    src={require("../../images/demo-goal-list.png")}
+                    src={require("../../../images/demo-goal-list.png")}
                     alt="Demo Slides"
                     />
                     <div className = {Styles.groupOneText}>
@@ -171,7 +171,7 @@ const Demo = (props) => {
                     </div>
                     <img 
                     className = {Styles.groupOneImage}
-                    src={require("../../images/demo-goal-complete.png")}
+                    src={require("../../../images/demo-goal-complete.png")}
                     alt="Demo Slides"
                     />
             
@@ -180,7 +180,7 @@ const Demo = (props) => {
                 <div className={Styles.groupOne}>
                     <img 
                         className = {Styles.groupOneImage}
-                        src={require("../../images/demo-goal-complete-summary.png")}
+                        src={require("../../../images/demo-goal-complete-summary.png")}
                         alt="Demo Slides"
                         />    
                     <div className = {Styles.groupOneText}>

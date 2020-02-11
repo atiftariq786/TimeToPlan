@@ -32,17 +32,22 @@
 .footerButton{
     background: none;
     border: none;
-    outline: none;
+    outline: none !important;
     color: whitesmoke;
     font-size: 16px;
     text-align: center;
     margin: 0px 40px 0px 40px;
 }
+
 .footerButton:hover{
     background: none;
     border: none;
     color: rgb(76, 146, 226);
     font-size: 16px;
+    outline: none;
+}
+.footerButton:focus{
+    outline: none;
 }
 .github{
     margin-left: 15px;

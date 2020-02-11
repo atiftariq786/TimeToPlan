@@ -11,7 +11,9 @@ import CreateGoals from "./container/CreateGoals/CreateGoals";
 import Login from "./component/Form/Login/login";
 import SignUp from "./component/Form/SignUp/signUp";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute";
-import AppDemo from "./component/Demo/demo";
+import About from "./component/Pages/About/about";
+import AppDemo from "./component/Pages/Demo/demo";
+import FutureDevelopment from "./component/Pages/FutureDevelopment/futureDevelopment";;
 
 class App extends Component {
 
@@ -43,7 +45,9 @@ updateSignedInState =(val, user) =>{
 
             <Route path ="/login/" component = {(props)=>{return <Login {...props} updateSignedInState={this.updateSignedInState}></Login>}} />
             <Route path ="/signUp/" component = {(props)=>{return <SignUp {...props} updateSignedInState={this.updateSignedInState}></SignUp>}} />
+            <Route path ="/about/" component = {About} />
             <Route path ="/appDemo/" component = {AppDemo} />
+            <Route path ="/future-development/" component = {FutureDevelopment}/>
             
             <PrivateRoute exact path = "/create-story/" isLogin={this.state.signedIn} component = {CreateStory}/>
             <PrivateRoute exact path = "/create-goals/" isLogin={this.state.signedIn} component = {CreateGoals}/>

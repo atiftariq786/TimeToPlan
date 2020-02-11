@@ -1,31 +1,35 @@
-import React from "react";
+//import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import AppVersion from "../AppVersion/appVersion";
 import Styles from "../Footer/footer.module.css";
 
-const footer = (props) => {
+const Footer = (props) => {
 
-    const appVersionHandler = () => {
-        
-        alert("App version v1.0 .\nNew Version coming soon....!  ")
-    }
-    const footerHandler = () => {
-        
-        alert("Sorry workng in progress....!  ")
-    }
+    const [modalShow, setModalShow] = useState(false);
+    
     return (
         <div className={Styles.footerDiv}>
             <div className={Styles.footerSec1}>
                 <div className={Styles.footerAbout}>
-                    <button className={Styles.footerButton} onClick = {footerHandler}  >About</button>
+                    <Link to="about"><button className={Styles.footerButton}>About</button></Link>
                     <Link to="/appDemo/"><button className={Styles.footerButton}>Demo</button></Link>
                 </div>
-                <div className={Styles.footerInfo}>
 
-                    <button className={Styles.footerButton} onClick = {footerHandler} >Future Development</button>
-                    <button className={Styles.footerButton}  onClick = {appVersionHandler}>App Version</button>
+                <div className={Styles.footerInfo}>
+                    <Link to="/future-development/"><button className={Styles.footerButton}>Future Development</button></Link>
+                    <button className={Styles.footerButton}  onClick = {() =>setModalShow(true)}>App Version</button>
+                    
+                    <ButtonToolbar>
+                        <AppVersion
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        />
+                    </ButtonToolbar>
                 </div>
             </div>
             
@@ -42,4 +46,4 @@ const footer = (props) => {
         </div> 
     );
 };
-export default footer;
+export default Footer;
