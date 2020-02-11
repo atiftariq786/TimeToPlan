@@ -10,7 +10,7 @@ const futureDevelopment = (props) => {
             <div className={Styles.futureDevImage}>
                     <img
                     style={{width: "100%", height:"100vh" }} 
-                    src={require("../../../images/Programming-Wallpapers-33-2880-x-1800.jpg")} alt="SignUp Page">
+                    src={require("../../../images/software-1.png")} alt="Future Development Page">
                     </img>
             </div> 
             <div className={Styles.descriptionDiv}>

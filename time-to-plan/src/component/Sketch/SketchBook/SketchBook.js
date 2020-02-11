@@ -29,7 +29,7 @@ const sketch = (props) => {
             <div className={Styles.sketchDivTwo}>
                 <img
                 style={{width: "100%", height:"300px"}} 
-                src={require("../../../images/MI-Theory.jpg")} alt="media"></img>
+                src={require("../../../images/blockDiagramGaols.jpg")} alt="media"></img>
             </div>
         
         </div>

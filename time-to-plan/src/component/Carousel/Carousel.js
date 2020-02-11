@@ -16,7 +16,7 @@ const ControlledCarousel = () => {
     //activeIndex={index} direction={direction} onSelect={handleSelect}
     
     return (
-      <Carousel className={Styles.carouselMain} activeIndex={index} direction={direction} onSelect={handleSelect} interval = {"2000"}>
+      <Carousel className={Styles.carouselMain} activeIndex={index} direction={direction} onSelect={handleSelect}>
         <Carousel.Item>
           <img 
             className="d-block w-100 "
@@ -36,11 +36,11 @@ const ControlledCarousel = () => {
         <img
           className="d-block w-100"
           style={{height:"500px"}}
-          src= {require("../../../src/images/skydive.jpg")}
+          src= {require("../../../src/images/skydive-new.jpg")}
           alt="Second slide"
         />
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2 className = {Styles.carouselTitle}>TOP PLACES TO SKYDIVE AROUND THE WORLD</h2>
+          <h2 className = {Styles.carouselTitle}>Top Places To Skydive Around The World</h2>
           <p>Outerspace.
           Mount Everest, Nepal. ...
           Victoria Falls, South Africa. ...
@@ -57,12 +57,12 @@ const ControlledCarousel = () => {
         <img
           className="d-block w-100"
           style={{height:"500px"}}
-          src={require("../../../src/images/HawaiiHikes__Hero_.jpg")}
+          src={require("../../../src/images/hiking-new.jpg")}
           alt="Second slide"
         />
 
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2 className = {Styles.carouselTitle}>BE READY FOR HIKING</h2>
+          <h2 className = {Styles.carouselTitle}>Be Ready For Hiking</h2>
           <h3>Best Places in North America</h3>
           <p>Grand Teton National Park.
           Arches National Park.
@@ -84,7 +84,7 @@ const ControlledCarousel = () => {
         />
 
         <Carousel.Caption className={Styles.Craouseltext}>
-          <h2 className = {Styles.carouselTitle}>The Top Ski Resorts in the World</h2>
+          <h2 className = {Styles.carouselTitle}>The Top Ski Resorts in The World</h2>
           <p>Revelstoke, BC. We still love Reve! ...
           Zinal/Grimentz, Switzerland. Swiss charm with serious kick ass terrain! ...
           Whistler, BC. ...
