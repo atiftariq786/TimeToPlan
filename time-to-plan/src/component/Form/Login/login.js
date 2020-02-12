@@ -4,7 +4,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import Button from "react-bootstrap/Button";
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import API from "../../../utils/API";
+import LoginError from "../../Modals/LoginError/loginError";
 import Styles from "./login.module.css";
 
 
@@ -16,6 +18,8 @@ class Login extends Component {
         password : "",
 
         isValidLoginForm: true,
+        loginError: false,
+        modalShow: false,
     }
     
     usernameHandler =(event) =>{
@@ -28,7 +32,11 @@ class Login extends Component {
             password: event.target.value
         })
     }
-
+    HideloginErrorHandler = ()=>{
+        this.setState({
+            modalShow: false
+        })
+    }
     loginHandler= () =>{
 
         if(this.state.username === ""){
@@ -52,9 +60,7 @@ class Login extends Component {
         if(this.state.username && this.state.password){
 
             API.savedUserLogin(data).then(response =>{
-                console.log("User login Data Saved");
-                console.log(response);
-                
+
             let username = response.data.message;
                 if(response.data.success){
 
@@ -65,7 +71,17 @@ class Login extends Component {
                     this.props.history.push("/create-story/");
                 }
             
-            }); 
+            }).catch(err => {
+                //console.log({err})
+
+                if(err.response.data === "User not found"){
+                    this.setState({
+                        loginError: true,
+                        modalShow:true,
+                    })
+                }    
+            });
+
             this.setState({
                 username:"",
                 password: "",
@@ -74,7 +90,7 @@ class Login extends Component {
 
         }
         else{
-           console.log("Please fill this form....!")
+            console.log("Please fill this form....!")
         }
     }
     render(){
@@ -83,6 +99,17 @@ class Login extends Component {
 
         let userErrorIcon = "";
         let passwordErrorIcon = "";
+
+        let loginErrorMessage = "";
+        if(this.state.loginError){
+            loginErrorMessage = ( <ButtonToolbar>
+                <LoginError
+                show={this.state.modalShow}
+                onHide={this.HideloginErrorHandler}
+                />
+            </ButtonToolbar>
+            )
+        }
 
         //Check username validation
         //Match characters and symbols in the list, a-z, 0-9
@@ -162,6 +189,7 @@ class Login extends Component {
                 </div>
 
                 <div className={Styles.loginFormMainDiv}>
+                    {loginErrorMessage}
                     <h2 className={Styles.loginTitle}>Login</h2>
                     <form className={Styles.formDiv}>
                         <input 
