@@ -59,7 +59,7 @@ class Login extends Component {
         
         if(this.state.username && this.state.password){
 
-            API.savedUserLogin(data).then(response =>{
+            API.savedUserLogin(data).then(response => {
 
             let username = response.data.message;
                 if(response.data.success){
@@ -72,9 +72,9 @@ class Login extends Component {
                 }
             
             }).catch(err => {
-                //console.log({err})
+                console.log({err})
 
-                if(err.response.data === "Username or password incorrect"){
+                if(err.response.data.message === "Username or password incorrect"){
                     this.setState({
                         loginError: true,
                         modalShow:true,
