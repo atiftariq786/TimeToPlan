@@ -74,7 +74,7 @@ class Login extends Component {
             }).catch(err => {
                 //console.log({err})
 
-                if(err.response.data === "User not found"){
+                if(err.response.data === "Username or password incorrect"){
                     this.setState({
                         loginError: true,
                         modalShow:true,
