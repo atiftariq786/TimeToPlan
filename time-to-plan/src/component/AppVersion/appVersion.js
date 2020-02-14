@@ -14,18 +14,19 @@ const AppVersion = (props) => {
         style={{textAlign:"center"}}
         {...props}
         size="lg"
+        backdrop = "false"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    TimeToPlan App Version
+                    App Version
                 </Modal.Title>
             </Modal.Header>
                 <Modal.Body>
                     
                     <p>
-                    This app is based on version V1.0_2019-2020.
+                    This app is based on version 1.0_2019-2020.
                     </p>
                 </Modal.Body>
                 <Modal.Footer>

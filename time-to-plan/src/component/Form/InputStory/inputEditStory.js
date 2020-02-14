@@ -43,6 +43,7 @@ const InputEditStoryModal = props => {
             <Modal
                 size="lg"
                 show={lgShow}
+                backdrop = "false"
                 onHide={() => {
                     setLgShow(false)
                 }}

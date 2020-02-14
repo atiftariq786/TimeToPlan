@@ -102,7 +102,7 @@ class Login extends Component {
 
         let loginErrorMessage = "";
         if(this.state.loginError){
-            loginErrorMessage = ( <ButtonToolbar>
+            loginErrorMessage = (<ButtonToolbar>
                 <LoginError
                 show={this.state.modalShow}
                 onHide={this.HideloginErrorHandler}

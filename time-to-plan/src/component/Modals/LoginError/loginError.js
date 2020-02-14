@@ -9,17 +9,17 @@ const LoginError = (props) => {
         <Modal
         style={{textAlign:"center"}}
         {...props}
-        size="lg"
+        size="sm"
+        backdrop = "false"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Login Error Status
+                    Login Error
                 </Modal.Title>
             </Modal.Header>
                 <Modal.Body>
-                    
                     <p>
                     Username or password is incorrect!
                     </p>

@@ -33,6 +33,7 @@ const InputEditGoalModal = props => {
                 
                 size="lg"
                 show={lgShow}
+                backdrop = "false"
                 onHide={() => {
                     setLgShow(false)
                     props.cancelEditGoal()
