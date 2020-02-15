@@ -8,6 +8,7 @@ import {faCheckCircle} from '@fortawesome/free-solid-svg-icons';
 import API from "../../../utils/API";
 import Styles from "./signUp.module.css";
 import Button from "react-bootstrap/Button";
+import Spinner from "../../UI/Spinner/Spinner";
 
 class SignUp extends Component {
     
@@ -21,6 +22,7 @@ class SignUp extends Component {
 
         isValidForm : true,
         isPasswordMatch : true,
+        loading: false,
     }
 
     usernameHandler = (event) => {
@@ -81,13 +83,18 @@ class SignUp extends Component {
                     password: this.state.password,
                 
                 }
+                this.setState({
+                    loading: true,
+                    
+                });
     
                 await API.savedUserSignUp(data).then(response =>{
-                    console.log("User SignUp Data Saved");
-                    console.log(response);
+                    //console.log("User SignUp Data Saved");
+                    //console.log(response);
     
                     let username = response.data.message;
                     if(response.data.success){
+
                         localStorage.removeItem('username');
                         
                         this.props.updateSignedInState("true", username);
@@ -97,6 +104,7 @@ class SignUp extends Component {
                         this.setState({
                             signUpRes: response.data,
                             currentUsername:response.data.message,
+                            loading: false,
                         });
                     }
                 }); 
@@ -112,7 +120,6 @@ class SignUp extends Component {
                 console.log("Make sure your password match");
 
                 this.setState({
-                    
                     isPasswordMatch: false,
                 });
                 
@@ -120,7 +127,6 @@ class SignUp extends Component {
         }
         else{
             console.log("Please fill all the field");
-            
         }    
     }
     
@@ -134,6 +140,19 @@ class SignUp extends Component {
         let emailErrorIcon = "";
         let passwordErrorIcon = "";
         let confirmPasswordErrorIcon = "";
+
+        let signUpButton = (<Button
+            className = {Styles.signupButton}
+            variant="success" 
+            type= "button" 
+            onClick ={this.postSignUpHandler} 
+            size="sm" 
+            >Join</Button>);
+        if(this.state.loading){
+            signUpButton = (
+                <Spinner></Spinner>
+            );
+        }
         
         //Check username validation
         //Match characters and symbols in the list, a-z, 0-9, underscore, hyphen
@@ -321,13 +340,7 @@ class SignUp extends Component {
                         {confirmPasswordErrorIcon}
                         {confirmPasswordErr}
                         
-                        <Button
-                        className = {Styles.signupButton}
-                        variant="success" 
-                        type= "button" 
-                        onClick ={this.postSignUpHandler} 
-                        size="sm" 
-                        >Join</Button>
+                        {signUpButton}
                         <p 
                             className={Styles.signinText}>
                             Already have an account? {<Link to="/login/" className={Styles.signinButton}>Sign In</Link>}

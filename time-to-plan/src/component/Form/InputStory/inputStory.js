@@ -3,6 +3,7 @@ import Styles from "./inputStory.module.css";
 import InputGroup from 'react-bootstrap/InputGroup'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from 'react-bootstrap/Spinner';
 
 function inputStory(props){
 
@@ -18,6 +19,34 @@ function inputStory(props){
     let isValidProfile = [[Styles.inputElement]];
     let isValidBackground = [[Styles.inputElement]];
     let isValidAuthor = [[Styles.inputElement]];
+
+    let addStory = (
+        <Button 
+            variant="success" 
+            type= "button" 
+            onClick ={props.submitStory} 
+            size="md" 
+            className={Styles.StoryButton}>Add Story</Button>
+    );
+    console.log("loading.....")
+    console.log(props.loading);
+    if(!props.loading){
+        addStory = (
+            <div className = {Styles.spinnerDiv}>
+                <Button variant="secondary" disabled>
+                    <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                    />
+                    Loading...
+                </Button>
+            </div>
+            
+        )
+    }
 
     
     const storyFormValidation=()=>{
@@ -154,12 +183,7 @@ function inputStory(props){
                     onChange={props.writeAuthorHandler}
                     className={isValidAuthor.join(" ")}  />
             </Form.Group>
-            <Button 
-            variant="success" 
-            type= "button" 
-            onClick ={props.submitStory} 
-            size="sm" 
-            className={Styles.StoryButton}>Add Story</Button>
+            {addStory}
         </div>
     );
 } 

@@ -12,7 +12,7 @@
 }
 .loginFormMainDiv{
     width:35%;
-    height: 310px;
+    height: 350px;
     position: relative;
     margin: auto;
     top: -71vh;
@@ -21,8 +21,8 @@
 }
 .loginTitle{
     color:black;
-    padding-top:20px;
-    margin-bottom: 0px;
+    padding-top:35px;
+    margin-bottom: 10px;
     font-size: 24px;
     
 }
@@ -52,7 +52,7 @@
 }
 .loginButton{
     width:100px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 .signupText{
     margin:0px;

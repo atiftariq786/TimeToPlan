@@ -18,7 +18,8 @@ class CreateStory extends Component {
         showCreateStory : true,
         showPostStory: "nodata",
         isValid: true,
-        savedData : []
+        savedData : [],
+        loading: true,
     }
     componentDidMount(){
 
@@ -71,8 +72,12 @@ class CreateStory extends Component {
     }
     postStoryDataHandler= () =>{
 
-        if(this.state.story && this.state.title && this.state.author){
- 
+        if(this.state.story && this.state.title && this.state.profileImage && this.state.backgroundImage && this.state.author){
+            
+            this.setState({
+                loading: true,
+                
+            });
             const data ={
                 title: this.state.title,
                 story: this.state.story,
@@ -87,6 +92,7 @@ class CreateStory extends Component {
                     console.log(response);
                     this.setState({
                         showCreateStory: false,
+                        loading: false,
                     })
                     this.getStory();
                 })
@@ -180,6 +186,7 @@ class CreateStory extends Component {
                         writeAuthorHandler = {this.authorEventHandler}
                         isValidCheck = {this.state.isValid}
                         submitStory = {this.postStoryDataHandler}
+                        loading = {this.state.laoding}
                         >
                         </InputStory> 
                     </div>            

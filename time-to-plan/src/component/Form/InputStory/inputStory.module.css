@@ -57,4 +57,11 @@ h1{
     border: 1px solid #00873F;
 
 }
+.spinnerDiv{
+    margin-top: 5px;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+    
+}
 

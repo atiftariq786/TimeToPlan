@@ -7,12 +7,13 @@ import Button from "react-bootstrap/Button";
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import API from "../../../utils/API";
 import LoginError from "../../Modals/LoginError/loginError";
+import Spinner from "../../UI/Spinner/Spinner";
 import Styles from "./login.module.css";
 
 
 
 class Login extends Component {
-    
+
     state = {
         username : "",
         password : "",
@@ -20,7 +21,17 @@ class Login extends Component {
         isValidLoginForm: true,
         loginError: false,
         modalShow: false,
+        loading: false,
+        
     }
+    /*
+    componentDidMount() {
+        
+        setTimeout(function() { //Start the timer
+        this.setState({render: true}) //After 1 second, set render to true
+        }, 5000)
+    }
+    */
     
     usernameHandler =(event) =>{
         this.setState({
@@ -58,6 +69,11 @@ class Login extends Component {
         }
         
         if(this.state.username && this.state.password){
+            
+            this.setState({
+                loading: true,
+                
+            });
 
             API.savedUserLogin(data).then(response => {
 
@@ -69,6 +85,11 @@ class Login extends Component {
                     this.props.updateSignedInState("true", username );
             
                     this.props.history.push("/create-story/");
+
+                    this.setState({
+                        loading: false,
+                        
+                    });
                 }
             
             }).catch(err => {
@@ -78,9 +99,11 @@ class Login extends Component {
                     this.setState({
                         loginError: true,
                         modalShow:true,
+                        loading: false,
                     })
                 }    
             });
+        
 
             this.setState({
                 username:"",
@@ -94,6 +117,14 @@ class Login extends Component {
         }
     }
     render(){
+
+        /**
+        componentDidMount() {
+        setTimeout(function() { //Start the timer
+        this.setState({render: true}) //After 1 second, set render to true
+        }.bind(this), 1000)
+        }
+         */
         let userErr = "";
         let passwordErr = "";
 
@@ -101,6 +132,15 @@ class Login extends Component {
         let passwordErrorIcon = "";
 
         let loginErrorMessage = "";
+
+        let loginButton = (<Button
+            className={Styles.loginButton}
+            variant="success" 
+            type= "button" 
+            onClick ={this.loginHandler} 
+            size="sm" 
+            >Login</Button>);
+
         if(this.state.loginError){
             loginErrorMessage = (<ButtonToolbar>
                 <LoginError
@@ -108,6 +148,11 @@ class Login extends Component {
                 onHide={this.HideloginErrorHandler}
                 />
             </ButtonToolbar>
+            )
+        }
+        if(this.state.loading){
+            loginButton = (
+                <Spinner ></Spinner>
             )
         }
 
@@ -181,7 +226,9 @@ class Login extends Component {
 
         return(
             <div className={Styles.mainDiv}>
+           
                 <div className={Styles.loginImage}>
+                
                     <img
                     style={{width: "100%", height:"100vh" }} 
                     src={require("../../../images/loginPage.jpg")} alt="Login Page"></img>
@@ -189,8 +236,8 @@ class Login extends Component {
                 </div>
 
                 <div className={Styles.loginFormMainDiv}>
-                    {loginErrorMessage}
                     <h2 className={Styles.loginTitle}>Login</h2>
+                    {loginErrorMessage}
                     <form className={Styles.formDiv}>
                         <input 
                         className={isValidUsername.join(" ")} 
@@ -212,13 +259,8 @@ class Login extends Component {
                         {passwordErrorIcon}
                         {passwordErr}
                         
-                        <Button
-                        className={Styles.loginButton}
-                        variant="success" 
-                        type= "button" 
-                        onClick ={this.loginHandler} 
-                        size="sm" 
-                        >Login</Button>
+                        
+                        {loginButton}
                         <p 
                             className={Styles.signupText}>
                             Don't have an account? {<Link to="/signUp/" className={Styles.signupButton}>Sign Up</Link>}
