@@ -28,12 +28,13 @@ function inputStory(props){
             size="md" 
             className={Styles.StoryButton}>Add Story</Button>
     );
+
     console.log("loading.....")
     console.log(props.loading);
-    if(!props.loading){
+    if(props.loading){
         addStory = (
             <div className = {Styles.spinnerDiv}>
-                <Button variant="secondary" disabled>
+                <Button variant="secondary" >
                     <Spinner
                     as="span"
                     animation="grow"
@@ -48,7 +49,6 @@ function inputStory(props){
         )
     }
 
-    
     const storyFormValidation=()=>{
 
         if(title === ""){

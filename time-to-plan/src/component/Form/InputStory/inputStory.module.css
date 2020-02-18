@@ -12,6 +12,8 @@ h1{
     background: #f3f3f5;
 }
 .StoryButton{
+    width: 112.95px;
+    height: 38px;
     margin-top: 5px;
     align-items: center;
     position: absolute;
@@ -63,5 +65,9 @@ h1{
     position: absolute;
     right: 30px;
     
+}
+.SpinnerButton{
+    width:100px;
+    height: 40px;
 }
 

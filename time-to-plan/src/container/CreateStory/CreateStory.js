@@ -19,7 +19,7 @@ class CreateStory extends Component {
         showPostStory: "nodata",
         isValid: true,
         savedData : [],
-        loading: true,
+        loading: false,
     }
     componentDidMount(){
 
@@ -71,6 +71,7 @@ class CreateStory extends Component {
         })
     }
     postStoryDataHandler= () =>{
+        
 
         if(this.state.story && this.state.title && this.state.profileImage && this.state.backgroundImage && this.state.author){
             
@@ -100,7 +101,8 @@ class CreateStory extends Component {
         }
         else{
             this.setState ({
-                isValid: false
+                isValid: false,
+                
             })
         }
     }
@@ -186,7 +188,7 @@ class CreateStory extends Component {
                         writeAuthorHandler = {this.authorEventHandler}
                         isValidCheck = {this.state.isValid}
                         submitStory = {this.postStoryDataHandler}
-                        loading = {this.state.laoding}
+                        loading = {this.state.loading}
                         >
                         </InputStory> 
                     </div>            
@@ -200,7 +202,8 @@ class CreateStory extends Component {
                     {showSavedData}
                 </div>
             )   
-        }       
+        }      
+        console.log(this.state.loading) 
         return(
             <Container className = {Styles.createStoryContainerDiv}>
                 {showCreateStoryTemp}
