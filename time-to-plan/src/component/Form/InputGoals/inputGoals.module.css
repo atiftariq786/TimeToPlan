@@ -19,3 +19,17 @@
 .validInput{
     border: 1px solid #00873F;
 }
+.spinnerDiv{
+    margin-top: 5px;
+    align-items: left;
+    position: absolute;
+
+}
+.StoryButton{
+    width: 112.95px;
+    height: 38px;
+    margin-top: 5px;
+    align-items: left;
+    position: absolute;
+    font-size: 16px;
+}

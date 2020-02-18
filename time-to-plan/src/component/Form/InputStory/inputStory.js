@@ -29,8 +29,6 @@ function inputStory(props){
             className={Styles.StoryButton}>Add Story</Button>
     );
 
-    console.log("loading.....")
-    console.log(props.loading);
     if(props.loading){
         addStory = (
             <div className = {Styles.spinnerDiv}>
@@ -48,7 +46,6 @@ function inputStory(props){
             
         )
     }
-
     const storyFormValidation=()=>{
 
         if(title === ""){
@@ -118,8 +115,6 @@ function inputStory(props){
     if(author !== ""){
         isValidAuthor.push(Styles.invalidInput);
     }
-
-
 
     return (
         <div className={Styles.inputStoryForm}>

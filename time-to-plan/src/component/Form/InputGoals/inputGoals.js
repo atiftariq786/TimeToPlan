@@ -2,6 +2,7 @@ import React from "react";
 import Styles from "./inputGoals.module.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from 'react-bootstrap/Spinner';
 
 function inputGoals(props){
 
@@ -14,6 +15,34 @@ function inputGoals(props){
     let isValidGoalImageUrl = [Styles.InputElement];
     let isValidGoalDescription = [Styles.InputElement];
 
+    let addGoal = (
+        <Button 
+            variant="success" 
+            type= "button" 
+            onClick ={props.submitGoal} 
+            size="sm" 
+            className={Styles.StoryButton}
+            >Add Goal
+        </Button>
+    )
+
+    if(props.loading){
+        addGoal = (
+            <div className = {Styles.spinnerDiv}>
+                <Button variant="secondary" >
+                    <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                    />
+                    Loading...
+                </Button>
+            </div>
+            
+        )
+    }
     const goalFormValidation = () =>{
         if(goalTitle === ""){
             isValidGoalTitle.push(Styles.invalidInput);
@@ -59,11 +88,6 @@ function inputGoals(props){
         isValidGoalDescription.push(Styles.invalidInput);
     }
 
-    
-
-
-    
-
     return (
         <div>
             <Form>
@@ -88,7 +112,6 @@ function inputGoals(props){
                     className={isValidGoalImageUrl.join(" ")}/>
                 </Form.Group>
                 
-                
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Goal Description</Form.Label>
                     <Form.Control 
@@ -101,12 +124,7 @@ function inputGoals(props){
                 </Form.Group>                
                 
             </Form>
-            <Button 
-            variant="success" 
-            type= "button" 
-            onClick ={props.submitGoal} 
-            size="sm" 
-            >Add Goal</Button>
+            {addGoal}
         </div>
     );
 } 

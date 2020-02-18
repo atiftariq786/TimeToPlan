@@ -14,7 +14,8 @@ class CreateGoals extends Component {
         link : "https://previews.123rf.com/images/dogfella/dogfella1512/dogfella151200088/48938356-dream-big-set-goal-take-action-handwriting-on-notebook-with-light-bulbs.jpg",
         description : "",
         tempdata: [],
-        isValidGoal: true
+        isValidGoal: true,
+        loading: false,
     }
 
     titleEventHandler = (event) => {
@@ -48,6 +49,10 @@ class CreateGoals extends Component {
         }
         
         if(this.state.link && this.state.title && this.state.description){
+            
+            this.setState({
+                loading: true,
+            });
 
             API.savedGoal(data).then(response =>{
                 console.log("Post Goal Data Saved");
@@ -57,7 +62,8 @@ class CreateGoals extends Component {
                     title:"",
                     link: "",
                     description: "",
-                    isValidGoal: true
+                    isValidGoal: true,
+                    loading: false,
                 });
             }); 
         }
@@ -85,7 +91,8 @@ class CreateGoals extends Component {
                         writeGoalDescription = {this.state.description}
                         writeGoalHandler = {this.descriptionEventHandler}
                         submitGoal = {this.postGoalDataHandler}
-                        isValidGoals = {this.state.isValidGoal}>
+                        isValidGoals = {this.state.isValidGoal}
+                        loading = {this.state.loading}>
                         </InputGoals>
                     </Col>
                     <Col>
@@ -107,7 +114,7 @@ class CreateGoals extends Component {
                     <Col>
                     <div className={Styles.Temp}>
                         <img
-                        style={{width: "100%", height:"250px", marginTop: "5px" }} 
+                        style={{width: "100%", height:"250px", marginTop: "30px" }} 
                         src={require("../../images/createGoal2.jpg")} alt="Create Goal"></img>
                     </div>
                     </Col> 
