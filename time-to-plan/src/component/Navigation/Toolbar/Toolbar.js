@@ -20,6 +20,7 @@ class Toolbar extends Component {
             console.log("User logout")
             console.log(response);
             this.props.signedIn("false")
+
         })
     }
     showLogoutWarning = () =>{
@@ -41,9 +42,9 @@ render(){
     let logOutShow ="";
     if(signedIn === "true"){
         logOutShow =(
-            <NavLink to="/">
+            
                 <Navbar.Brand className = {Styles.logout} onClick={this.showLogoutWarning}>Logout</Navbar.Brand>
-            </NavLink>
+        
         );
     }  
     

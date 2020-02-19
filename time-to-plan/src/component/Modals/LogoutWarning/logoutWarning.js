@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from "react-bootstrap/Button";
+import {NavLink} from "react-router-dom";
 
 const LogoutWarning = (props) => {
 
@@ -25,7 +26,7 @@ const LogoutWarning = (props) => {
                     </p>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button onClick = {props.logout} variant="danger" >Log out</Button>
+                <NavLink to="/"><Button onClick = {props.logout} variant="danger" >Log out</Button></NavLink>
                 <Button onClick = {props.onHide}>Cancel</Button>
                 </Modal.Footer>
         </Modal>
