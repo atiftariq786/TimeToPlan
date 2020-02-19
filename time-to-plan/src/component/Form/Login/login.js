@@ -104,20 +104,16 @@ class Login extends Component {
                 }    
             });
         
-
             this.setState({
                 username:"",
-                password: "",
-                
+                password: "",     
             });
-
         }
         else{
             console.log("Please fill this form....!")
         }
     }
     render(){
-
         /**
         componentDidMount() {
         setTimeout(function() { //Start the timer
@@ -226,7 +222,7 @@ class Login extends Component {
 
         return(
             <div className={Styles.mainDiv}>
-           
+        
                 <div className={Styles.loginImage}>
                 
                     <img
